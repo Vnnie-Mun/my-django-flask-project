@@ -1,0 +1,454 @@
+{% extends "base.html" %}
+
+{% block title %}Community Fellowship - Innovators of Honour{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh; padding-top: 120px;">
+        <div class="container">
+            <div class="section-header">
+                <h1>Community Fellowship</h1>
+                <p>Monthly gatherings for networking, spiritual growth, and professional development</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Fellowship Event -->
+    <section class="community" id="next-fellowship">
+        <div class="container">
+            {% if next_fellowship %}
+            <div class="fellowship-event">
+                <div class="event-banner">
+                    <div class="event-date-large">
+                        <span class="day">{{ next_fellowship.date.strftime('%d') }}</span>
+                        <span class="month">{{ next_fellowship.date.strftime('%b') }}</span>
+                        <span class="year">{{ next_fellowship.date.strftime('%Y') }}</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>{{ next_fellowship.title }}</h3>
+                        <div class="event-time">
+                            <i class="fas fa-clock"></i>
+                            {{ next_fellowship.date.strftime('%I:%M %p EAT') }}
+                        </div>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            {{ next_fellowship.location }}
+                        </div>
+                        <div class="event-description">
+                            {{ next_fellowship.description }}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-agenda">
+                    <h4>Event Agenda</h4>
+                    <div class="agenda-item">
+                        <div class="time">6:00 PM</div>
+                        <div class="agenda-content">
+                            <h5>Welcome & Networking</h5>
+                            <p>Connect with fellow innovators and share experiences</p>
+                        </div>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="time">6:30 PM</div>
+                        <div class="agenda-content">
+                            <h5>Opening Prayer & Worship</h5>
+                            <p>Begin with spiritual reflection and gratitude</p>
+                        </div>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="time">7:00 PM</div>
+                        <div class="agenda-content">
+                            <h5>Main Session</h5>
+                            <p>{{ next_fellowship.title }} - Interactive discussion and insights</p>
+                        </div>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="time">8:00 PM</div>
+                        <div class="agenda-content">
+                            <h5>Group Discussions</h5>
+                            <p>Small group breakouts for deeper engagement</p>
+                        </div>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="time">8:30 PM</div>
+                        <div class="agenda-content">
+                            <h5>Closing & Next Steps</h5>
+                            <p>Action items and upcoming opportunities</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-registration">
+                    <h4>Registration Options</h4>
+                    <div class="registration-options">
+                        <div class="option">
+                            <h5>In-Person</h5>
+                            <p>Join us at the venue for full networking experience</p>
+                            <span class="price">Free</span>
+                            <button class="btn btn-primary" onclick="registerForEvent({{ next_fellowship.id }}, 'in-person')">
+                                Register In-Person
+                            </button>
+                        </div>
+                        <div class="option">
+                            <h5>Virtual</h5>
+                            <p>Participate online via video conference</p>
+                            <span class="price">Free</span>
+                            <button class="btn btn-secondary" onclick="registerForEvent({{ next_fellowship.id }}, 'virtual')">
+                                Join Virtually
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="section-header">
+                <h2>Next Fellowship Event</h2>
+                <p>Stay tuned for our next fellowship gathering announcement</p>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Community Groups -->
+    <section class="section-alt" id="community-groups">
+        <div class="container">
+            <div class="section-header">
+                <h2>Community Interest Groups</h2>
+                <p>Join specialized groups based on your interests and expertise</p>
+            </div>
+
+            <div class="groups-grid">
+                <div class="group-card">
+                    <div class="group-icon">
+                        <i class="fas fa-pray"></i>
+                    </div>
+                    <h3>Faith & Technology</h3>
+                    <p>Explore the intersection of faith and technology, discussing ethical implications and spiritual growth in the digital age.</p>
+                    <div class="group-stats">
+                        <span><i class="fas fa-users"></i> 150+ members</span>
+                        <span><i class="fas fa-calendar"></i> Weekly meetings</span>
+                    </div>
+                    <div class="group-activities">
+                        <h5>Activities:</h5>
+                        <ul>
+                            <li>Bible study on technology ethics</li>
+                            <li>Prayer sessions for innovation</li>
+                            <li>Discussions on AI and humanity</li>
+                            <li>Service projects using tech</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-primary" onclick="joinGroup('faith-tech')">Join Group</button>
+                </div>
+
+                <div class="group-card">
+                    <div class="group-icon">
+                        <i class="fas fa-venus"></i>
+                    </div>
+                    <h3>Women in Tech</h3>
+                    <p>Empowering women in technology through mentorship, networking, and professional development opportunities.</p>
+                    <div class="group-stats">
+                        <span><i class="fas fa-users"></i> 200+ members</span>
+                        <span><i class="fas fa-calendar"></i> Bi-weekly meetings</span>
+                    </div>
+                    <div class="group-activities">
+                        <h5>Activities:</h5>
+                        <ul>
+                            <li>Mentorship programs</li>
+                            <li>Leadership workshops</li>
+                            <li>Career advancement sessions</li>
+                            <li>Networking events</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-primary" onclick="joinGroup('women-tech')">Join Group</button>
+                </div>
+
+                <div class="group-card">
+                    <div class="group-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Young Innovators</h3>
+                    <p>Supporting students and young professionals in their journey to become ethical technology leaders.</p>
+                    <div class="group-stats">
+                        <span><i class="fas fa-users"></i> 300+ members</span>
+                        <span><i class="fas fa-calendar"></i> Weekly sessions</span>
+                    </div>
+                    <div class="group-activities">
+                        <h5>Activities:</h5>
+                        <ul>
+                            <li>Coding bootcamps</li>
+                            <li>Hackathons and competitions</li>
+                            <li>Internship opportunities</li>
+                            <li>Scholarship programs</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-primary" onclick="joinGroup('young-innovators')">Join Group</button>
+                </div>
+
+                <div class="group-card">
+                    <div class="group-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Entrepreneurs Circle</h3>
+                    <p>Connect with fellow entrepreneurs, share experiences, and collaborate on innovative business ventures.</p>
+                    <div class="group-stats">
+                        <span><i class="fas fa-users"></i> 120+ members</span>
+                        <span><i class="fas fa-calendar"></i> Monthly meetups</span>
+                    </div>
+                    <div class="group-activities">
+                        <h5>Activities:</h5>
+                        <ul>
+                            <li>Pitch practice sessions</li>
+                            <li>Business plan reviews</li>
+                            <li>Investor networking</li>
+                            <li>Market validation workshops</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-primary" onclick="joinGroup('entrepreneurs')">Join Group</button>
+                </div>
+
+                <div class="group-card">
+                    <div class="group-icon">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <h3>African Diaspora Tech</h3>
+                    <p>Connecting African tech professionals worldwide to drive innovation and development across the continent.</p>
+                    <div class="group-stats">
+                        <span><i class="fas fa-users"></i> 250+ members</span>
+                        <span><i class="fas fa-calendar"></i> Bi-weekly calls</span>
+                    </div>
+                    <div class="group-activities">
+                        <h5>Activities:</h5>
+                        <ul>
+                            <li>Cross-border collaborations</li>
+                            <li>Cultural exchange programs</li>
+                            <li>Investment opportunities</li>
+                            <li>Skills transfer initiatives</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-primary" onclick="joinGroup('diaspora-tech')">Join Group</button>
+                </div>
+
+                <div class="group-card">
+                    <div class="group-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3>Tech Leadership</h3>
+                    <p>Developing ethical leaders in technology through mentorship, training, and collaborative learning.</p>
+                    <div class="group-stats">
+                        <span><i class="fas fa-users"></i> 180+ members</span>
+                        <span><i class="fas fa-calendar"></i> Monthly workshops</span>
+                    </div>
+                    <div class="group-activities">
+                        <h5>Activities:</h5>
+                        <ul>
+                            <li>Leadership development</li>
+                            <li>Team management training</li>
+                            <li>Strategic planning sessions</li>
+                            <li>Executive coaching</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-primary" onclick="joinGroup('tech-leadership')">Join Group</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Testimonials -->
+    <section class="community">
+        <div class="container">
+            <div class="section-header">
+                <h2>Community Testimonials</h2>
+                <p>Hear from our members about their experience</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"The fellowship has been instrumental in shaping my approach to ethical leadership in tech. The community support and spiritual guidance have been invaluable in my career journey."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h5>Sarah Kimani</h5>
+                            <p>Software Engineer, Google</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Amazing community of like-minded professionals who support each other's growth. The networking opportunities and collaborative projects have opened doors I never imagined."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h5>David Mwangi</h5>
+                            <p>Blockchain Entrepreneur</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"The Women in Tech group has been a game-changer for my career. The mentorship and support system helped me transition from junior developer to tech lead in just two years."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h5>Grace Wanjiku</h5>
+                            <p>Tech Lead, Safaricom</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"The Young Innovators group provided me with the skills and connections I needed to launch my startup. The hackathons and mentorship programs are world-class."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h5>Michael Ochieng</h5>
+                            <p>Founder, EduTech Solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Community -->
+    <section class="section-alt">
+        <div class="container">
+            <div class="join-content">
+                <div class="join-text">
+                    <h2>Join Our Community</h2>
+                    <p>Become part of a global movement of ethical innovators committed to making a positive impact through technology.</p>
+                    
+                    <div class="join-benefits">
+                        <div class="benefit">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Access to exclusive events and workshops</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Networking with industry leaders</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Mentorship and career guidance</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Collaborative project opportunities</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Spiritual and professional growth</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="join-form">
+                    <h3>Get Started Today</h3>
+                    <form class="community-form" onsubmit="joinCommunity(event)">
+                        <div class="form-group">
+                            <label for="full-name">Full Name *</label>
+                            <input type="text" id="full-name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="profession">Profession/Role *</label>
+                            <input type="text" id="profession" name="profession" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interests">Areas of Interest</label>
+                            <select id="interests" name="interests" multiple>
+                                <option value="ai-ml">AI/Machine Learning</option>
+                                <option value="blockchain">Blockchain</option>
+                                <option value="web-dev">Web Development</option>
+                                <option value="mobile-dev">Mobile Development</option>
+                                <option value="cybersecurity">Cybersecurity</option>
+                                <option value="data-science">Data Science</option>
+                                <option value="entrepreneurship">Entrepreneurship</option>
+                                <option value="leadership">Leadership</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="motivation">Why do you want to join? *</label>
+                            <textarea id="motivation" name="motivation" rows="3" required 
+                                     placeholder="Tell us about your goals and how you hope to contribute to the community..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-users"></i> Join Community
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        async function registerForEvent(eventId, type) {
+            try {
+                const response = await fetch('/api/register-event', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        event_id: eventId,
+                        type: type
+                    })
+                });
+
+                if (response.ok) {
+                    alert(`Registration successful! You will receive a confirmation email with ${type === 'virtual' ? 'virtual meeting' : 'venue'} details.`);
+                } else {
+                    alert('Registration failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                alert('Registration failed. Please try again.');
+            }
+        }
+
+        async function joinGroup(groupId) {
+            // In a real implementation, this would handle group membership
+            alert(`Request to join group sent! You will be added to the ${groupId} group shortly.`);
+        }
+
+        async function joinCommunity(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            try {
+                // In a real implementation, this would create a user account
+                alert('Welcome to the Innovators of Honour community! You will receive a welcome email with next steps.');
+                event.target.reset();
+            } catch (error) {
+                console.error('Join community error:', error);
+                alert('Failed to join community. Please try again.');
+            }
+        }
+    </script>
+{% endblock %}

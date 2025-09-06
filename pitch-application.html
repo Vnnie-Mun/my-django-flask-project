@@ -1,0 +1,396 @@
+{% extends "base.html" %}
+
+{% block title %}Pitch Application - Innovators of Honour{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh; padding-top: 120px;">
+        <div class="container">
+            <div class="section-header">
+                <h1>Pitch Application</h1>
+                <p>Apply to present your startup at our next investor pitch event</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Process -->
+    <section class="application-process">
+        <div class="container">
+            <div class="section-header">
+                <h2>Application Process</h2>
+                <p>Follow these simple steps to apply for our pitch events</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Submit Application</h3>
+                        <p>Complete the detailed application form with your company information and pitch materials</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Initial Review</h3>
+                        <p>Our team reviews your application and conducts preliminary due diligence</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Interview Round</h3>
+                        <p>Selected applicants participate in a virtual interview with our investment committee</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Pitch Event</h3>
+                        <p>Final selection presents to investors at our quarterly pitch event</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="pitch-application">
+        <div class="container">
+            <div class="application-content">
+                <div class="application-info">
+                    <h2>Application Requirements</h2>
+                    <p>Ensure you meet all requirements before submitting your application.</p>
+                    
+                    <div class="requirements">
+                        <h3>Eligibility Criteria</h3>
+                        <ul>
+                            <li>Early-stage startup (Pre-seed to Series A)</li>
+                            <li>Technology-focused business model</li>
+                            <li>Seeking funding between $100K - $5M</li>
+                            <li>Committed to ethical business practices</li>
+                            <li>Scalable solution with market traction</li>
+                            <li>Strong founding team with relevant experience</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="next-events">
+                        <h3>Upcoming Pitch Events</h3>
+                        
+                        <div class="event-item">
+                            <strong>Q1 Innovation Showcase</strong>
+                            <p>January 25, 2025 - Application Deadline: January 10, 2025</p>
+                        </div>
+                        
+                        <div class="event-item">
+                            <strong>Spring Tech Summit</strong>
+                            <p>April 15, 2025 - Application Deadline: March 30, 2025</p>
+                        </div>
+                        
+                        <div class="event-item">
+                            <strong>Summer Innovation Forum</strong>
+                            <p>July 20, 2025 - Application Deadline: July 5, 2025</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="application-form">
+                    <form class="pitch-form" onsubmit="submitPitchApplication(event)">
+                        <div class="form-section">
+                            <h3>Company Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="company-name">Company Name *</label>
+                                <input type="text" id="company-name" name="company_name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="website">Website URL</label>
+                                <input type="url" id="website" name="website" placeholder="https://yourcompany.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="industry">Industry *</label>
+                                <select id="industry" name="industry" required>
+                                    <option value="">Select Industry</option>
+                                    <option value="AI/ML">AI/Machine Learning</option>
+                                    <option value="Blockchain">Blockchain/Web3</option>
+                                    <option value="FinTech">FinTech</option>
+                                    <option value="HealthTech">HealthTech</option>
+                                    <option value="EdTech">EdTech</option>
+                                    <option value="AgTech">AgTech</option>
+                                    <option value="CleanTech">CleanTech</option>
+                                    <option value="E-commerce">E-commerce</option>
+                                    <option value="SaaS">SaaS</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company-stage">Company Stage *</label>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="company_stage" value="Idea" required>
+                                        Idea Stage
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="company_stage" value="Prototype" required>
+                                        Prototype/MVP
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="company_stage" value="Early Revenue" required>
+                                        Early Revenue
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="company_stage" value="Growth" required>
+                                        Growth Stage
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company-description">Company Description *</label>
+                                <textarea id="company-description" name="company_description" rows="4" required 
+                                         placeholder="Describe your company, the problem you're solving, and your solution..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Founder Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="founder-name">Founder/CEO Name *</label>
+                                <input type="text" id="founder-name" name="founder_name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="founder-email">Email Address *</label>
+                                <input type="email" id="founder-email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="founder-phone">Phone Number</label>
+                                <input type="tel" id="founder-phone" name="phone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="founder-linkedin">LinkedIn Profile</label>
+                                <input type="url" id="founder-linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="team-size">Team Size *</label>
+                                <select id="team-size" name="team_size" required>
+                                    <option value="">Select Team Size</option>
+                                    <option value="1">Solo Founder</option>
+                                    <option value="2-3">2-3 People</option>
+                                    <option value="4-10">4-10 People</option>
+                                    <option value="11-25">11-25 People</option>
+                                    <option value="25+">25+ People</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Funding Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="funding-amount">Funding Amount Seeking *</label>
+                                <select id="funding-amount" name="funding_amount" required>
+                                    <option value="">Select Amount</option>
+                                    <option value="$100K - $250K">$100K - $250K</option>
+                                    <option value="$250K - $500K">$250K - $500K</option>
+                                    <option value="$500K - $1M">$500K - $1M</option>
+                                    <option value="$1M - $2M">$1M - $2M</option>
+                                    <option value="$2M - $5M">$2M - $5M</option>
+                                    <option value="$5M+">$5M+</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="previous-funding">Previous Funding Raised</label>
+                                <input type="text" id="previous-funding" name="previous_funding" placeholder="e.g., $50K pre-seed, $200K friends & family">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="use-of-funds">Use of Funds *</label>
+                                <textarea id="use-of-funds" name="use_of_funds" rows="3" required 
+                                         placeholder="How will you use the funding? (e.g., product development, marketing, hiring...)"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="revenue">Current Monthly Revenue</label>
+                                <select id="revenue" name="revenue">
+                                    <option value="">Select Revenue Range</option>
+                                    <option value="Pre-revenue">Pre-revenue</option>
+                                    <option value="$0 - $1K">$0 - $1K</option>
+                                    <option value="$1K - $10K">$1K - $10K</option>
+                                    <option value="$10K - $50K">$10K - $50K</option>
+                                    <option value="$50K - $100K">$50K - $100K</option>
+                                    <option value="$100K+">$100K+</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Supporting Documents</h3>
+                            
+                            <div class="form-group">
+                                <label for="pitch-deck">Pitch Deck (PDF) *</label>
+                                <input type="file" id="pitch-deck" name="pitch_deck" accept=".pdf" required>
+                                <small>Upload your pitch deck (max 10MB, PDF format)</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="business-plan">Business Plan (PDF)</label>
+                                <input type="file" id="business-plan" name="business_plan" accept=".pdf">
+                                <small>Optional: Detailed business plan (max 10MB, PDF format)</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="financial-projections">Financial Projections (PDF/Excel)</label>
+                                <input type="file" id="financial-projections" name="financial_projections" accept=".pdf,.xlsx,.xls">
+                                <small>Optional: 3-5 year financial projections (max 10MB)</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="demo-video">Demo Video URL</label>
+                                <input type="url" id="demo-video" name="demo_video" placeholder="https://youtube.com/watch?v=...">
+                                <small>Optional: Link to product demo or company video</small>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Additional Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="traction">Key Traction Metrics *</label>
+                                <textarea id="traction" name="traction" rows="3" required 
+                                         placeholder="Share your key metrics: users, revenue growth, partnerships, etc."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="competitive-advantage">Competitive Advantage *</label>
+                                <textarea id="competitive-advantage" name="competitive_advantage" rows="3" required 
+                                         placeholder="What makes your solution unique? What's your moat?"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="why-now">Why Now? *</label>
+                                <textarea id="why-now" name="why_now" rows="3" required 
+                                         placeholder="Why is this the right time for your solution? What's changed in the market?"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="additional-info">Additional Information</label>
+                                <textarea id="additional-info" name="additional_info" rows="3" 
+                                         placeholder="Anything else you'd like us to know about your company or team?"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Submit Application
+                            </button>
+                            
+                            <div class="form-note">
+                                By submitting this application, you agree to our terms and conditions. 
+                                We will review your application within 5 business days and contact you with next steps.
+                                All information provided will be kept confidential.
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        async function submitPitchApplication(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Show loading state
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+            
+            try {
+                const response = await fetch('/api/pitch-application', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    // Show success message
+                    const successMessage = document.createElement('div');
+                    successMessage.style.cssText = `
+                        background: rgba(16, 185, 129, 0.1);
+                        border: 1px solid #10b981;
+                        color: #10b981;
+                        padding: 2rem;
+                        border-radius: 12px;
+                        margin-top: 2rem;
+                        text-align: center;
+                    `;
+                    successMessage.innerHTML = `
+                        <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
+                        <h3 style="margin-bottom: 1rem;">Application Submitted Successfully!</h3>
+                        <p>Thank you for your application. We'll review your pitch and contact you within 5 business days with next steps.</p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                            You will receive a confirmation email shortly with your application details.
+                        </p>
+                    `;
+                    
+                    event.target.parentNode.appendChild(successMessage);
+                    event.target.style.display = 'none';
+                    
+                    // Clear auto-saved data
+                    localStorage.clear();
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                console.error('Submission error:', error);
+                alert('Failed to submit application. Please try again.');
+                
+                // Restore button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+        
+        // Auto-save functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const formInputs = document.querySelectorAll('.pitch-form input, .pitch-form select, .pitch-form textarea');
+            
+            // Load saved data
+            formInputs.forEach(input => {
+                const savedValue = localStorage.getItem(`pitch_form_${input.name || input.id}`);
+                if (savedValue && input.type !== 'file' && input.type !== 'radio') {
+                    input.value = savedValue;
+                } else if (input.type === 'radio' && savedValue === input.value) {
+                    input.checked = true;
+                }
+            });
+            
+            // Save data on change
+            formInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    if (this.type !== 'file') {
+                        localStorage.setItem(`pitch_form_${this.name || this.id}`, this.value);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

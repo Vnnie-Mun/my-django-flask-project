@@ -1,0 +1,527 @@
+{% extends "base.html" %}
+
+{% block title %}Investor Platform - Innovators of Honour{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh; padding-top: 120px;">
+        <div class="container">
+            <div class="section-header">
+                <h1>Investor Platform</h1>
+                <p>Discover and fund the next generation of innovative solutions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pitch Events -->
+    <section class="investors" id="pitch-events">
+        <div class="container">
+            <div class="section-header">
+                <h2>Upcoming Pitch Events</h2>
+                <p>Connect with promising startups and investment opportunities</p>
+            </div>
+
+            <div class="pitch-events">
+                {% for event in pitch_events %}
+                <div class="pitch-event-card featured">
+                    <div class="event-date-card">
+                        <span class="day">{{ event.date.strftime('%d') }}</span>
+                        <span class="month">{{ event.date.strftime('%b') }}</span>
+                        <span class="year">{{ event.date.strftime('%Y') }}</span>
+                    </div>
+                    <div class="event-info">
+                        <h4>{{ event.title }}</h4>
+                        <p>{{ event.description }}</p>
+                        <div class="event-tags">
+                            <span class="category-tag">AI/ML</span>
+                            <span class="category-tag">FinTech</span>
+                            <span class="category-tag">HealthTech</span>
+                        </div>
+                        <div class="event-details">
+                            <span><i class="fas fa-clock"></i> {{ event.date.strftime('%I:%M %p EAT') }}</span>
+                            <span><i class="fas fa-map-marker-alt"></i> {{ event.location }}</span>
+                            <span><i class="fas fa-users"></i> {{ event.registered }}/{{ event.capacity }} registered</span>
+                        </div>
+                    </div>
+                    <div class="event-actions">
+                        <button class="btn btn-primary" onclick="registerForPitchEvent({{ event.id }})">
+                            Register as Investor
+                        </button>
+                        <button class="btn btn-outline" onclick="viewEventDetails({{ event.id }})">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Opportunities -->
+    <section class="section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Current Investment Opportunities</h2>
+                <p>Explore startups seeking funding</p>
+            </div>
+
+            <div class="startups-grid">
+                <div class="startup-card">
+                    <div class="startup-header">
+                        <div class="startup-logo">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="startup-info">
+                            <h3>NeuroTech AI</h3>
+                            <div class="startup-tagline">AI-powered brain-computer interfaces for medical applications</div>
+                            <div class="startup-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Nairobi, Kenya
+                            </div>
+                        </div>
+                        <div class="funding-status">
+                            <div class="status-badge seeking">Seeking $2M</div>
+                        </div>
+                    </div>
+                    
+                    <div class="startup-description">
+                        Revolutionary brain-computer interface technology that helps paralyzed patients control devices with their thoughts. FDA breakthrough device designation received.
+                    </div>
+                    
+                    <div class="startup-metrics">
+                        <div class="metric">
+                            <span class="metric-value">$500K</span>
+                            <span class="metric-label">Revenue</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">15</span>
+                            <span class="metric-label">Team Size</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">3</span>
+                            <span class="metric-label">Patents</span>
+                        </div>
+                    </div>
+                    
+                    <div class="startup-traction">
+                        <h5>Key Traction:</h5>
+                        <ul>
+                            <li>Partnership with 5 major hospitals</li>
+                            <li>FDA breakthrough device designation</li>
+                            <li>$100K pilot program completed</li>
+                            <li>2 published research papers</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="startup-actions">
+                        <button class="btn btn-primary" onclick="requestPitchDeck('neurotech')">
+                            Request Pitch Deck
+                        </button>
+                        <button class="btn btn-outline" onclick="scheduleCall('neurotech')">
+                            Schedule Call
+                        </button>
+                    </div>
+                </div>
+
+                <div class="startup-card">
+                    <div class="startup-header">
+                        <div class="startup-logo">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="startup-info">
+                            <h3>GreenChain</h3>
+                            <div class="startup-tagline">Blockchain-based carbon credit marketplace</div>
+                            <div class="startup-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Lagos, Nigeria
+                            </div>
+                        </div>
+                        <div class="funding-status">
+                            <div class="status-badge seeking">Seeking $1.5M</div>
+                        </div>
+                    </div>
+                    
+                    <div class="startup-description">
+                        Transparent carbon credit trading platform using blockchain technology to verify and trade environmental credits across Africa.
+                    </div>
+                    
+                    <div class="startup-metrics">
+                        <div class="metric">
+                            <span class="metric-value">$200K</span>
+                            <span class="metric-label">Revenue</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">8</span>
+                            <span class="metric-label">Team Size</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">50+</span>
+                            <span class="metric-label">Partners</span>
+                        </div>
+                    </div>
+                    
+                    <div class="startup-traction">
+                        <h5>Key Traction:</h5>
+                        <ul>
+                            <li>$2M in carbon credits traded</li>
+                            <li>Partnership with UN Environment</li>
+                            <li>Active in 5 African countries</li>
+                            <li>Government pilot programs</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="startup-actions">
+                        <button class="btn btn-primary" onclick="requestPitchDeck('greenchain')">
+                            Request Pitch Deck
+                        </button>
+                        <button class="btn btn-outline" onclick="scheduleCall('greenchain')">
+                            Schedule Call
+                        </button>
+                    </div>
+                </div>
+
+                <div class="startup-card">
+                    <div class="startup-header">
+                        <div class="startup-logo">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="startup-info">
+                            <h3>EduConnect</h3>
+                            <div class="startup-tagline">AI-powered personalized learning for African students</div>
+                            <div class="startup-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Accra, Ghana
+                            </div>
+                        </div>
+                        <div class="funding-status">
+                            <div class="status-badge seeking">Seeking $3M</div>
+                        </div>
+                    </div>
+                    
+                    <div class="startup-description">
+                        Personalized learning platform that adapts to each student's learning style and pace, with offline capabilities for low-connectivity areas.
+                    </div>
+                    
+                    <div class="startup-metrics">
+                        <div class="metric">
+                            <span class="metric-value">$800K</span>
+                            <span class="metric-label">Revenue</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">25</span>
+                            <span class="metric-label">Team Size</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">50K+</span>
+                            <span class="metric-label">Students</span>
+                        </div>
+                    </div>
+                    
+                    <div class="startup-traction">
+                        <h5>Key Traction:</h5>
+                        <ul>
+                            <li>50,000+ active students</li>
+                            <li>Partnership with 200+ schools</li>
+                            <li>Government contracts in 3 countries</li>
+                            <li>20% improvement in test scores</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="startup-actions">
+                        <button class="btn btn-primary" onclick="requestPitchDeck('educonnect')">
+                            Request Pitch Deck
+                        </button>
+                        <button class="btn btn-outline" onclick="scheduleCall('educonnect')">
+                            Schedule Call
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="investors">
+        <div class="container">
+            <div class="section-header">
+                <h2>Success Stories</h2>
+                <p>Companies that have successfully raised funding through our platform</p>
+            </div>
+
+            <div class="success-grid">
+                <div class="success-card">
+                    <div class="success-header">
+                        <div class="company-logo">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="company-info">
+                            <h3>PayFlow</h3>
+                            <p>Mobile payment solutions</p>
+                        </div>
+                        <div class="success-badge">Funded</div>
+                    </div>
+                    
+                    <div class="success-story">
+                        Raised $5M Series A to expand mobile payment infrastructure across East Africa. Now processing $10M+ monthly transactions.
+                    </div>
+                    
+                    <div class="success-metrics">
+                        <div class="metric">
+                            <span class="value">$5M</span>
+                            <span class="label">Raised</span>
+                        </div>
+                        <div class="metric">
+                            <span class="value">300%</span>
+                            <span class="label">Growth</span>
+                        </div>
+                        <div class="metric">
+                            <span class="value">50K+</span>
+                            <span class="label">Users</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-card">
+                    <div class="success-header">
+                        <div class="company-logo">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="company-info">
+                            <h3>HealthTech Pro</h3>
+                            <p>Telemedicine platform</p>
+                        </div>
+                        <div class="success-badge">Funded</div>
+                    </div>
+                    
+                    <div class="success-story">
+                        Secured $3M seed funding to build telemedicine infrastructure for rural communities. Serving 100+ healthcare facilities.
+                    </div>
+                    
+                    <div class="success-metrics">
+                        <div class="metric">
+                            <span class="value">$3M</span>
+                            <span class="label">Raised</span>
+                        </div>
+                        <div class="metric">
+                            <span class="value">500%</span>
+                            <span class="label">Growth</span>
+                        </div>
+                        <div class="metric">
+                            <span class="value">25K+</span>
+                            <span class="label">Patients</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-card">
+                    <div class="success-header">
+                        <div class="company-logo">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="company-info">
+                            <h3>AgriSmart</h3>
+                            <p>IoT agriculture solutions</p>
+                        </div>
+                        <div class="success-badge">Funded</div>
+                    </div>
+                    
+                    <div class="success-story">
+                        Raised $2M to scale IoT-based precision agriculture solutions. Helping farmers increase yields by 40% while reducing water usage.
+                    </div>
+                    
+                    <div class="success-metrics">
+                        <div class="metric">
+                            <span class="value">$2M</span>
+                            <span class="label">Raised</span>
+                        </div>
+                        <div class="metric">
+                            <span class="value">40%</span>
+                            <span class="label">Yield Increase</span>
+                        </div>
+                        <div class="metric">
+                            <span class="value">1000+</span>
+                            <span class="label">Farmers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join as Investor -->
+    <section class="section-alt" id="join-investors">
+        <div class="container">
+            <div class="investor-content">
+                <div class="investor-benefits">
+                    <h3>Why Invest with Us?</h3>
+                    
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <i class="fas fa-search"></i>
+                            <div>
+                                <h4>Curated Deal Flow</h4>
+                                <p>Access to pre-screened, high-potential startups with ethical foundations and strong market traction.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <h4>Expert Due Diligence</h4>
+                                <p>Comprehensive vetting process including technical, financial, and ethical assessments by industry experts.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <i class="fas fa-handshake"></i>
+                            <div>
+                                <h4>Co-Investment Opportunities</h4>
+                                <p>Partner with other experienced investors and venture capital firms for larger investment rounds.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <i class="fas fa-chart-line"></i>
+                            <div>
+                                <h4>Portfolio Support</h4>
+                                <p>Ongoing support for portfolio companies including mentorship, networking, and strategic guidance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="investment-form">
+                    <h3>Investor Application</h3>
+                    <form class="investor-form" onsubmit="submitInvestorApplication(event)">
+                        <div class="form-group">
+                            <label for="investor-name">Full Name *</label>
+                            <input type="text" id="investor-name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="investor-email">Email Address *</label>
+                            <input type="email" id="investor-email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="investor-company">Company/Organization</label>
+                            <input type="text" id="investor-company" name="company">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="investment-range">Investment Range *</label>
+                            <select id="investment-range" name="investment_range" required>
+                                <option value="">Select Range</option>
+                                <option value="10k-50k">$10K - $50K</option>
+                                <option value="50k-250k">$50K - $250K</option>
+                                <option value="250k-1m">$250K - $1M</option>
+                                <option value="1m+">$1M+</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Investment Focus Areas *</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="focus_areas" value="ai-ml">
+                                    AI/Machine Learning
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="focus_areas" value="blockchain">
+                                    Blockchain/Web3
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="focus_areas" value="fintech">
+                                    FinTech
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="focus_areas" value="healthtech">
+                                    HealthTech
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="focus_areas" value="edtech">
+                                    EdTech
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="focus_areas" value="agtech">
+                                    AgTech
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="investment-experience">Investment Experience *</label>
+                            <textarea id="investment-experience" name="experience" rows="4" required 
+                                     placeholder="Describe your investment experience, portfolio companies, and areas of expertise..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Submit Application
+                        </button>
+                        
+                        <div class="form-note">
+                            Applications are reviewed within 5 business days. Qualified investors will be invited to our next pitch event.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        async function registerForPitchEvent(eventId) {
+            try {
+                const response = await fetch('/api/register-event', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        event_id: eventId,
+                        type: 'investor'
+                    })
+                });
+
+                if (response.ok) {
+                    alert('Registration successful! You will receive event details and startup information via email.');
+                } else {
+                    alert('Registration failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                alert('Registration failed. Please try again.');
+            }
+        }
+
+        function viewEventDetails(eventId) {
+            alert('Event details would be displayed in a modal or separate page.');
+        }
+
+        function requestPitchDeck(startupId) {
+            alert(`Pitch deck request sent for ${startupId}. You will receive the materials via email within 24 hours.`);
+        }
+
+        function scheduleCall(startupId) {
+            alert(`Call scheduling request sent for ${startupId}. The startup team will contact you to arrange a meeting.`);
+        }
+
+        async function submitInvestorApplication(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Handle checkbox array
+            const focusAreas = formData.getAll('focus_areas');
+            data.focus_areas = focusAreas;
+            
+            try {
+                alert('Investor application submitted successfully! We will review your application and contact you within 5 business days.');
+                event.target.reset();
+            } catch (error) {
+                console.error('Application error:', error);
+                alert('Failed to submit application. Please try again.');
+            }
+        }
+    </script>
+{% endblock %}

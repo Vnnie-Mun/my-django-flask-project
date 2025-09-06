@@ -1,0 +1,391 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Innovate with Honour, Impact the World</h1>
+                <p class="hero-subtitle">A globally recognized movement empowering innovators, entrepreneurs, and professionals to create ethical, cutting-edge solutions that transform industries and uplift communities.</p>
+                <div class="hero-buttons">
+                    <a href="{{ url_for('programs') }}" class="btn btn-primary">Join Our Programs</a>
+                    <a href="{{ url_for('solutions') }}" class="btn btn-secondary">Explore Solutions</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Innovation</h3>
+                    <p>Cutting-edge solutions</p>
+                </div>
+                <div class="hero-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Integrity</h3>
+                    <p>Ethical leadership</p>
+                </div>
+                <div class="hero-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Impact</h3>
+                    <p>Global transformation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>{{ stats.members }}+</h3>
+                    <p>Active Members</p>
+                </div>
+                <div class="stat-item">
+                    <h3>{{ stats.solutions }}+</h3>
+                    <p>Solutions Launched</p>
+                </div>
+                <div class="stat-item">
+                    <h3>{{ stats.jobs }}+</h3>
+                    <p>Job Placements</p>
+                </div>
+                <div class="stat-item">
+                    <h3>{{ stats.courses }}+</h3>
+                    <p>Learning Resources</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="programs">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Programs</h2>
+                <p>Comprehensive learning and development opportunities</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Bootcamps</h3>
+                    <p>Intensive 4-8 week programs in AI/ML, Web Development, Blockchain, and Entrepreneurship</p>
+                    <ul>
+                        <li>Hands-on projects</li>
+                        <li>Industry mentorship</li>
+                        <li>Certification</li>
+                        <li>Job placement support</li>
+                    </ul>
+                    <a href="{{ url_for('programs') }}" class="btn btn-outline">Learn More</a>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Webinars</h3>
+                    <p>Monthly sessions on emerging technologies and controversial trends with industry experts</p>
+                    <ul>
+                        <li>AI Ethics & Quantum Computing</li>
+                        <li>Blockchain Scalability</li>
+                        <li>Tech Leadership</li>
+                        <li>Global networking</li>
+                    </ul>
+                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" target="_blank" class="btn btn-outline">Join Next Session</a>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Workshops</h3>
+                    <p>Bi-monthly hands-on workshops for practical skill building in various tech niches</p>
+                    <ul>
+                        <li>UI/UX Design</li>
+                        <li>Smart Contract Development</li>
+                        <li>Cybersecurity</li>
+                        <li>IoT & Embedded Systems</li>
+                    </ul>
+                    <a href="{{ url_for('programs') }}" class="btn btn-outline">View Schedule</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Marketplace -->
+    <section id="solutions" class="solutions">
+        <div class="container">
+            <div class="section-header">
+                <h2>Solutions Marketplace</h2>
+                <p>Discover and showcase innovative solutions from our community</p>
+            </div>
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-image">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="solution-content">
+                        <h3>AI-Powered Healthcare</h3>
+                        <p>Revolutionary diagnostic tool using machine learning for early disease detection</p>
+                        <div class="solution-tags">
+                            <span class="tag">AI/ML</span>
+                            <span class="tag">Healthcare</span>
+                        </div>
+                        <div class="solution-stats">
+                            <span><i class="fas fa-eye"></i> 1.2k views</span>
+                            <span><i class="fas fa-heart"></i> 89 likes</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-image">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="solution-content">
+                        <h3>Green Energy Platform</h3>
+                        <p>Blockchain-based platform for trading renewable energy credits</p>
+                        <div class="solution-tags">
+                            <span class="tag">Blockchain</span>
+                            <span class="tag">Sustainability</span>
+                        </div>
+                        <div class="solution-stats">
+                            <span><i class="fas fa-eye"></i> 856 views</span>
+                            <span><i class="fas fa-heart"></i> 67 likes</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-image">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="solution-content">
+                        <h3>EduTech Platform</h3>
+                        <p>Personalized learning platform for African students with offline capabilities</p>
+                        <div class="solution-tags">
+                            <span class="tag">Education</span>
+                            <span class="tag">Mobile</span>
+                        </div>
+                        <div class="solution-stats">
+                            <span><i class="fas fa-eye"></i> 2.1k views</span>
+                            <span><i class="fas fa-heart"></i> 134 likes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="{{ url_for('mint_nft') }}" class="btn btn-primary">Submit Your Solution</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hiring Platform -->
+    <section id="hiring" class="hiring">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hiring Platform</h2>
+                <p>Connect talent with opportunities across the globe</p>
+            </div>
+            <div class="hiring-content">
+                <div class="hiring-stats">
+                    <div class="hiring-stat">
+                        <h3>500+</h3>
+                        <p>Active Job Postings</p>
+                    </div>
+                    <div class="hiring-stat">
+                        <h3>1000+</h3>
+                        <p>Registered Talents</p>
+                    </div>
+                    <div class="hiring-stat">
+                        <h3>95%</h3>
+                        <p>Placement Success Rate</p>
+                    </div>
+                </div>
+                <div class="hiring-features">
+                    <div class="feature">
+                        <i class="fas fa-search"></i>
+                        <h4>Smart Matching</h4>
+                        <p>AI-powered job matching based on skills and preferences</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-globe"></i>
+                        <h4>Global Opportunities</h4>
+                        <p>Access to remote and international job opportunities</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Verified Employers</h4>
+                        <p>All employers are vetted for credibility and ethics</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hiring-actions">
+                <a href="{{ url_for('hiring') }}" class="btn btn-primary">Find Jobs</a>
+                <a href="{{ url_for('hiring') }}#post-job" class="btn btn-secondary">Post a Job</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Platform -->
+    <section id="learn" class="learning">
+        <div class="container">
+            <div class="section-header">
+                <h2>Educational Platform</h2>
+                <p>Empower yourself with cutting-edge technology skills</p>
+            </div>
+            <div class="learning-grid">
+                <div class="course-category">
+                    <div class="category-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI & Machine Learning</h3>
+                    <p>12 Courses</p>
+                    <ul>
+                        <li>Introduction to AI</li>
+                        <li>Deep Learning Fundamentals</li>
+                        <li>Natural Language Processing</li>
+                        <li>Computer Vision</li>
+                    </ul>
+                </div>
+                <div class="course-category">
+                    <div class="category-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>Blockchain & Web3</h3>
+                    <p>8 Courses</p>
+                    <ul>
+                        <li>Blockchain Basics</li>
+                        <li>Smart Contract Development</li>
+                        <li>DeFi Protocols</li>
+                        <li>NFT Development</li>
+                    </ul>
+                </div>
+                <div class="course-category">
+                    <div class="category-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Web & Mobile Development</h3>
+                    <p>15 Courses</p>
+                    <ul>
+                        <li>React & Next.js</li>
+                        <li>Flutter Development</li>
+                        <li>Backend APIs</li>
+                        <li>DevOps & Cloud</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" target="_blank" class="btn btn-primary">Start Learning</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Fellowship -->
+    <section id="community" class="community">
+        <div class="container">
+            <div class="section-header">
+                <h2>Community Fellowship</h2>
+                <p>Monthly gatherings for networking and spiritual growth</p>
+            </div>
+            <div class="community-content">
+                <div class="fellowship-info">
+                    <h3>Next Fellowship: "Integrity in Tech Leadership"</h3>
+                    <p class="fellowship-date">January 15, 2025 | 6:00 PM EAT</p>
+                    <p>Join us for an inspiring session on maintaining ethical standards while driving innovation in the tech industry.</p>
+                    <div class="fellowship-features">
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <span>Networking Sessions</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-pray"></i>
+                            <span>Spiritual Guidance</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-comments"></i>
+                            <span>Group Discussions</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-video"></i>
+                            <span>Hybrid Format</span>
+                        </div>
+                    </div>
+                    <a href="{{ url_for('community') }}" class="btn btn-primary">Register Now</a>
+                </div>
+                <div class="fellowship-testimonials">
+                    <div class="testimonial">
+                        <p>"The fellowship has been instrumental in shaping my approach to ethical leadership in tech."</p>
+                        <cite>- Sarah K., Software Engineer</cite>
+                    </div>
+                    <div class="testimonial">
+                        <p>"Amazing community of like-minded professionals who support each other's growth."</p>
+                        <cite>- David M., Entrepreneur</cite>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investor Platform -->
+    <section id="investors" class="investors">
+        <div class="container">
+            <div class="section-header">
+                <h2>Investor Platform</h2>
+                <p>Discover and fund the next generation of innovative solutions</p>
+            </div>
+            <div class="investor-content">
+                <div class="pitch-events">
+                    <h3>Upcoming Pitch Events</h3>
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="day">25</span>
+                            <span class="month">Jan</span>
+                        </div>
+                        <div class="event-info">
+                            <h4>Q1 Innovation Showcase</h4>
+                            <p>20 startups pitching to leading VCs and angel investors</p>
+                            <div class="event-tags">
+                                <span class="tag">AI/ML</span>
+                                <span class="tag">FinTech</span>
+                                <span class="tag">HealthTech</span>
+                            </div>
+                        </div>
+                        <a href="{{ url_for('investors') }}" class="btn btn-outline">Register</a>
+                    </div>
+                </div>
+                <div class="investor-stats">
+                    <div class="stat">
+                        <h4>$2.5M+</h4>
+                        <p>Total Funding Raised</p>
+                    </div>
+                    <div class="stat">
+                        <h4>15</h4>
+                        <p>Funded Startups</p>
+                    </div>
+                    <div class="stat">
+                        <h4>50+</h4>
+                        <p>Active Investors</p>
+                    </div>
+                </div>
+            </div>
+            <div class="investor-actions">
+                <a href="{{ url_for('pitch_application') }}" class="btn btn-primary">Submit Pitch</a>
+                <a href="{{ url_for('investors') }}" class="btn btn-secondary">Join as Investor</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="founder-section">
+        <div class="container">
+            <div class="founder-content">
+                <div class="founder-image">
+                    <img src="https://i.ibb.co/YGMh0Rx/founder-vincent.jpg" alt="Vincent Kimuri" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjMUExQTFBIi8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSIzMCIgZmlsbD0iI0ZGRDcwMCIvPgo8cGF0aCBkPSJNNjAgMTQwQzYwIDEyMCA4MCA5MiAxMDAgOTJTMTQwIDEyMCAxNDAgMTQwVjE2MEg2MFYxNDBaIiBmaWxsPSIjRkZENzAwIi8+Cjx0ZXh0IHg9IjEwMCIgeT0iMTgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjRkZENzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiPkZvdW5kZXI8L3RleHQ+Cjwvc3ZnPg=='">
+                </div>
+                <div class="founder-info">
+                    <h2>Vincent Kimuri</h2>
+                    <p class="founder-title">Computer Scientist, AI, AGI and Decentralized Intelligence Developer</p>
+                    <p class="founder-role">Community Lead of Innovators of Honour & Founder of Lhora AI Technologies Kenya</p>
+                    <p class="founder-description">Pioneering the future of artificial intelligence and decentralized systems while building ethical tech communities that drive global innovation and positive impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
