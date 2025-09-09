@@ -174,6 +174,181 @@
             background: #FFD700;
             color: #000;
         }
+        .featured-programs {
+            padding: 4rem 0;
+            background: #1a1a1a;
+        }
+        .program-highlight {
+            margin-bottom: 4rem;
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 2rem;
+        }
+        .program-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .program-icon {
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+        .program-header h2 {
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        .program-header p {
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        .feature-item {
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+        .feature-item h4 {
+            color: #FFD700;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        .feature-item ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+        .feature-item li {
+            color: #ccc;
+            padding: 0.3rem 0;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+        }
+        .price-tag {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .price-tag span {
+            display: block;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+        }
+        .webinar-schedule {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .webinar-item {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1.5rem;
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            align-items: center;
+        }
+        .webinar-date {
+            text-align: center;
+            background: #FFD700;
+            color: #000;
+            border-radius: 10px;
+            padding: 1rem;
+            min-width: 80px;
+        }
+        .webinar-date .day {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .webinar-date .month {
+            display: block;
+            font-size: 0.9rem;
+        }
+        .webinar-info h4 {
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+        }
+        .webinar-info p {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+        }
+        .speaker {
+            color: #FFD700;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .time {
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .webinar-action {
+            text-align: center;
+        }
+        .webinar-action .price {
+            display: block;
+            color: #FFD700;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .register-btn, .workshop-btn {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .register-btn:hover, .workshop-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+        .workshop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .workshop-item {
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .workshop-item h4 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+        .workshop-item p {
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+        .workshop-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #999;
+        }
+        .workshop-price {
+            color: #FFD700;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .workshop-btn {
+            width: 100%;
+        }
     </style>
 </head>
 <body class="programs-page">
@@ -199,7 +374,7 @@
     <section class="search-section">
         <div class="search-container">
             <h1 class="search-title">Our Programs</h1>
-            <p class="search-subtitle">Comprehensive learning and development opportunities for innovators</p>
+            <p class="search-subtitle">Comprehensive learning and development opportunities designed to empower innovators and entrepreneurs worldwide</p>
             
             <div class="search-box">
                 <input type="text" class="search-input" id="courseSearch" placeholder="Search from 1000+ courses in technology...">
@@ -210,6 +385,9 @@
 
             <div class="filter-tabs">
                 <div class="filter-tab active" onclick="filterCourses('all')">All Courses</div>
+                <div class="filter-tab" onclick="filterCourses('bootcamps')">Bootcamps</div>
+                <div class="filter-tab" onclick="filterCourses('webinars')">Webinars</div>
+                <div class="filter-tab" onclick="filterCourses('workshops')">Workshops</div>
                 <div class="filter-tab" onclick="filterCourses('ai')">AI & ML</div>
                 <div class="filter-tab" onclick="filterCourses('blockchain')">Blockchain</div>
                 <div class="filter-tab" onclick="filterCourses('web')">Web Development</div>
@@ -218,6 +396,149 @@
                 <div class="filter-tab" onclick="filterCourses('cyber')">Cybersecurity</div>
                 <div class="filter-tab" onclick="filterCourses('cloud')">Cloud Computing</div>
                 <div class="filter-tab" onclick="filterCourses('iot')">IoT</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Programs Section -->
+    <section class="featured-programs">
+        <div class="container">
+            <div class="programs-showcase">
+                <!-- Bootcamps -->
+                <div class="program-highlight">
+                    <div class="program-header">
+                        <i class="fas fa-code program-icon"></i>
+                        <h2>Bootcamps</h2>
+                        <p>Intensive 4-8 week programs designed to fast-track your career in cutting-edge technologies</p>
+                    </div>
+                    <div class="program-features">
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <h4>AI & Machine Learning Bootcamp</h4>
+                                <ul>
+                                    <li>8 weeks • 20 hours/week • Max 25 students</li>
+                                    <li>Python programming for AI</li>
+                                    <li>Deep learning with TensorFlow</li>
+                                    <li>Computer vision projects</li>
+                                    <li>Natural language processing</li>
+                                    <li>Capstone project</li>
+                                </ul>
+                                <div class="price-tag">$299 <span>Scholarships available</span></div>
+                            </div>
+                            <div class="feature-item">
+                                <h4>Blockchain Development Bootcamp</h4>
+                                <ul>
+                                    <li>6 weeks • 15 hours/week • Max 20 students</li>
+                                    <li>Solidity programming</li>
+                                    <li>Ethereum development</li>
+                                    <li>DeFi protocols</li>
+                                    <li>NFT marketplace creation</li>
+                                    <li>Web3 integration</li>
+                                </ul>
+                                <div class="price-tag">$249 <span>Early bird discount</span></div>
+                            </div>
+                            <div class="feature-item">
+                                <h4>Entrepreneurship Bootcamp</h4>
+                                <ul>
+                                    <li>4 weeks • 12 hours/week • Max 30 students</li>
+                                    <li>Business model canvas</li>
+                                    <li>Market validation</li>
+                                    <li>Pitch deck creation</li>
+                                    <li>Funding strategies</li>
+                                    <li>Investor presentations</li>
+                                </ul>
+                                <div class="price-tag">$199 <span>Group discounts available</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Webinars -->
+                <div class="program-highlight">
+                    <div class="program-header">
+                        <i class="fas fa-video program-icon"></i>
+                        <h2>Upcoming Webinars</h2>
+                        <p>Join our monthly webinars featuring industry experts discussing the latest trends and technologies</p>
+                    </div>
+                    <div class="webinar-schedule">
+                        <div class="webinar-item">
+                            <div class="webinar-date">
+                                <span class="day">15</span>
+                                <span class="month">Jan</span>
+                            </div>
+                            <div class="webinar-info">
+                                <h4>The Ethics of AI in Healthcare</h4>
+                                <p>Exploring the moral implications and responsibilities of implementing AI in medical diagnosis and treatment.</p>
+                                <div class="speaker">Dr. Sarah Johnson, AI Ethics Researcher at MIT</div>
+                                <div class="time">6:00 PM EAT | 3:00 PM GMT</div>
+                            </div>
+                            <div class="webinar-action">
+                                <span class="price">Free for members</span>
+                                <button class="register-btn" onclick="window.open(studyLink, '_blank')">Register</button>
+                            </div>
+                        </div>
+                        <div class="webinar-item">
+                            <div class="webinar-date">
+                                <span class="day">22</span>
+                                <span class="month">Jan</span>
+                            </div>
+                            <div class="webinar-info">
+                                <h4>Quantum Computing: The Next Frontier</h4>
+                                <p>Understanding quantum computing principles and their potential impact on various industries.</p>
+                                <div class="speaker">Prof. Michael Chen, Quantum Computing Lab, Stanford</div>
+                                <div class="time">7:00 PM EAT | 4:00 PM GMT</div>
+                            </div>
+                            <div class="webinar-action">
+                                <span class="price">Free for members</span>
+                                <button class="register-btn" onclick="window.open(studyLink, '_blank')">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workshops -->
+                <div class="program-highlight">
+                    <div class="program-header">
+                        <i class="fas fa-tools program-icon"></i>
+                        <h2>Hands-on Workshops</h2>
+                        <p>Bi-monthly practical workshops to build specific skills in various technology niches</p>
+                    </div>
+                    <div class="workshop-grid">
+                        <div class="workshop-item">
+                            <h4>UI/UX Design Workshop</h4>
+                            <p>Learn design thinking principles and create user-centered digital experiences.</p>
+                            <div class="workshop-details">
+                                <span>Next: Feb 5, 2025</span>
+                                <span>4 hours</span>
+                                <span>Virtual + Nairobi</span>
+                            </div>
+                            <div class="workshop-price">$49 per workshop</div>
+                            <button class="workshop-btn" onclick="window.open(studyLink, '_blank')">Join Workshop</button>
+                        </div>
+                        <div class="workshop-item">
+                            <h4>Smart Contract Security</h4>
+                            <p>Identify and prevent common vulnerabilities in blockchain smart contracts.</p>
+                            <div class="workshop-details">
+                                <span>Next: Feb 12, 2025</span>
+                                <span>6 hours</span>
+                                <span>Virtual</span>
+                            </div>
+                            <div class="workshop-price">$49 per workshop</div>
+                            <button class="workshop-btn" onclick="window.open(studyLink, '_blank')">Join Workshop</button>
+                        </div>
+                        <div class="workshop-item">
+                            <h4>IoT Device Programming</h4>
+                            <p>Build and program Internet of Things devices using Arduino and Raspberry Pi.</p>
+                            <div class="workshop-details">
+                                <span>Next: Feb 19, 2025</span>
+                                <span>8 hours</span>
+                                <span>Nairobi Hub</span>
+                            </div>
+                            <div class="workshop-price">$49 per workshop</div>
+                            <button class="workshop-btn" onclick="window.open(studyLink, '_blank')">Join Workshop</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -237,6 +558,20 @@
         const studyLink = "https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post";
 
         const courses = [
+            // Bootcamps
+            {title: "AI & Machine Learning Bootcamp", category: "bootcamps", icon: "fas fa-robot", description: "Master the fundamentals of artificial intelligence and machine learning with hands-on projects", duration: "8 weeks", level: "Beginner", rating: "4.8"},
+            {title: "Blockchain Development Bootcamp", category: "bootcamps", icon: "fas fa-link", description: "Learn to build decentralized applications and smart contracts on various blockchain platforms", duration: "6 weeks", level: "Intermediate", rating: "4.9"},
+            {title: "Entrepreneurship Bootcamp", category: "bootcamps", icon: "fas fa-lightbulb", description: "Transform your innovative ideas into successful businesses with comprehensive program", duration: "4 weeks", level: "Beginner", rating: "4.7"},
+            
+            // Webinars
+            {title: "The Ethics of AI in Healthcare", category: "webinars", icon: "fas fa-video", description: "Exploring moral implications of implementing AI in medical diagnosis and treatment", duration: "2 hours", level: "All Levels", rating: "4.9"},
+            {title: "Quantum Computing: The Next Frontier", category: "webinars", icon: "fas fa-atom", description: "Understanding quantum computing principles and their potential industry impact", duration: "2 hours", level: "Intermediate", rating: "4.8"},
+            
+            // Workshops
+            {title: "UI/UX Design Workshop", category: "workshops", icon: "fas fa-paint-brush", description: "Learn design thinking principles and create user-centered digital experiences", duration: "4 hours", level: "Beginner", rating: "4.6"},
+            {title: "Smart Contract Security", category: "workshops", icon: "fas fa-shield-alt", description: "Identify and prevent common vulnerabilities in blockchain smart contracts", duration: "6 hours", level: "Advanced", rating: "4.8"},
+            {title: "IoT Device Programming", category: "workshops", icon: "fas fa-microchip", description: "Build and program Internet of Things devices using Arduino and Raspberry Pi", duration: "8 hours", level: "Intermediate", rating: "4.7"},
+            
             // AI & ML Courses
             {title: "Machine Learning Fundamentals", category: "ai", icon: "fas fa-robot", description: "Master the basics of machine learning algorithms and applications", duration: "8 weeks", level: "Beginner", rating: "4.8"},
             {title: "Deep Learning with TensorFlow", category: "ai", icon: "fas fa-brain", description: "Build neural networks and deep learning models", duration: "10 weeks", level: "Intermediate", rating: "4.9"},
