@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiring Platform - Innovators of Honour</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="additional-styles.css">
+    <link rel="stylesheet" href="hiring-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html" style="text-decoration: none; color: inherit;">Innovators of Honour</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="hiring.html" class="active">Hiring</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="investors.html">Investors</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Professional Hiring Platform</h1>
+                <p class="hero-subtitle">Connect exceptional talent with innovative opportunities. AI-powered matching for the future of work.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('jobs')">Find Jobs</button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('post-job')">Post a Job</button>
+                    <button class="btn btn-outline view-dashboard">View Dashboard</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="hiring-stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalJobs">0</div>
+                    <div class="stat-label">Active Jobs</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="totalApplications">0</div>
+                    <div class="stat-label">Applications</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="avgPerJob">0</div>
+                    <div class="stat-label">Avg per Job</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Search Section -->
+    <section id="jobs" class="job-search">
+        <div class="container">
+            <div class="section-header">
+                <h2>Find Your Next Opportunity</h2>
+                <p>Discover jobs that match your skills and career goals with AI-powered recommendations</p>
+            </div>
+            
+            <!-- Search and Filters -->
+            <div class="job-search-bar">
+                <div class="search-container">
+                    <input type="text" id="jobSearch" placeholder="Job title, keywords, or company" class="job-search-input">
+                    <input type="text" id="locationSearch" placeholder="Location (or Remote)" class="location-input">
+                    <button class="search-btn" onclick="searchJobs()"><i class="fas fa-search"></i> Search</button>
+                </div>
+                <div class="job-filters">
+                    <select id="categoryFilter" class="filter-select" onchange="filterJobs()">
+                        <option value="all">All Categories</option>
+                        <option value="Software Development">Software Development</option>
+                        <option value="AI & Machine Learning">AI & Machine Learning</option>
+                        <option value="Blockchain">Blockchain</option>
+                        <option value="UI/UX Design">UI/UX Design</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Sales">Sales</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="Product Management">Product Management</option>
+                    </select>
+                    <select id="experienceFilter" class="filter-select" onchange="filterJobs()">
+                        <option value="all">All Levels</option>
+                        <option value="Entry">Entry Level</option>
+                        <option value="Mid">Mid Level</option>
+                        <option value="Senior">Senior Level</option>
+                        <option value="Lead">Lead/Manager</option>
+                    </select>
+                    <select id="typeFilter" class="filter-select" onchange="filterJobs()">
+                        <option value="all">All Types</option>
+                        <option value="Full-time">Full Time</option>
+                        <option value="Part-time">Part Time</option>
+                        <option value="Contract">Contract</option>
+                        <option value="Freelance">Freelance</option>
+                    </select>
+                    <select id="locationFilter" class="filter-select" onchange="filterJobs()">
+                        <option value="all">All Locations</option>
+                        <option value="Remote">Remote</option>
+                        <option value="On-site">On-site</option>
+                        <option value="Hybrid">Hybrid</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Jobs Grid -->
+            <div class="jobs-container">
+                <div class="loading-spinner" id="jobsLoading" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i> Loading jobs...
+                </div>
+                <div id="jobsGrid" class="job-grid">
+                    <!-- Jobs will be loaded here dynamically -->
+                </div>
+                <div class="no-jobs" id="noJobsMessage" style="display: none;">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>No jobs found</h3>
+                    <p>Try adjusting your search criteria or check back later for new opportunities.</p>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center" style="margin-top: 2rem;">
+                <button class="btn btn-outline" id="loadMoreJobs" onclick="loadMoreJobs()">
+                    <i class="fas fa-plus"></i> Load More Jobs
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Post Job Section -->
+    <section id="post-job" class="post-job section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Post a Job</h2>
+                <p>Find the perfect candidate for your team from our pool of talented professionals</p>
+            </div>
+            <div class="post-job-content">
+                <div class="job-form-container">
+                    <form id="postJobForm" class="job-form">
+                        <div class="form-section">
+                            <h3><i class="fas fa-briefcase"></i> Job Details</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Job Title *</label>
+                                    <input type="text" name="title" placeholder="e.g. Senior Software Engineer" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Company Name *</label>
+                                    <input type="text" name="company" placeholder="Your company name" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Location *</label>
+                                    <input type="text" name="location" placeholder="City, Country or Remote" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Job Type *</label>
+                                    <select name="type" required>
+                                        <option value="">Select job type</option>
+                                        <option value="Full-time">Full Time</option>
+                                        <option value="Part-time">Part Time</option>
+                                        <option value="Contract">Contract</option>
+                                        <option value="Freelance">Freelance</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Category *</label>
+                                    <select name="category" required>
+                                        <option value="">Select category</option>
+                                        <option value="Software Development">Software Development</option>
+                                        <option value="AI & Machine Learning">AI & Machine Learning</option>
+                                        <option value="Blockchain">Blockchain</option>
+                                        <option value="UI/UX Design">UI/UX Design</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="Sales">Sales</option>
+                                        <option value="Data Science">Data Science</option>
+                                        <option value="Product Management">Product Management</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Salary Range *</label>
+                                    <input type="text" name="salary" placeholder="e.g. $50,000 - $70,000" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Job Description *</label>
+                                <textarea name="description" placeholder="Describe the role, responsibilities, and requirements" rows="6" required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3><i class="fas fa-list-check"></i> Requirements & Benefits</h3>
+                            <div class="form-group">
+                                <label>Requirements *</label>
+                                <textarea name="requirements" placeholder="List required skills, experience, and qualifications" rows="4" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Required Skills (comma-separated)</label>
+                                <input type="text" name="skills" placeholder="e.g. Python, React, AWS, Machine Learning">
+                            </div>
+                            <div class="form-group">
+                                <label>Benefits & Perks</label>
+                                <textarea name="benefits" placeholder="List the benefits and perks offered" rows="4"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3><i class="fas fa-address-book"></i> Contact Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Contact Person *</label>
+                                    <input type="text" name="contactPerson" placeholder="Hiring Manager Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Contact Email *</label>
+                                    <input type="email" name="contactEmail" placeholder="hr@yourcompany.com" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Contact Phone</label>
+                                    <input type="tel" name="contactPhone" placeholder="+1 (555) 123-4567">
+                                </div>
+                                <div class="form-group">
+                                    <label>Application Deadline</label>
+                                    <input type="date" name="deadline">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Post Job
+                            </button>
+                            <button type="button" class="btn btn-outline" onclick="previewJob()">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <p class="pricing-note">Job postings are active for 30 days. AI optimization included.</p>
+                        </div>
+                    </form>
+                </div>
+                <div class="post-job-benefits">
+                    <h3>Why Post with Us?</h3>
+                    <div class="benefit-item">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <h4>Quality Candidates</h4>
+                            <p>Access to pre-screened, skilled professionals with verified profiles</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-robot"></i>
+                        <div>
+                            <h4>AI-Powered Matching</h4>
+                            <p>Smart algorithms match the best candidates to your requirements</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <h4>Global Reach</h4>
+                            <p>Connect with talent from around the world, including Africa's top innovators</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-chart-line"></i>
+                        <div>
+                            <h4>High Success Rate</h4>
+                            <p>95% of our job postings result in successful hires within 30 days</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-headset"></i>
+                        <div>
+                            <h4>Dedicated Support</h4>
+                            <p>Personal assistance throughout the hiring process</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Innovators of Honour</h3>
+                    <p>Innovate with Honour, Impact the World</p>
+                </div>
+                <div class="footer-section">
+                    <h4>For Job Seekers</h4>
+                    <ul>
+                        <li><a href="#jobs">Browse Jobs</a></li>
+                        <li><a href="#" onclick="showUserProfile()">Create Profile</a></li>
+                        <li><a href="programs.html">Career Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>For Employers</h4>
+                    <ul>
+                        <li><a href="#post-job">Post a Job</a></li>
+                        <li><a href="#" onclick="showCandidateSearch()">Search Candidates</a></li>
+                        <li><a href="#" onclick="showPricing()">Pricing</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Innovators of Honour. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="metta-automation.js"></script>
+    <script src="smart-logic.js"></script>
+    <script src="hiring-api.js"></script>
+    <script src="hiring-app-enhanced.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        // Additional utility functions
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function searchJobs() {
+            const query = document.getElementById('jobSearch').value;
+            const location = document.getElementById('locationSearch').value;
+            
+            if (window.hiringApp) {
+                window.hiringApp.filterJobs(query);
+            }
+        }
+
+        function filterJobs() {
+            if (window.hiringApp) {
+                const category = document.getElementById('categoryFilter').value;
+                const experience = document.getElementById('experienceFilter').value;
+                const type = document.getElementById('typeFilter').value;
+                const location = document.getElementById('locationFilter').value;
+                
+                // Apply multiple filters
+                window.hiringApp.filterJobsByCategory(category);
+            }
+        }
+
+        function loadMoreJobs() {
+            if (window.hiringApp) {
+                window.hiringApp.loadJobs();
+            }
+        }
+
+        function previewJob() {
+            const form = document.getElementById('postJobForm');
+            const formData = new FormData(form);
+            const jobData = Object.fromEntries(formData.entries());
+            
+            // Show preview modal
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.style.display = 'flex';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3><i class="fas fa-eye"></i> Job Preview</h3>
+                        <button class="close-modal" onclick="this.closest('.modal').remove()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="job-card preview">
+                            <div class="job-header">
+                                <div class="job-title-company">
+                                    <h3>${jobData.title}</h3>
+                                    <p>${jobData.company}</p>
+                                </div>
+                                <div class="job-meta">
+                                    <span class="job-type">${jobData.type}</span>
+                                    <span class="job-location"><i class="fas fa-map-marker-alt"></i> ${jobData.location}</span>
+                                </div>
+                            </div>
+                            <div class="job-details">
+                                <div class="job-salary">
+                                    <i class="fas fa-dollar-sign"></i> ${jobData.salary}
+                                </div>
+                                <div class="job-category">
+                                    <i class="fas fa-tag"></i> ${jobData.category}
+                                </div>
+                            </div>
+                            <div class="job-description">
+                                <p>${jobData.description}</p>
+                            </div>
+                            <div class="job-requirements">
+                                <h4>Requirements:</h4>
+                                <p>${jobData.requirements}</p>
+                            </div>
+                            ${jobData.benefits ? `
+                                <div class="job-benefits">
+                                    <h4>Benefits:</h4>
+                                    <p>${jobData.benefits}</p>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" onclick="this.closest('.modal').remove()">Looks Good!</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        function showUserProfile() {
+            alert('User profile creation feature coming soon!');
+        }
+
+        function showCandidateSearch() {
+            alert('Candidate search feature coming soon!');
+        }
+
+        function showPricing() {
+            alert('Pricing information: Job postings are free for 30 days, then $99/month for premium features.');
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-focus search input
+            const searchInput = document.getElementById('jobSearch');
+            if (searchInput) {
+                searchInput.focus();
+            }
+
+            // Add enter key support for search
+            document.getElementById('jobSearch').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchJobs();
+                }
+            });
+
+            document.getElementById('locationSearch').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchJobs();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

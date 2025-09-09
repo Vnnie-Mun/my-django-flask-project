@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiring Platform - Innovators of Honour</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FFD700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-section {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-form {
+            display: grid;
+            grid-template-columns: 2fr 1fr auto;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .search-input {
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .search-input::placeholder {
+            color: #999;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .filter-select {
+            padding: 8px 12px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        .stats {
+            padding: 60px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+        }
+
+        .jobs-section {
+            padding: 80px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FFD700;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #FFD700;
+            border: 2px solid #FFD700;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: #FFD700;
+            color: #000;
+        }
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .job-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            border-color: #FFD700;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-company {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-location {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .job-salary {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #FFD700;
+        }
+
+        .job-description {
+            margin: 1rem 0;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .job-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .skill-tag {
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .job-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+
+        .job-meta {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .btn-apply {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .btn-apply:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .search-form {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                flex-direction: column;
+            }
+
+            .section-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Innovators of Honour</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="hiring.html">Hiring</a></li>
+                <li><a href="learn.html">Learn</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="investors.html">Investors</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Hiring Platform</h1>
+        <p>Connect exceptional talent with innovative opportunities. Find your next career move or discover the perfect candidate for your team.</p>
+        
+        <div class="search-section">
+            <form class="search-form" id="jobSearchForm">
+                <input type="text" class="search-input" placeholder="Job title, keywords, or company" id="searchQuery">
+                <input type="text" class="search-input" placeholder="Location" id="searchLocation">
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-search"></i> Search Jobs
+                </button>
+            </form>
+            
+            <div class="filters">
+                <select class="filter-select" id="jobType">
+                    <option value="">All Types</option>
+                    <option value="full-time">Full-time</option>
+                    <option value="part-time">Part-time</option>
+                    <option value="contract">Contract</option>
+                    <option value="remote">Remote</option>
+                </select>
+                
+                <select class="filter-select" id="salaryRange">
+                    <option value="">All Salaries</option>
+                    <option value="0-50k">$0 - $50K</option>
+                    <option value="50k-100k">$50K - $100K</option>
+                    <option value="100k+">$100K+</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div>Active Job Postings</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1000+</div>
+                <div>Registered Talents</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">95%</div>
+                <div>Placement Success Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50+</div>
+                <div>Partner Companies</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="jobs-section">
+        <div class="section-header">
+            <h2 class="section-title">Latest Opportunities</h2>
+            <button class="btn-secondary" onclick="showPostJobModal()">
+                <i class="fas fa-plus"></i> Post a Job
+            </button>
+        </div>
+
+        <div class="jobs-grid" id="jobsGrid">
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Senior AI Engineer</h3>
+                        <div class="job-company">TechCorp Africa</div>
+                        <div class="job-location"><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</div>
+                    </div>
+                    <div class="job-salary">$80K - $120K</div>
+                </div>
+                
+                <p class="job-description">Lead AI development for financial services with cutting-edge ML technologies.</p>
+                
+                <div class="job-skills">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">AWS</span>
+                </div>
+                
+                <div class="job-footer">
+                    <div class="job-meta">
+                        <i class="fas fa-clock"></i> 2 days ago • Full-time
+                    </div>
+                    <button class="btn-apply" onclick="applyToJob('ai-engineer')">Apply Now</button>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Blockchain Developer</h3>
+                        <div class="job-company">CryptoStart</div>
+                        <div class="job-location"><i class="fas fa-map-marker-alt"></i> Remote</div>
+                    </div>
+                    <div class="job-salary">$60K - $90K</div>
+                </div>
+                
+                <p class="job-description">Build DApps and smart contracts for our DeFi platform.</p>
+                
+                <div class="job-skills">
+                    <span class="skill-tag">Solidity</span>
+                    <span class="skill-tag">Web3</span>
+                    <span class="skill-tag">React</span>
+                </div>
+                
+                <div class="job-footer">
+                    <div class="job-meta">
+                        <i class="fas fa-clock"></i> 1 week ago • Full-time
+                    </div>
+                    <button class="btn-apply" onclick="applyToJob('blockchain-dev')">Apply Now</button>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Full Stack Developer</h3>
+                        <div class="job-company">EduTech Innovations</div>
+                        <div class="job-location"><i class="fas fa-map-marker-alt"></i> Remote</div>
+                    </div>
+                    <div class="job-salary">$50K - $70K</div>
+                </div>
+                
+                <p class="job-description">Build scalable web applications for educational platforms.</p>
+                
+                <div class="job-skills">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">MongoDB</span>
+                </div>
+                
+                <div class="job-footer">
+                    <div class="job-meta">
+                        <i class="fas fa-clock"></i> 5 days ago • Full-time
+                    </div>
+                    <button class="btn-apply" onclick="applyToJob('fullstack-dev')">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Job search functionality
+        document.getElementById('jobSearchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const query = document.getElementById('searchQuery').value;
+            const location = document.getElementById('searchLocation').value;
+            searchJobs(query, location);
+        });
+
+        function searchJobs(query, location) {
+            console.log('Searching for:', query, 'in', location);
+            // Add search logic here
+            showToast('Searching for jobs...', 'info');
+        }
+
+        // Filter functionality
+        document.getElementById('jobType').addEventListener('change', filterJobs);
+        document.getElementById('salaryRange').addEventListener('change', filterJobs);
+
+        function filterJobs() {
+            const jobType = document.getElementById('jobType').value;
+            const salaryRange = document.getElementById('salaryRange').value;
+            console.log('Filtering by:', jobType, salaryRange);
+            // Add filter logic here
+        }
+
+        // Apply to job functionality
+        function applyToJob(jobId) {
+            showToast('Application submitted successfully!', 'success');
+            console.log('Applying to job:', jobId);
+            // Add application logic here
+        }
+
+        // Post job modal
+        function showPostJobModal() {
+            showToast('Opening job posting form...', 'info');
+            // Add modal logic here
+        }
+
+        // Toast notification system
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#FFD700'};
+                color: ${type === 'info' ? '#000' : '#fff'};
+                padding: 12px 24px;
+                border-radius: 8px;
+                z-index: 10000;
+                font-weight: 600;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            `;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => toast.style.transform = 'translateX(0)', 100);
+            setTimeout(() => {
+                toast.style.transform = 'translateX(100%)';
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 3000);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Hiring platform loaded');
+        });
+    </script>
+</body>
+</html>

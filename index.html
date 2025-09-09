@@ -3,87 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innovators of Honour - Innovate with Honour, Impact the World</title>
-    <link rel="stylesheet" href="static/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Innovators of Honour</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="additional-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-crown"></i>
+            </div>
+            <div class="loading-text">Innovators of Honour</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <h2>Innovators of Honour</h2>
+                <i class="fas fa-crown"></i>
+                <span>Innovators of Honour</span>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#programs">Programs</a></li>
-                <li><a href="#solutions">Solutions</a></li>
-                <li><a href="#hiring">Hiring</a></li>
-                <li><a href="#learn">Learn</a></li>
-                <li><a href="#community">Community</a></li>
-                <li><a href="#investors">Investors</a></li>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#programs" class="nav-link">Programs</a></li>
+                <li><a href="solutions.html" class="nav-link">Solutions</a></li>
+                <li><a href="#hiring" class="nav-link">Hiring</a></li>
+                <li><a href="#community" class="nav-link">Community</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-actions">
+                <button class="wallet-btn" id="wallet-btn">
+                    <i class="fas fa-wallet"></i>
+                    <span>Connect Wallet</span>
+                </button>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="hero-particles"></div>
+        </div>
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">Innovate with Honour, Impact the World</h1>
-                <p class="hero-subtitle">A globally recognized movement empowering innovators, entrepreneurs, and professionals to create ethical, cutting-edge solutions that transform industries and uplift communities.</p>
-                <div class="hero-buttons">
-                    <a href="#programs" class="btn btn-primary">Join Our Programs</a>
-                    <a href="#solutions" class="btn btn-secondary">Explore Solutions</a>
+                <div class="hero-badge">
+                    <i class="fas fa-star"></i>
+                    <span>Innovate with Honour</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-line">Transform Ideas into</span>
+                    <span class="title-highlight">Blockchain Reality</span>
+                </h1>
+                <p class="hero-subtitle">Join Africa's premier community of ethical innovators building the future through technology, mentorship, and Godly values.</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="500">0</div>
+                        <div class="stat-label">Active Members</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="50">0</div>
+                        <div class="stat-label">Projects Launched</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="25">0</div>
+                        <div class="stat-label">Countries</div>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <a href="https://chat.whatsapp.com/LuiZfvuj5E2At8FsIJTces" class="btn btn-primary" target="_blank">
+                        <span>Join Community</span>
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <button class="btn btn-secondary" id="explore-solutions">
+                        <span>Explore Solutions</span>
+                        <i class="fas fa-play"></i>
+                    </button>
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="hero-card">
-                    <i class="fas fa-lightbulb"></i>
-                    <h3>Innovation</h3>
-                    <p>Cutting-edge solutions</p>
+                <div class="hero-card" data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Innovation</h3>
+                        <p>Cutting-edge solutions</p>
+                    </div>
                 </div>
-                <div class="hero-card">
-                    <i class="fas fa-handshake"></i>
-                    <h3>Integrity</h3>
-                    <p>Ethical leadership</p>
+                <div class="hero-card" data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <i class="fas fa-users"></i>
+                        <h3>Community</h3>
+                        <p>Global network</p>
+                    </div>
                 </div>
-                <div class="hero-card">
-                    <i class="fas fa-globe"></i>
-                    <h3>Impact</h3>
-                    <p>Global transformation</p>
+                <div class="hero-card" data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Integrity</h3>
+                        <p>Ethical leadership</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3>500+</h3>
-                    <p>Active Members</p>
-                </div>
-                <div class="stat-item">
-                    <h3>50+</h3>
-                    <p>Solutions Launched</p>
-                </div>
-                <div class="stat-item">
-                    <h3>100+</h3>
-                    <p>Job Placements</p>
-                </div>
-                <div class="stat-item">
-                    <h3>25+</h3>
-                    <p>Partner Organizations</p>
-                </div>
-            </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
         </div>
     </section>
 
@@ -91,330 +130,240 @@
     <section id="programs" class="programs">
         <div class="container">
             <div class="section-header">
-                <h2>Our Programs</h2>
-                <p>Comprehensive learning and development opportunities</p>
+                <div class="section-badge">Our Programs</div>
+                <h2>Empowering Innovation Through Excellence</h2>
+                <p>Comprehensive programs designed to nurture the next generation of ethical tech leaders</p>
             </div>
             <div class="programs-grid">
-                <div class="program-card">
-                    <div class="program-icon">
-                        <i class="fas fa-code"></i>
+                <div class="program-card" data-aos="fade-up">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="program-badge">Popular</div>
                     </div>
-                    <h3>Bootcamps</h3>
-                    <p>Intensive 4-8 week programs in AI/ML, Web Development, Blockchain, and Entrepreneurship</p>
-                    <ul>
-                        <li>Hands-on projects</li>
-                        <li>Industry mentorship</li>
-                        <li>Certification</li>
-                        <li>Job placement support</li>
-                    </ul>
-                    <a href="programs.html" class="btn btn-outline">Learn More</a>
+                    <h3>Tech Bootcamps</h3>
+                    <p>Intensive training in cutting-edge technologies with hands-on projects and industry mentorship.</p>
+                    <div class="program-features">
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Full-Stack Development</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>AI & Machine Learning</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Blockchain Development</span>
+                        </div>
+                    </div>
+                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" class="program-btn" target="_blank">
+                        <span>Start Learning</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
                 </div>
-                <div class="program-card">
-                    <div class="program-icon">
-                        <i class="fas fa-video"></i>
+                
+                <div class="program-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
                     </div>
-                    <h3>Webinars</h3>
-                    <p>Monthly sessions on emerging technologies and controversial trends with industry experts</p>
-                    <ul>
-                        <li>AI Ethics & Quantum Computing</li>
-                        <li>Blockchain Scalability</li>
-                        <li>Tech Leadership</li>
-                        <li>Global networking</li>
-                    </ul>
-                    <a href="programs.html" class="btn btn-outline">Join Next Session</a>
+                    <h3>Mentorship Program</h3>
+                    <p>Connect with industry leaders and experienced professionals for personalized guidance.</p>
+                    <div class="program-features">
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>One-on-One Sessions</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Career Guidance</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Network Building</span>
+                        </div>
+                    </div>
+                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" class="program-btn" target="_blank">
+                        <span>Start Learning</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
                 </div>
-                <div class="program-card">
-                    <div class="program-icon">
-                        <i class="fas fa-tools"></i>
+                
+                <div class="program-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="program-badge">New</div>
                     </div>
-                    <h3>Workshops</h3>
-                    <p>Bi-monthly hands-on workshops for practical skill building in various tech niches</p>
-                    <ul>
-                        <li>UI/UX Design</li>
-                        <li>Smart Contract Development</li>
-                        <li>Cybersecurity</li>
-                        <li>IoT & Embedded Systems</li>
-                    </ul>
-                    <a href="programs.html" class="btn btn-outline">View Schedule</a>
+                    <h3>Innovation Hub</h3>
+                    <p>Collaborative space for developing groundbreaking solutions with funding support.</p>
+                    <div class="program-features">
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Project Incubation</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Resource Access</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Funding Support</span>
+                        </div>
+                    </div>
+                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" class="program-btn" target="_blank">
+                        <span>Start Learning</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Solutions Marketplace -->
-    <section id="solutions" class="solutions">
+    <!-- Solutions Preview -->
+    <section class="solutions-preview">
         <div class="container">
             <div class="section-header">
-                <h2>Solutions Marketplace</h2>
-                <p>Discover and showcase innovative solutions from our community</p>
+                <div class="section-badge">Blockchain Solutions</div>
+                <h2>Discover Innovation Marketplace</h2>
+                <p>Explore cutting-edge solutions from our community, secured on the blockchain</p>
             </div>
-            <div class="solutions-grid">
-                <div class="solution-card">
-                    <div class="solution-image">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <div class="solution-content">
-                        <h3>AI-Powered Healthcare</h3>
-                        <p>Revolutionary diagnostic tool using machine learning for early disease detection</p>
-                        <div class="solution-tags">
-                            <span class="tag">AI/ML</span>
-                            <span class="tag">Healthcare</span>
-                        </div>
-                        <div class="solution-stats">
-                            <span><i class="fas fa-eye"></i> 1.2k views</span>
-                            <span><i class="fas fa-heart"></i> 89 likes</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="solution-card">
-                    <div class="solution-image">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <div class="solution-content">
-                        <h3>Green Energy Platform</h3>
-                        <p>Blockchain-based platform for trading renewable energy credits</p>
-                        <div class="solution-tags">
-                            <span class="tag">Blockchain</span>
-                            <span class="tag">Sustainability</span>
-                        </div>
-                        <div class="solution-stats">
-                            <span><i class="fas fa-eye"></i> 856 views</span>
-                            <span><i class="fas fa-heart"></i> 67 likes</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="solution-card">
-                    <div class="solution-image">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="solution-content">
-                        <h3>EduTech Platform</h3>
-                        <p>Personalized learning platform for African students with offline capabilities</p>
-                        <div class="solution-tags">
-                            <span class="tag">Education</span>
-                            <span class="tag">Mobile</span>
-                        </div>
-                        <div class="solution-stats">
-                            <span><i class="fas fa-eye"></i> 2.1k views</span>
-                            <span><i class="fas fa-heart"></i> 134 likes</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="solutions-showcase" id="solutions-showcase">
+                <!-- Solutions will be loaded here -->
             </div>
-            <div class="text-center">
-                <a href="solutions.html" class="btn btn-primary">Submit Your Solution</a>
+            <div class="section-actions">
+                <a href="solutions.html" class="btn btn-primary">
+                    <span>View All Solutions</span>
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Hiring Platform -->
-    <section id="hiring" class="hiring">
+    <!-- Hiring Platform Section -->
+    <section id="hiring" class="hiring-platform">
         <div class="container">
             <div class="section-header">
-                <h2>Hiring Platform</h2>
-                <p>Connect talent with opportunities across the globe</p>
+                <div class="section-badge">Hiring Platform</div>
+                <h2>Connect Talent with Opportunity</h2>
+                <p>Find your next career opportunity or discover exceptional talent in our community</p>
             </div>
-            <div class="hiring-content">
-                <div class="hiring-stats">
-                    <div class="hiring-stat">
-                        <h3>500+</h3>
-                        <p>Active Job Postings</p>
-                    </div>
-                    <div class="hiring-stat">
-                        <h3>1000+</h3>
-                        <p>Registered Talents</p>
-                    </div>
-                    <div class="hiring-stat">
-                        <h3>95%</h3>
-                        <p>Placement Success Rate</p>
-                    </div>
-                </div>
-                <div class="hiring-features">
-                    <div class="feature">
-                        <i class="fas fa-search"></i>
-                        <h4>Smart Matching</h4>
-                        <p>AI-powered job matching based on skills and preferences</p>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-globe"></i>
-                        <h4>Global Opportunities</h4>
-                        <p>Access to remote and international job opportunities</p>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-shield-alt"></i>
-                        <h4>Verified Employers</h4>
-                        <p>All employers are vetted for credibility and ethics</p>
-                    </div>
-                </div>
-            </div>
+            
             <div class="hiring-actions">
-                <a href="hiring.html" class="btn btn-primary">Find Jobs</a>
-                <a href="hiring.html" class="btn btn-secondary">Post a Job</a>
+                <button class="btn btn-primary" id="post-job-btn">
+                    <i class="fas fa-plus"></i>
+                    <span>Post a Job</span>
+                </button>
+                <button class="btn btn-secondary" id="view-applications-btn">
+                    <i class="fas fa-inbox"></i>
+                    <span>View Applications</span>
+                </button>
+            </div>
+            
+            <div class="hiring-stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="total-jobs">150+</div>
+                    <div class="stat-label">Active Jobs</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="total-companies">80+</div>
+                    <div class="stat-label">Companies</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="total-hires">300+</div>
+                    <div class="stat-label">Successful Hires</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="avg-salary">$65K</div>
+                    <div class="stat-label">Average Salary</div>
+                </div>
+            </div>
+            
+            <div class="featured-jobs" id="featured-jobs">
+                <h3>Featured Opportunities</h3>
+                <div class="jobs-grid" id="jobs-grid">
+                    <!-- Jobs will be loaded here -->
+                </div>
+                <div class="section-actions">
+                    <a href="hiring.html" class="btn btn-outline">
+                        <span>View All Jobs</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Learning Platform -->
-    <section id="learn" class="learning">
-        <div class="container">
-            <div class="section-header">
-                <h2>Educational Platform</h2>
-                <p>Empower yourself with cutting-edge technology skills</p>
-            </div>
-            <div class="learning-grid">
-                <div class="course-category">
-                    <div class="category-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>AI & Machine Learning</h3>
-                    <p>12 Courses</p>
-                    <ul>
-                        <li>Introduction to AI</li>
-                        <li>Deep Learning Fundamentals</li>
-                        <li>Natural Language Processing</li>
-                        <li>Computer Vision</li>
-                    </ul>
-                </div>
-                <div class="course-category">
-                    <div class="category-icon">
-                        <i class="fas fa-link"></i>
-                    </div>
-                    <h3>Blockchain & Web3</h3>
-                    <p>8 Courses</p>
-                    <ul>
-                        <li>Blockchain Basics</li>
-                        <li>Smart Contract Development</li>
-                        <li>DeFi Protocols</li>
-                        <li>NFT Development</li>
-                    </ul>
-                </div>
-                <div class="course-category">
-                    <div class="category-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Web & Mobile Development</h3>
-                    <p>15 Courses</p>
-                    <ul>
-                        <li>React & Next.js</li>
-                        <li>Flutter Development</li>
-                        <li>Backend APIs</li>
-                        <li>DevOps & Cloud</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="text-center">
-                <a href="learn.html" class="btn btn-primary">Start Learning</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Community Fellowship -->
+    <!-- Community Section -->
     <section id="community" class="community">
         <div class="container">
-            <div class="section-header">
-                <h2>Community Fellowship</h2>
-                <p>Monthly gatherings for networking and spiritual growth</p>
-            </div>
             <div class="community-content">
-                <div class="fellowship-info">
-                    <h3>Next Fellowship: "Integrity in Tech Leadership"</h3>
-                    <p class="fellowship-date">January 15, 2025 | 6:00 PM EAT</p>
-                    <p>Join us for an inspiring session on maintaining ethical standards while driving innovation in the tech industry.</p>
-                    <div class="fellowship-features">
-                        <div class="feature">
-                            <i class="fas fa-users"></i>
-                            <span>Networking Sessions</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-pray"></i>
-                            <span>Spiritual Guidance</span>
-                        </div>
+                <div class="community-info">
+                    <div class="section-badge">Join Our Community</div>
+                    <h2>Connect with Like-minded Innovators</h2>
+                    <p>Be part of a vibrant community that values innovation, integrity, and impact. Connect with fellow innovators, share ideas, and build the future together.</p>
+                    <div class="community-features">
                         <div class="feature">
                             <i class="fas fa-comments"></i>
-                            <span>Group Discussions</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-video"></i>
-                            <span>Hybrid Format</span>
-                        </div>
-                    </div>
-                    <a href="community.html" class="btn btn-primary">Register Now</a>
-                </div>
-                <div class="fellowship-testimonials">
-                    <div class="testimonial">
-                        <p>"The fellowship has been instrumental in shaping my approach to ethical leadership in tech."</p>
-                        <cite>- Sarah K., Software Engineer</cite>
-                    </div>
-                    <div class="testimonial">
-                        <p>"Amazing community of like-minded professionals who support each other's growth."</p>
-                        <cite>- David M., Entrepreneur</cite>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Investor Platform -->
-    <section id="investors" class="investors">
-        <div class="container">
-            <div class="section-header">
-                <h2>Investor Platform</h2>
-                <p>Discover and fund the next generation of innovative solutions</p>
-            </div>
-            <div class="investor-content">
-                <div class="pitch-events">
-                    <h3>Upcoming Pitch Events</h3>
-                    <div class="event-card">
-                        <div class="event-date">
-                            <span class="day">25</span>
-                            <span class="month">Jan</span>
-                        </div>
-                        <div class="event-info">
-                            <h4>Q1 Innovation Showcase</h4>
-                            <p>20 startups pitching to leading VCs and angel investors</p>
-                            <div class="event-tags">
-                                <span class="tag">AI/ML</span>
-                                <span class="tag">FinTech</span>
-                                <span class="tag">HealthTech</span>
+                            <div>
+                                <h4>Active Discussions</h4>
+                                <p>Engage in meaningful conversations about technology and innovation</p>
                             </div>
                         </div>
-                        <a href="investors.html" class="btn btn-outline">Register</a>
+                        <div class="feature">
+                            <i class="fas fa-calendar"></i>
+                            <div>
+                                <h4>Regular Events</h4>
+                                <p>Attend workshops, webinars, and networking events</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-trophy"></i>
+                            <div>
+                                <h4>Recognition</h4>
+                                <p>Get recognized for your contributions and achievements</p>
+                            </div>
+                        </div>
                     </div>
+                    <a href="https://chat.whatsapp.com/LuiZfvuj5E2At8FsIJTces" class="btn btn-primary" target="_blank">
+                        <span>Join WhatsApp</span>
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
                 </div>
-                <div class="investor-stats">
-                    <div class="stat">
-                        <h4>$2.5M+</h4>
-                        <p>Total Funding Raised</p>
+                <div class="community-visual">
+                    <div class="community-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">Members</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-label">Projects</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-number">25+</div>
+                                <div class="stat-label">Countries</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stat">
-                        <h4>15</h4>
-                        <p>Funded Startups</p>
-                    </div>
-                    <div class="stat">
-                        <h4>50+</h4>
-                        <p>Active Investors</p>
-                    </div>
-                </div>
-            </div>
-            <div class="investor-actions">
-                <a href="pitch-application.html" class="btn btn-primary">Submit Pitch</a>
-                <a href="investors.html" class="btn btn-secondary">Join as Investor</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Founder Section -->
-    <section class="founder-section">
-        <div class="container">
-            <div class="founder-content">
-                <div class="founder-image">
-                    <img src="https://i.ibb.co/YGMh0Rx/founder-vincent.jpg" alt="Vincent Kimuri" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjMUExQTFBIi8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSIzMCIgZmlsbD0iI0ZGRDcwMCIvPgo8cGF0aCBkPSJNNjAgMTQwQzYwIDEyMCA4MCA5MiAxMDAgOTJTMTQwIDEyMCAxNDAgMTQwVjE2MEg2MFYxNDBaIiBmaWxsPSIjRkZENzAwIi8+Cjx0ZXh0IHg9IjEwMCIgeT0iMTgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjRkZENzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiPkZvdW5kZXI8L3RleHQ+Cjwvc3ZnPg=='">
-                </div>
-                <div class="founder-info">
-                    <h2>Vincent Kimuri</h2>
-                    <p class="founder-title">Computer Scientist, AI, AGI and Decentralized Intelligence Developer</p>
-                    <p class="founder-role">Community Lead of Innovators of Honour & Founder of Lhora AI Technologies Kenya</p>
-                    <p class="founder-description">Pioneering the future of artificial intelligence and decentralized systems while building ethical tech communities that drive global innovation and positive impact.</p>
                 </div>
             </div>
         </div>
@@ -424,42 +373,60 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Innovators of Honour</h3>
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-crown"></i>
+                        <span>Innovators of Honour</span>
+                    </div>
                     <p>Innovate with Honour, Impact the World</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.instagram.com/ioh_254___/" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://chat.whatsapp.com/LuiZfvuj5E2At8FsIJTces" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://discord.gg/QKnazj45" class="social-link" target="_blank">
+                            <i class="fab fa-discord"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Programs</h4>
-                    <ul>
-                        <li><a href="programs.html">Bootcamps</a></li>
-                        <li><a href="programs.html">Webinars</a></li>
-                        <li><a href="programs.html">Workshops</a></li>
-                        <li><a href="programs.html">University Outreach</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Platform</h4>
-                    <ul>
-                        <li><a href="solutions.html">Solutions Marketplace</a></li>
-                        <li><a href="hiring.html">Hiring Platform</a></li>
-                        <li><a href="learn.html">Learning Portal</a></li>
-                        <li><a href="investors.html">Investor Platform</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Community</h4>
-                    <ul>
-                        <li><a href="community.html">Fellowship</a></li>
-                        <li><a href="community.html">Mentorship</a></li>
-                        <li><a href="community.html">Partnerships</a></li>
-                        <li><a href="community.html">Contact Us</a></li>
-                    </ul>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Programs</h4>
+                        <ul>
+                            <li><a href="#">Tech Bootcamps</a></li>
+                            <li><a href="#">Mentorship</a></li>
+                            <li><a href="#">Innovation Hub</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Solutions</h4>
+                        <ul>
+                            <li><a href="solutions.html">Browse Solutions</a></li>
+                            <li><a href="#">Submit Solution</a></li>
+                            <li><a href="#">Marketplace</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Community</h4>
+                        <ul>
+                            <li><a href="#">Join Fellowship</a></li>
+                            <li><a href="#">Events</a></li>
+                            <li><a href="#">Resources</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -468,6 +435,15 @@
         </div>
     </footer>
 
-    <script src="static/js/main.js"></script>
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="blockchain.js"></script>
+    <script src="hiring-api.js"></script>
+    <script src="hiring-app-enhanced.js"></script>
+    <link rel="stylesheet" href="hiring-styles.css">
+    <script src="metta-automation.js"></script>
+    <script src="smart-logic.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,795 +1,279 @@
-<<<<<<< HEAD
-{% extends "base.html" %}
-
-{% block title %}Hiring Platform - Innovators of Honour{% endblock %}
-
-{% block content %}
-    <!-- Hero Section -->
-    <section class="hero" style="min-height: 60vh; padding-top: 120px;">
-        <div class="container">
-            <div class="section-header">
-                <h1>Hiring Platform</h1>
-                <p>Connect talent with opportunities across the globe</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Job Search Bar -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="job-search-bar">
-                <form class="job-search-form" onsubmit="searchJobs(event)">
-                    <div class="search-container">
-                        <input type="text" class="job-search-input" placeholder="Job title, keywords, or company" id="job-query">
-                        <input type="text" class="location-input" placeholder="Location" id="job-location">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-search"></i> Search Jobs
-                        </button>
-                    </div>
-                    <div class="job-filters">
-                        <select class="filter-select" id="job-type-filter" onchange="filterJobs()">
-                            <option value="all">All Types</option>
-                            <option value="Full-time">Full-time</option>
-                            <option value="Part-time">Part-time</option>
-                            <option value="Contract">Contract</option>
-                            <option value="Internship">Internship</option>
-                        </select>
-                        <select class="filter-select" id="remote-filter" onchange="filterJobs()">
-                            <option value="all">All Locations</option>
-                            <option value="remote">Remote Only</option>
-                            <option value="onsite">On-site Only</option>
-                        </select>
-                        <select class="filter-select" id="salary-filter" onchange="filterJobs()">
-                            <option value="all">All Salaries</option>
-                            <option value="0-50k">$0 - $50k</option>
-                            <option value="50k-100k">$50k - $100k</option>
-                            <option value="100k+">$100k+</option>
-                        </select>
-                    </div>
-                </form>
-=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hiring Platform - Innovators of Honour</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hiring-enhanced.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <h2><a href="index.html" style="text-decoration: none; color: inherit;">Innovators of Honour</a></h2>
-            </div>
-            <ul class="nav-menu">
+            <div class="logo">Innovators of Honour</div>
+            <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="programs.html">Programs</a></li>
                 <li><a href="solutions.html">Solutions</a></li>
-                <li><a href="hiring.html">Hiring</a></li>
+                <li><a href="hiring.html" class="active">Hiring</a></li>
                 <li><a href="learn.html">Learn</a></li>
                 <li><a href="community.html">Community</a></li>
                 <li><a href="investors.html">Investors</a></li>
             </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" style="min-height: 60vh;">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Hiring Platform</h1>
-                <p class="hero-subtitle">Connect exceptional talent with innovative opportunities. Find your next career move or discover the perfect candidate for your team.</p>
-                <div class="hero-buttons">
-                    <a href="#jobs" class="btn btn-primary">Find Jobs</a>
-                    <a href="#post-job" class="btn btn-secondary">Post a Job</a>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Find Your Dream Job</h1>
+            <p>Connect with top companies and discover opportunities that match your skills</p>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Job title or keywords" id="jobSearch">
                 </div>
->>>>>>> 2c986de (Initial commit of Django/Flask project)
+                <div class="search-box">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <input type="text" placeholder="Location" id="locationSearch">
+                </div>
+                <button class="search-btn" onclick="searchJobs()">
+                    Search Jobs
+                </button>
+            </div>
+
+            <div class="quick-filters">
+                <button class="filter-btn active" data-filter="all">All Jobs</button>
+                <button class="filter-btn" data-filter="remote">Remote</button>
+                <button class="filter-btn" data-filter="full-time">Full-time</button>
+                <button class="filter-btn" data-filter="part-time">Part-time</button>
             </div>
         </div>
     </section>
 
     <!-- Stats Section -->
-<<<<<<< HEAD
-    <section class="hiring">
-        <div class="container">
-            <div class="hiring-content">
-                <div class="hiring-stats">
-                    <div class="hiring-stat">
-                        <h3>{{ jobs|length }}+</h3>
-                        <p>Active Job Postings</p>
-                    </div>
-                    <div class="hiring-stat">
-                        <h3>1000+</h3>
-                        <p>Registered Talents</p>
-                    </div>
-                    <div class="hiring-stat">
-                        <h3>95%</h3>
-                        <p>Placement Success Rate</p>
-                    </div>
-                </div>
-                <div class="hiring-features">
-                    <div class="feature">
-                        <i class="fas fa-search"></i>
-                        <h4>Smart Matching</h4>
-                        <p>AI-powered job matching based on skills and preferences</p>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-globe"></i>
-                        <h4>Global Opportunities</h4>
-                        <p>Access to remote and international job opportunities</p>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-shield-alt"></i>
-                        <h4>Verified Employers</h4>
-                        <p>All employers are vetted for credibility and ethics</p>
-                    </div>
-=======
     <section class="stats-section">
         <div class="container">
             <div class="stats-grid">
-                <div class="stat-card">
+                <div class="stat-item">
                     <div class="stat-number">500+</div>
-                    <div class="stat-label">Active Job Postings</div>
+                    <div class="stat-label">Active Jobs</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">1000+</div>
-                    <div class="stat-label">Registered Talents</div>
+                <div class="stat-item">
+                    <div class="stat-number">1,200+</div>
+                    <div class="stat-label">Talents</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-item">
                     <div class="stat-number">95%</div>
-                    <div class="stat-label">Placement Success Rate</div>
+                    <div class="stat-label">Success Rate</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-item">
                     <div class="stat-number">50+</div>
-                    <div class="stat-label">Partner Companies</div>
->>>>>>> 2c986de (Initial commit of Django/Flask project)
+                    <div class="stat-label">Companies</div>
                 </div>
             </div>
         </div>
     </section>
 
-<<<<<<< HEAD
-    <!-- Jobs Grid -->
-    <section class="section-alt" id="jobs">
+    <!-- Jobs Section -->
+    <section class="jobs-section">
         <div class="container">
             <div class="section-header">
-                <h2>Latest Job Opportunities</h2>
-                <p>Find your next career opportunity</p>
+                <h2>Latest Opportunities</h2>
+                <button class="post-job-btn" onclick="openPostJobModal()">
+                    <i class="fas fa-plus"></i>
+                    Post a Job
+                </button>
             </div>
-            
-            <div class="job-grid" id="jobs-grid">
-                {% for job in jobs %}
-                <div class="job-card {% if job.featured %}featured{% endif %}" 
-                     data-type="{{ job.job_type }}" 
-                     data-remote="{{ job.remote|lower }}" 
-                     data-salary="{{ job.salary_range }}">
-                    {% if job.featured %}
-                    <div class="job-badge">Featured</div>
-                    {% endif %}
-                    
+
+            <div class="jobs-container">
+                <div class="job-card">
                     <div class="job-header">
                         <div class="company-logo">
-                            {{ job.company[0].upper() }}
+                            <i class="fas fa-building"></i>
                         </div>
                         <div class="job-info">
-                            <h4>{{ job.title }}</h4>
-                            <div class="company">{{ job.company }}</div>
-                            <div class="location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                {{ job.location }}
-                                {% if job.remote %}
-                                <span class="tag">Remote</span>
-                                {% endif %}
-                            </div>
+                            <h3>Senior AI Engineer</h3>
+                            <p class="company">TechCorp Africa</p>
+                            <p class="location">Nairobi, Kenya</p>
                         </div>
-                        <div class="job-salary">
-                            {{ job.salary_range or 'Competitive' }}
-                        </div>
+                        <div class="salary">$80K - $120K</div>
                     </div>
                     
-                    <div class="job-description">
-                        {{ job.description[:150] }}...
-                    </div>
+                    <p class="job-description">
+                        Lead AI development for financial services with cutting-edge ML technologies.
+                    </p>
                     
                     <div class="job-tags">
-                        <span class="tag">{{ job.job_type }}</span>
-                        {% if job.remote %}
-                        <span class="tag">Remote</span>
-                        {% endif %}
+                        <span class="tag">Python</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">AWS</span>
                     </div>
                     
-                    <div class="job-meta">
-                        <span><i class="fas fa-clock"></i> Posted {{ job.created_at.strftime('%d %b %Y') }}</span>
-                        <span><i class="fas fa-users"></i> {{ job.applications }} applications</span>
-                    </div>
-                    
-                    <div class="job-actions">
-                        <button class="btn btn-primary" onclick="applyToJob({{ job.id }})">
-                            <i class="fas fa-paper-plane"></i> Apply Now
-                        </button>
-                        <button class="btn btn-outline" onclick="saveJob({{ job.id }})">
-                            <i class="fas fa-bookmark"></i> Save
+                    <div class="job-footer">
+                        <div class="job-meta">
+                            <span><i class="fas fa-clock"></i> 2 days ago</span>
+                            <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        </div>
+                        <button class="apply-btn" onclick="applyJob('ai-engineer')">
+                            Apply Now
                         </button>
                     </div>
                 </div>
-                {% endfor %}
-=======
-    <!-- Job Search Section -->
-    <section id="jobs" class="job-search" style="padding: 4rem 0;">
-        <div class="container">
-            <div class="section-header">
-                <h2>Find Your Next Opportunity</h2>
-                <p>Discover jobs that match your skills and career goals</p>
-            </div>
-            
-            <!-- Search and Filters -->
-            <div class="job-search-bar">
-                <div class="search-container">
-                    <input type="text" placeholder="Job title, keywords, or company" class="job-search-input">
-                    <input type="text" placeholder="Location (or Remote)" class="location-input">
-                    <button class="search-btn"><i class="fas fa-search"></i> Search</button>
-                </div>
-                <div class="job-filters">
-                    <select class="filter-select">
-                        <option value="">All Categories</option>
-                        <option value="software">Software Development</option>
-                        <option value="ai-ml">AI & Machine Learning</option>
-                        <option value="blockchain">Blockchain</option>
-                        <option value="design">UI/UX Design</option>
-                        <option value="marketing">Marketing</option>
-                        <option value="sales">Sales</option>
-                    </select>
-                    <select class="filter-select">
-                        <option value="">Experience Level</option>
-                        <option value="entry">Entry Level</option>
-                        <option value="mid">Mid Level</option>
-                        <option value="senior">Senior Level</option>
-                        <option value="lead">Lead/Manager</option>
-                    </select>
-                    <select class="filter-select">
-                        <option value="">Job Type</option>
-                        <option value="full-time">Full Time</option>
-                        <option value="part-time">Part Time</option>
-                        <option value="contract">Contract</option>
-                        <option value="freelance">Freelance</option>
-                    </select>
-                </div>
-            </div>
 
-            <!-- Featured Jobs -->
-            <div class="featured-jobs">
-                <h3>Featured Opportunities</h3>
-                <div class="job-grid">
-                    <div class="job-card featured">
-                        <div class="job-badge">Featured</div>
-                        <div class="job-header">
-                            <div class="company-logo">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <div class="job-info">
-                                <h4>Senior AI Engineer</h4>
-                                <p class="company">TechCorp Africa</p>
-                                <p class="location"><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya (Remote OK)</p>
-                            </div>
-                            <div class="job-salary">
-                                $80K - $120K
-                            </div>
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="company-logo">
+                            <i class="fas fa-cube"></i>
                         </div>
-                        <div class="job-description">
-                            <p>Lead the development of AI-powered solutions for financial services. Work with cutting-edge ML technologies and mentor junior developers.</p>
+                        <div class="job-info">
+                            <h3>Blockchain Developer</h3>
+                            <p class="company">CryptoStart</p>
+                            <p class="location">Remote</p>
                         </div>
-                        <div class="job-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">TensorFlow</span>
-                            <span class="tag">AWS</span>
-                            <span class="tag">Leadership</span>
-                        </div>
-                        <div class="job-meta">
-                            <span><i class="fas fa-clock"></i> Posted 2 days ago</span>
-                            <span><i class="fas fa-users"></i> 15 applicants</span>
-                        </div>
-                        <div class="job-actions">
-                            <a href="#" class="btn btn-primary">Apply Now</a>
-                            <a href="#" class="btn btn-outline">Save Job</a>
-                        </div>
+                        <div class="salary">$60K - $90K</div>
                     </div>
-
-                    <div class="job-card">
-                        <div class="job-header">
-                            <div class="company-logo">
-                                <i class="fas fa-rocket"></i>
-                            </div>
-                            <div class="job-info">
-                                <h4>Blockchain Developer</h4>
-                                <p class="company">CryptoStart</p>
-                                <p class="location"><i class="fas fa-map-marker-alt"></i> Remote Worldwide</p>
-                            </div>
-                            <div class="job-salary">
-                                $60K - $90K
-                            </div>
-                        </div>
-                        <div class="job-description">
-                            <p>Build decentralized applications and smart contracts for our DeFi platform. Join a fast-growing startup revolutionizing finance.</p>
-                        </div>
-                        <div class="job-tags">
-                            <span class="tag">Solidity</span>
-                            <span class="tag">Web3</span>
-                            <span class="tag">React</span>
-                            <span class="tag">DeFi</span>
-                        </div>
-                        <div class="job-meta">
-                            <span><i class="fas fa-clock"></i> Posted 1 week ago</span>
-                            <span><i class="fas fa-users"></i> 8 applicants</span>
-                        </div>
-                        <div class="job-actions">
-                            <a href="#" class="btn btn-primary">Apply Now</a>
-                            <a href="#" class="btn btn-outline">Save Job</a>
-                        </div>
+                    
+                    <p class="job-description">
+                        Build DApps and smart contracts for our DeFi platform.
+                    </p>
+                    
+                    <div class="job-tags">
+                        <span class="tag">Solidity</span>
+                        <span class="tag">Web3</span>
+                        <span class="tag">React</span>
                     </div>
-
-                    <div class="job-card">
-                        <div class="job-header">
-                            <div class="company-logo">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                            <div class="job-info">
-                                <h4>UX Designer</h4>
-                                <p class="company">HealthTech Solutions</p>
-                                <p class="location"><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p>
-                            </div>
-                            <div class="job-salary">
-                                $45K - $65K
-                            </div>
-                        </div>
-                        <div class="job-description">
-                            <p>Design intuitive user experiences for healthcare applications. Help us make medical technology more accessible across Africa.</p>
-                        </div>
-                        <div class="job-tags">
-                            <span class="tag">Figma</span>
-                            <span class="tag">User Research</span>
-                            <span class="tag">Prototyping</span>
-                            <span class="tag">Healthcare</span>
-                        </div>
+                    
+                    <div class="job-footer">
                         <div class="job-meta">
-                            <span><i class="fas fa-clock"></i> Posted 3 days ago</span>
-                            <span><i class="fas fa-users"></i> 12 applicants</span>
+                            <span><i class="fas fa-clock"></i> 1 week ago</span>
+                            <span><i class="fas fa-briefcase"></i> Full-time</span>
                         </div>
-                        <div class="job-actions">
-                            <a href="#" class="btn btn-primary">Apply Now</a>
-                            <a href="#" class="btn btn-outline">Save Job</a>
+                        <button class="apply-btn" onclick="applyJob('blockchain-dev')">
+                            Apply Now
+                        </button>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div class="company-logo">
+                            <i class="fas fa-laptop-code"></i>
                         </div>
+                        <div class="job-info">
+                            <h3>Full Stack Developer</h3>
+                            <p class="company">EduTech Innovations</p>
+                            <p class="location">Remote</p>
+                        </div>
+                        <div class="salary">$50K - $70K</div>
+                    </div>
+                    
+                    <p class="job-description">
+                        Build scalable web applications for educational platforms.
+                    </p>
+                    
+                    <div class="job-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+                    
+                    <div class="job-footer">
+                        <div class="job-meta">
+                            <span><i class="fas fa-clock"></i> 5 days ago</span>
+                            <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        </div>
+                        <button class="apply-btn" onclick="applyJob('fullstack-dev')">
+                            Apply Now
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <!-- More Jobs -->
-            <div class="more-jobs">
-                <h3>Recent Opportunities</h3>
-                <div class="job-list">
-                    <div class="job-item">
-                        <div class="job-summary">
-                            <h4>Full Stack Developer</h4>
-                            <p>EduTech Innovations • Remote • $50K-$70K</p>
-                        </div>
-                        <div class="job-quick-info">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="posted-time">5 days ago</span>
-                        </div>
-                    </div>
-                    <div class="job-item">
-                        <div class="job-summary">
-                            <h4>Data Scientist</h4>
-                            <p>AgriTech Kenya • Nairobi • $55K-$75K</p>
-                        </div>
-                        <div class="job-quick-info">
-                            <span class="tag">Python</span>
-                            <span class="tag">ML</span>
-                            <span class="posted-time">1 week ago</span>
-                        </div>
-                    </div>
-                    <div class="job-item">
-                        <div class="job-summary">
-                            <h4>Product Manager</h4>
-                            <p>FinTech Solutions • Cape Town • $65K-$85K</p>
-                        </div>
-                        <div class="job-quick-info">
-                            <span class="tag">Strategy</span>
-                            <span class="tag">Analytics</span>
-                            <span class="posted-time">2 weeks ago</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <a href="#" class="btn btn-outline">View All Jobs</a>
-                </div>
->>>>>>> 2c986de (Initial commit of Django/Flask project)
+            <div class="load-more">
+                <button class="load-more-btn" onclick="loadMoreJobs()">
+                    Load More Jobs
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Post Job Section -->
-<<<<<<< HEAD
-    <section class="hiring" id="post-job">
-        <div class="container">
-            <div class="section-header">
-                <h2>Post a Job</h2>
-                <p>Find the perfect candidate for your team</p>
+    <!-- Application Modal -->
+    <div id="applicationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Apply for Position</h3>
+                <span class="close" onclick="closeModal()">&times;</span>
             </div>
-            
-            <div class="post-job-content">
-                <div class="post-job-benefits">
-                    <h3>Why Post with Us?</h3>
-                    
-=======
-    <section id="post-job" class="post-job section-alt">
-        <div class="container">
-            <div class="section-header">
-                <h2>Post a Job</h2>
-                <p>Find the perfect candidate for your team from our pool of talented professionals</p>
-            </div>
-            <div class="post-job-content">
-                <div class="job-form-container">
-                    <form class="job-form">
-                        <div class="form-section">
-                            <h3>Job Details</h3>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>Job Title</label>
-                                    <input type="text" placeholder="e.g. Senior Software Engineer" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Company Name</label>
-                                    <input type="text" placeholder="Your company name" required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>Location</label>
-                                    <input type="text" placeholder="City, Country or Remote" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Job Type</label>
-                                    <select required>
-                                        <option value="">Select job type</option>
-                                        <option value="full-time">Full Time</option>
-                                        <option value="part-time">Part Time</option>
-                                        <option value="contract">Contract</option>
-                                        <option value="freelance">Freelance</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Job Description</label>
-                                <textarea placeholder="Describe the role, responsibilities, and requirements" rows="6" required></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <h3>Requirements & Benefits</h3>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>Experience Level</label>
-                                    <select required>
-                                        <option value="">Select level</option>
-                                        <option value="entry">Entry Level (0-2 years)</option>
-                                        <option value="mid">Mid Level (3-5 years)</option>
-                                        <option value="senior">Senior Level (6+ years)</option>
-                                        <option value="lead">Lead/Manager</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Salary Range</label>
-                                    <input type="text" placeholder="e.g. $50,000 - $70,000" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Required Skills (comma-separated)</label>
-                                <input type="text" placeholder="e.g. Python, React, AWS, Machine Learning" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Benefits & Perks</label>
-                                <textarea placeholder="List the benefits and perks offered" rows="4"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <h3>Contact Information</h3>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>Contact Email</label>
-                                    <input type="email" placeholder="hr@yourcompany.com" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Application Deadline</label>
-                                    <input type="date" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">Post Job ($99)</button>
-                            <p class="pricing-note">Job postings are active for 30 days. Premium features available.</p>
-                        </div>
-                    </form>
+            <form class="application-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required>
                 </div>
-                <div class="post-job-benefits">
-                    <h3>Why Post with Us?</h3>
->>>>>>> 2c986de (Initial commit of Django/Flask project)
-                    <div class="benefit-item">
-                        <i class="fas fa-users"></i>
-                        <div>
-                            <h4>Quality Candidates</h4>
-<<<<<<< HEAD
-                            <p>Access to pre-screened, skilled professionals in tech and innovation</p>
-                        </div>
-                    </div>
-                    
-=======
-                            <p>Access to pre-screened, skilled professionals</p>
-                        </div>
-                    </div>
->>>>>>> 2c986de (Initial commit of Django/Flask project)
-                    <div class="benefit-item">
-                        <i class="fas fa-globe"></i>
-                        <div>
-                            <h4>Global Reach</h4>
-<<<<<<< HEAD
-                            <p>Connect with talent from around the world, including Africa's top innovators</p>
-                        </div>
-                    </div>
-                    
-=======
-                            <p>Connect with talent from around the world</p>
-                        </div>
-                    </div>
->>>>>>> 2c986de (Initial commit of Django/Flask project)
-                    <div class="benefit-item">
-                        <i class="fas fa-chart-line"></i>
-                        <div>
-                            <h4>High Success Rate</h4>
-<<<<<<< HEAD
-                            <p>95% of our job postings result in successful hires within 30 days</p>
-                        </div>
-                    </div>
-                    
-                    <div class="benefit-item">
-                        <i class="fas fa-handshake"></i>
-                        <div>
-                            <h4>Ethical Hiring</h4>
-                            <p>All candidates are committed to ethical practices and integrity</p>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required>
                 </div>
-                
-                <div class="job-form-container">
-                    <form class="job-form" onsubmit="submitJob(event)">
-                        <div class="form-section">
-                            <h3>Job Details</h3>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="job-title">Job Title *</label>
-                                    <input type="text" id="job-title" name="title" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="company-name">Company Name *</label>
-                                    <input type="text" id="company-name" name="company" required>
-                                </div>
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="job-location">Location *</label>
-                                    <input type="text" id="job-location" name="location" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="job-type">Job Type *</label>
-                                    <select id="job-type" name="job_type" required>
-                                        <option value="">Select Type</option>
-                                        <option value="Full-time">Full-time</option>
-                                        <option value="Part-time">Part-time</option>
-                                        <option value="Contract">Contract</option>
-                                        <option value="Internship">Internship</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="salary-range">Salary Range</label>
-                                <input type="text" id="salary-range" name="salary_range" placeholder="e.g., $50,000 - $80,000">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>
-                                    <input type="checkbox" name="remote" value="true"> Remote work available
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="form-section">
-                            <h3>Job Description</h3>
-                            
-                            <div class="form-group">
-                                <label for="job-description">Description *</label>
-                                <textarea id="job-description" name="description" rows="6" required 
-                                         placeholder="Describe the role, responsibilities, and what makes this opportunity exciting..."></textarea>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="job-requirements">Requirements</label>
-                                <textarea id="job-requirements" name="requirements" rows="4" 
-                                         placeholder="List the required skills, experience, and qualifications..."></textarea>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="job-benefits">Benefits</label>
-                                <textarea id="job-benefits" name="benefits" rows="3" 
-                                         placeholder="Health insurance, flexible hours, professional development..."></textarea>
-                            </div>
-                        </div>
-                        
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-plus"></i> Post Job
-                            </button>
-                            <div class="pricing-note">
-                                Job postings are free for the first 30 days. Premium features available for enhanced visibility.
-                            </div>
-                        </div>
-                    </form>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" required>
                 </div>
-=======
-                            <p>95% of our job postings result in successful hires</p>
-                        </div>
-                    </div>
-                    <div class="benefit-item">
-                        <i class="fas fa-headset"></i>
-                        <div>
-                            <h4>Dedicated Support</h4>
-                            <p>Personal assistance throughout the hiring process</p>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label>Resume</label>
+                    <input type="file" accept=".pdf,.doc,.docx">
                 </div>
->>>>>>> 2c986de (Initial commit of Django/Flask project)
-            </div>
+                <div class="form-group">
+                    <label>Cover Letter</label>
+                    <textarea rows="4" placeholder="Tell us why you're perfect for this role..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
         </div>
-    </section>
+    </div>
 
-<<<<<<< HEAD
-    <script>
-        function searchJobs(event) {
-            event.preventDefault();
-            
-            const query = document.getElementById('job-query').value;
-            const location = document.getElementById('job-location').value;
-            
-            const params = new URLSearchParams();
-            if (query) params.set('q', query);
-            if (location) params.set('location', location);
-            
-            window.location.href = `/hiring?${params}`;
-        }
-        
-        function filterJobs() {
-            const typeFilter = document.getElementById('job-type-filter').value;
-            const remoteFilter = document.getElementById('remote-filter').value;
-            const salaryFilter = document.getElementById('salary-filter').value;
-            
-            const cards = document.querySelectorAll('.job-card');
-            
-            cards.forEach(card => {
-                const cardType = card.dataset.type;
-                const cardRemote = card.dataset.remote === 'true';
-                const cardSalary = card.dataset.salary;
-                
-                let show = true;
-                
-                if (typeFilter !== 'all' && cardType !== typeFilter) {
-                    show = false;
-                }
-                
-                if (remoteFilter === 'remote' && !cardRemote) {
-                    show = false;
-                } else if (remoteFilter === 'onsite' && cardRemote) {
-                    show = false;
-                }
-                
-                if (salaryFilter !== 'all' && cardSalary) {
-                    // Simple salary filtering logic
-                    const salary = cardSalary.toLowerCase();
-                    if (salaryFilter === '0-50k' && !salary.includes('50') && !salary.includes('40') && !salary.includes('30')) {
-                        show = false;
-                    } else if (salaryFilter === '50k-100k' && !salary.includes('50') && !salary.includes('60') && !salary.includes('70') && !salary.includes('80') && !salary.includes('90')) {
-                        show = false;
-                    } else if (salaryFilter === '100k+' && !salary.includes('100') && !salary.includes('120') && !salary.includes('150')) {
-                        show = false;
-                    }
-                }
-                
-                card.style.display = show ? 'block' : 'none';
-            });
-        }
-        
-        async function applyToJob(jobId) {
-            // In a real implementation, this would open an application form or redirect to application page
-            alert('Application form would open here. This would integrate with the job application system.');
-        }
-        
-        async function saveJob(jobId) {
-            // Save job to user's saved jobs list
-            alert('Job saved to your favorites!');
-        }
-        
-        async function submitJob(event) {
-            event.preventDefault();
-            
-            const formData = new FormData(event.target);
-            const jobData = Object.fromEntries(formData.entries());
-            
-            // Convert checkbox to boolean
-            jobData.remote = formData.has('remote');
-            
-            try {
-                const response = await fetch('/api/jobs', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(jobData)
-                });
-                
-                if (response.ok) {
-                    alert('Job posted successfully!');
-                    event.target.reset();
-                    window.location.href = '/hiring';
-                } else {
-                    alert('Failed to post job. Please try again.');
-                }
-            } catch (error) {
-                console.error('Job submission error:', error);
-                alert('Failed to post job. Please try again.');
-            }
-        }
-    </script>
-{% endblock %}
-=======
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Innovators of Honour</h3>
-                    <p>Innovate with Honour, Impact the World</p>
-                </div>
-                <div class="footer-section">
-                    <h4>For Job Seekers</h4>
-                    <ul>
-                        <li><a href="#">Browse Jobs</a></li>
-                        <li><a href="#">Create Profile</a></li>
-                        <li><a href="#">Career Resources</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>For Employers</h4>
-                    <ul>
-                        <li><a href="#">Post a Job</a></li>
-                        <li><a href="#">Search Candidates</a></li>
-                        <li><a href="#">Pricing</a></li>
-                    </ul>
-                </div>
+    <!-- Post Job Modal -->
+    <div id="postJobModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Post a Job</h3>
+                <span class="close" onclick="closePostJobModal()">&times;</span>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Innovators of Honour. All rights reserved.</p>
-            </div>
+            <form class="job-form">
+                <div class="form-group">
+                    <label>Job Title</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Company</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Salary Range</label>
+                    <input type="text" placeholder="e.g. $50K - $70K">
+                </div>
+                <div class="form-group">
+                    <label>Job Description</label>
+                    <textarea rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Required Skills</label>
+                    <input type="text" placeholder="Separate with commas">
+                </div>
+                <button type="submit" class="submit-btn">Post Job</button>
+            </form>
         </div>
-    </footer>
+    </div>
 
-    <script src="script.js"></script>
+    <script src="hiring-script.js"></script>
 </body>
 </html>
->>>>>>> 2c986de (Initial commit of Django/Flask project)

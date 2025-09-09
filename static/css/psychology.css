@@ -1,0 +1,474 @@
+/* Psychological Enhancement CSS for Solutions Marketplace */
+
+/* Hero Section Psychology */
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FFD700;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #ccc;
+    margin-top: 0.25rem;
+}
+
+.trust-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.trust-item i {
+    color: #10b981;
+}
+
+/* Pulsing Animation for CTAs */
+.pulse-glow {
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.4);
+    }
+}
+
+.wallet-connect-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.wallet-connect-btn.connected {
+    background: linear-gradient(45deg, #10b981, #059669);
+    border-color: #10b981;
+    color: white;
+}
+
+/* Social Proof Elements */
+.social-proof-banner {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.live-activity {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #10b981;
+}
+
+.pulse-dot {
+    color: #10b981;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Enhanced Info Cards */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.15);
+}
+
+.trust-badge {
+    background: linear-gradient(45deg, #10b981, #059669);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    margin-top: 1rem;
+    display: inline-block;
+}
+
+/* Smart Filter Enhancements */
+.filter-header {
+    margin-bottom: 1.5rem;
+}
+
+.filter-header h3 {
+    color: #f5f5f5;
+    margin-bottom: 1rem;
+}
+
+.filter-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.popular-filters {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.filter-chip {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    color: #FFD700;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-chip:hover,
+.filter-chip.active {
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    color: #000;
+    transform: translateY(-2px);
+}
+
+.active-filters {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(26, 26, 26, 0.8);
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.filter-label {
+    color: #FFD700;
+    font-weight: 500;
+    margin-right: 1rem;
+}
+
+.clear-filters {
+    background: transparent;
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+/* Enhanced Solution Cards */
+.scarcity-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: linear-gradient(45deg, #ef4444, #dc2626);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.hidden-gem {
+    background: linear-gradient(45deg, #8b5cf6, #7c3aed);
+}
+
+.social-proof-badge {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: rgba(255, 215, 0, 0.9);
+    color: #000;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.purchase-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.purchase-btn .btn-text {
+    display: block;
+    font-weight: 600;
+}
+
+.purchase-btn .btn-price {
+    display: block;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+/* Toast Notifications */
+.toast {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background: rgba(26, 26, 26, 0.95);
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    max-width: 350px;
+    z-index: 2000;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast-success {
+    border-color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.toast-error {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.toast-primary {
+    border-color: #FFD700;
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.toast-info {
+    border-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.toast-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #f5f5f5;
+    font-size: 0.9rem;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+/* Modal Enhancements */
+.exit-intent-modal,
+.metamask-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.exit-intent-modal.show,
+.metamask-modal.show {
+    opacity: 1;
+}
+
+.exit-intent-modal .modal-content,
+.metamask-modal .modal-content {
+    background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+    border: 1px solid #FFD700;
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 500px;
+    text-align: center;
+    color: #f5f5f5;
+}
+
+.exit-benefits,
+.metamask-benefits {
+    margin: 1.5rem 0;
+    text-align: left;
+}
+
+.benefit {
+    padding: 0.5rem 0;
+    color: #10b981;
+    font-size: 0.9rem;
+}
+
+/* Confetti Animation */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2500;
+    font-size: 2rem;
+    animation: confettiFall 3s ease-out;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Progress Indicators */
+.explorer-progress {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 25px;
+    padding: 0.75rem 1rem;
+    color: #FFD700;
+    font-size: 0.85rem;
+    z-index: 1000;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .hero-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .trust-indicators {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .live-activity {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .filter-stats {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .popular-filters {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    .toast {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+        transform: translateY(-100px);
+    }
+    
+    .toast.show {
+        transform: translateY(0);
+    }
+}
+
+/* Accessibility Enhancements */
+@media (prefers-reduced-motion: reduce) {
+    .pulse-glow,
+    .pulse-dot,
+    .confetti-container {
+        animation: none;
+    }
+    
+    .hover-lift:hover {
+        transform: none;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .filter-chip {
+        border-width: 2px;
+    }
+    
+    .trust-badge {
+        border: 2px solid #10b981;
+    }
+    
+    .scarcity-badge {
+        border: 2px solid #ef4444;
+    }
+}
+
+/* Focus Indicators for Accessibility */
+.btn:focus,
+.filter-select:focus,
+.search-input:focus {
+    outline: 2px solid #FFD700;
+    outline-offset: 2px;
+}
+
+/* Loading States */
+.skeleton-card {
+    background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+    border-radius: 16px;
+    height: 400px;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}

@@ -95,11 +95,27 @@ class BlockchainManager {
     }
 
     async mintSolution(solutionData) {
-        if (!this.contract) await this.init();
+        if (!this.contract) {
+            const connected = await this.init();
+            if (!connected) throw new Error('Wallet not connected');
+        }
 
         const priceInWei = this.web3.utils.toWei(solutionData.price.toString(), 'ether');
 
         try {
+            // Estimate gas for minting
+            const gasEstimate = await this.contract.methods.mintSolution(
+                solutionData.title,
+                solutionData.description,
+                solutionData.category,
+                priceInWei,
+                solutionData.coverImageHash,
+                solutionData.solutionFileHash,
+                solutionData.tokenURI
+            ).estimateGas({ from: this.account });
+
+            const gasLimit = Math.floor(gasEstimate * 1.2);
+
             const result = await this.contract.methods.mintSolution(
                 solutionData.title,
                 solutionData.description,
@@ -108,27 +124,54 @@ class BlockchainManager {
                 solutionData.coverImageHash,
                 solutionData.solutionFileHash,
                 solutionData.tokenURI
-            ).send({ from: this.account });
+            ).send({
+                from: this.account,
+                gas: gasLimit
+            });
 
             return result;
         } catch (error) {
             console.error('Error minting solution:', error);
-            throw error;
+            if (error.message.includes('insufficient funds')) {
+                throw new Error('Insufficient ETH for gas fees');
+            } else if (error.message.includes('user rejected')) {
+                throw new Error('Transaction cancelled by user');
+            }
+            throw new Error('Minting failed: ' + error.message);
         }
     }
 
     async purchaseSolution(tokenId, price) {
-        if (!this.contract) await this.init();
+        if (!this.contract) {
+            const connected = await this.init();
+            if (!connected) throw new Error('Wallet not connected');
+        }
 
         const priceInWei = this.web3.utils.toWei(price.toString(), 'ether');
 
         try {
+            // Estimate gas first
+            const gasEstimate = await this.contract.methods.purchaseSolution(tokenId)
+                .estimateGas({ from: this.account, value: priceInWei });
+
+            // Add 20% buffer for gas
+            const gasLimit = Math.floor(gasEstimate * 1.2);
+
             const result = await this.contract.methods.purchaseSolution(tokenId)
-                .send({ from: this.account, value: priceInWei });
+                .send({
+                    from: this.account,
+                    value: priceInWei,
+                    gas: gasLimit
+                });
             return result;
         } catch (error) {
             console.error('Error purchasing solution:', error);
-            throw error;
+            if (error.message.includes('insufficient funds')) {
+                throw new Error('Insufficient ETH balance for purchase');
+            } else if (error.message.includes('user rejected')) {
+                throw new Error('Transaction cancelled by user');
+            }
+            throw new Error('Purchase failed: ' + error.message);
         }
     }
 
@@ -163,25 +206,57 @@ class BlockchainManager {
                 tokenId: 1,
                 creator: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
                 title: 'AI Healthcare Diagnostic',
-                description: 'Revolutionary AI platform for medical diagnosis',
+                description: 'Revolutionary AI platform for medical diagnosis with 95% accuracy',
                 category: 'Healthcare',
                 price: '0.5',
                 isForSale: true,
                 coverImageHash: 'QmDemo1Hash',
                 solutionFileHash: 'QmDemo1FileHash',
-                createdAt: new Date()
+                createdAt: new Date(),
+                views: 2500,
+                purchases: 12
             },
             {
                 tokenId: 2,
                 creator: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
                 title: 'Blockchain Carbon Credits',
-                description: 'Transparent carbon credit trading platform',
+                description: 'Transparent carbon credit trading platform for sustainable business',
                 category: 'Sustainability',
                 price: '0.3',
                 isForSale: true,
                 coverImageHash: 'QmDemo2Hash',
                 solutionFileHash: 'QmDemo2FileHash',
-                createdAt: new Date()
+                createdAt: new Date(),
+                views: 1800,
+                purchases: 8
+            },
+            {
+                tokenId: 3,
+                creator: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
+                title: 'DeFi Lending Protocol',
+                description: 'Decentralized lending platform with automated yield optimization',
+                category: 'FinTech',
+                price: '0.8',
+                isForSale: true,
+                coverImageHash: 'QmDemo3Hash',
+                solutionFileHash: 'QmDemo3FileHash',
+                createdAt: new Date(),
+                views: 3200,
+                purchases: 15
+            },
+            {
+                tokenId: 4,
+                creator: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
+                title: 'Smart Contract Auditor',
+                description: 'AI-powered smart contract vulnerability detection and analysis tool',
+                category: 'Blockchain',
+                price: '0.6',
+                isForSale: true,
+                coverImageHash: 'QmDemo4Hash',
+                solutionFileHash: 'QmDemo4FileHash',
+                createdAt: new Date(),
+                views: 1950,
+                purchases: 6
             }
         ];
     }

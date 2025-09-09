@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions Marketplace - Innovators of Honour</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
+    <style>
+        /* Solutions Marketplace Specific Styles - Matching Site Theme */
+        .marketplace-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #000 100%);
+            color: #f5f5f5;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .marketplace-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            background: rgba(255, 215, 0, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        .trust-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #f5f5f5;
+        }
+
+        .trust-item i {
+            color: #ffd700;
+        }
+
+        .social-proof-banner {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .live-activity {
+            display: flex;
+            justify-content: space-around;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #ffd700;
+        }
+
+        .pulse-dot {
+            color: #ffd700;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .filter-section {
+            padding: 6rem 0;
+            background: #111;
+        }
+
+        .filter-header {
+            margin-bottom: 2rem;
+        }
+
+        .filter-header h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .filter-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .popular-filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-chip {
+            background: rgba(255, 215, 0, 0.2);
+            color: #ffd700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-chip:hover,
+        .filter-chip.active {
+            background: #ffd700;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            background: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-group label {
+            font-weight: 500;
+            color: #ffd700;
+            white-space: nowrap;
+        }
+
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #333;
+            border-radius: 6px;
+            background: #000;
+            color: #f5f5f5;
+            min-width: 150px;
+        }
+
+        .search-group {
+            display: flex;
+            margin-left: auto;
+        }
+
+        .search-input {
+            padding: 0.5rem 1rem;
+            border: 1px solid #333;
+            border-radius: 6px 0 0 6px;
+            min-width: 200px;
+            background: #000;
+            color: #f5f5f5;
+        }
+
+        .search-btn {
+            padding: 0.5rem 1rem;
+            background: #ffd700;
+            color: #000;
+            border: none;
+            border-radius: 0 6px 6px 0;
+            cursor: pointer;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .solution-card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(255, 215, 0, 0.2);
+            transition: transform 0.3s ease;
+            border: 1px solid #333;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .solution-card.featured {
+            border: 2px solid #ffd700;
+        }
+
+        .solution-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #ffd700;
+            color: #000;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .solution-image {
+            height: 200px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .solution-image i {
+            font-size: 4rem;
+            color: #000;
+        }
+
+        .solution-content {
+            padding: 1.5rem;
+        }
+
+        .solution-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #ffd700;
+        }
+
+        .solution-content p {
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .solution-creator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        .solution-creator i {
+            color: #ffd700;
+        }
+
+        .solution-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 215, 0, 0.2);
+            color: #ffd700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .solution-metrics {
+            display: flex;
+            gap: 1rem;
+            color: #ccc;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .metric {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .metric i {
+            color: #ffd700;
+        }
+
+        .solution-funding {
+            margin-bottom: 1rem;
+        }
+
+        .funding-status {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            background: #ffd700;
+            color: #000;
+        }
+
+        .solution-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .solution-actions .btn {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .solution-actions .btn-primary {
+            background: #ffd700;
+            color: #000;
+            border: none;
+        }
+
+        .solution-actions .btn-primary:hover {
+            background: #ffed4e;
+            transform: translateY(-2px);
+        }
+
+        .solution-actions .btn-outline {
+            background: transparent;
+            color: #ffd700;
+            border: 2px solid #ffd700;
+        }
+
+        .solution-actions .btn-outline:hover {
+            background: #ffd700;
+            color: #000;
+        }
+
+        .no-solutions {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #999;
+            grid-column: 1 / -1;
+        }
+
+        .no-solutions h3 {
+            color: #f5f5f5;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .no-solutions i {
+            font-size: 4rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Pulse animation for CTAs */
+        .pulse-glow {
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.4);
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .trust-indicators {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .live-activity {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .filter-stats {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .popular-filters {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            
+            .filter-bar {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .filter-group {
+                min-width: 100%;
+            }
+            
+            .solutions-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .solution-actions {
+                flex-direction: column;
+            }
+            
+            .solution-actions .btn {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html" style="text-decoration: none; color: inherit;">Innovators of Honour</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="solutions-marketplace.html" class="active">Solutions</a></li>
+                <li><a href="hiring.html">Hiring</a></li>
+                <li><a href="learn.html">Learn</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="investors.html">Investors</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="marketplace-hero">
+        <div class="container">
+            <div class="section-header">
+                <h1>Solutions Marketplace</h1>
+                <p>Discover innovative blockchain-secured solutions from Africa's brightest minds</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3 class="stat-number">99.9%</h3>
+                        <p class="stat-label">Transaction Success</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 class="stat-number">500+</h3>
+                        <p class="stat-label">Innovators</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 class="stat-number">2.5%</h3>
+                        <p class="stat-label">Platform Fee</p>
+                    </div>
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="mint-nft.html" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Submit Solution
+                    </a>
+                    <a href="#browse" class="btn btn-secondary">Browse Solutions</a>
+                    <button id="connect-wallet" class="btn btn-outline">
+                        <i class="fas fa-wallet"></i> <span class="wallet-text">Connect Wallet</span>
+                    </button>
+                </div>
+                
+                <div class="trust-indicators">
+                    <div class="trust-item">
+                        <i class="fas fa-shield-check"></i>
+                        <span>Verified on Ethereum</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-users"></i>
+                        <span id="live-viewers">12 people viewing now</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof & Trust Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="social-proof-banner">
+                <div class="live-activity">
+                    <div class="activity-item">
+                        <i class="fas fa-circle pulse-dot"></i>
+                        <span>Dr. Amina just minted MediAI Platform</span>
+                    </div>
+                    <div class="activity-item">
+                        <i class="fas fa-circle pulse-dot"></i>
+                        <span>EcoTech earned 0.3 ETH from GreenChain</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Blockchain Secured</h3>
+                    <p>Immutable proof of ownership with smart contract protection</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-coins"></i>
+                    <h3>Creator Royalties</h3>
+                    <p>Earn 5% on every resale automatically via smart contracts</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-ethereum"></i>
+                    <h3>Instant Payments</h3>
+                    <p>Direct ETH transfers with gas optimization and fee transparency</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Find Your Perfect Solution</h2>
+                <p>Browse our collection of innovative blockchain-secured solutions</p>
+            </div>
+            
+            <div class="filter-stats">
+                <span id="results-count">Showing 12 solutions</span>
+                <div class="popular-filters">
+                    <span class="filter-chip active" onclick="applyPopularFilter('AI/ML')">AI Trending</span>
+                    <span class="filter-chip" onclick="applyPopularFilter('Healthcare')">Health Impact</span>
+                    <span class="filter-chip" onclick="applyPopularFilter('Sustainability')">Green Tech</span>
+                </div>
+            </div>
+            
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label for="category-filter">Category:</label>
+                    <select id="category-filter" class="filter-select" onchange="filterSolutions()">
+                        <option value="all">All Categories</option>
+                        <option value="AI/ML" selected>AI/ML</option>
+                        <option value="Blockchain">Blockchain</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Education">Education</option>
+                        <option value="FinTech">FinTech</option>
+                        <option value="Sustainability">Sustainability</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="stage-filter">Stage:</label>
+                    <select id="stage-filter" class="filter-select" onchange="filterSolutions()">
+                        <option value="all">All Stages</option>
+                        <option value="Concept">Concept</option>
+                        <option value="Prototype">Prototype</option>
+                        <option value="MVP">MVP</option>
+                        <option value="Launched">Launched</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="price-filter">Price Range:</label>
+                    <select id="price-filter" class="filter-select" onchange="filterSolutions()">
+                        <option value="all">All Prices</option>
+                        <option value="budget">Under 0.5 ETH</option>
+                        <option value="premium">Premium (0.5+ ETH)</option>
+                    </select>
+                </div>
+                <div class="search-group">
+                    <input type="search" class="search-input" placeholder="Search solutions..." id="solution-search" oninput="searchSolutions()">
+                    <button class="search-btn" onclick="searchSolutions()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Solutions -->
+    <section id="browse" class="solutions">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Solutions</h2>
+                <p>Highlighted innovations making significant impact</p>
+            </div>
+            <div class="solutions-grid" id="featured-grid">
+                <!-- Featured solutions will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- All Solutions -->
+    <section class="solutions" style="background: #000;">
+        <div class="container">
+            <div class="section-header">
+                <h2>All Solutions</h2>
+                <p>Browse our complete collection of innovative solutions</p>
+            </div>
+            <div class="solutions-grid" id="solutions-grid">
+                <!-- Solutions will be loaded here -->
+            </div>
+            
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="mint-nft.html" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Submit Your Solution
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Innovators of Honour</h3>
+                    <p>Innovate with Honour, Impact the World</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#browse">Browse Solutions</a></li>
+                        <li><a href="mint-nft.html">Submit Solution</a></li>
+                        <li><a href="#featured">Featured Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="community.html">Join Fellowship</a></li>
+                        <li><a href="hiring.html">Find Jobs</a></li>
+                        <li><a href="learn.html">Learn Skills</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Innovators of Honour. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="blockchain.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Solutions data
+        const solutionsData = [
+            {
+                id: 1,
+                title: 'MediAI Diagnostic Platform',
+                description: 'Revolutionary AI-powered diagnostic tool that analyzes medical images with 95% accuracy, enabling early disease detection in remote areas.',
+                category: 'Healthcare',
+                stage: 'MVP',
+                price: '0.5',
+                creator: 'Dr. Amina Hassan',
+                views: 2459,
+                likes: 189,
+                featured: true,
+                icon: 'heartbeat'
+            },
+            {
+                id: 2,
+                title: 'GreenChain Carbon Credits',
+                description: 'Blockchain-based platform for transparent trading of carbon credits, enabling businesses to offset their carbon footprint effectively.',
+                category: 'Sustainability',
+                stage: 'Launched',
+                price: '0.3',
+                creator: 'EcoTech Innovations',
+                views: 1846,
+                likes: 126,
+                featured: true,
+                icon: 'leaf'
+            },
+            {
+                id: 3,
+                title: 'EduConnect Africa',
+                description: 'Mobile-first educational platform providing offline-capable learning resources for students across Africa with limited internet access.',
+                category: 'Education',
+                stage: 'Prototype',
+                price: '0.8',
+                creator: 'Learning Bridge Collective',
+                views: 3246,
+                likes: 267,
+                featured: true,
+                icon: 'graduation-cap'
+            },
+            {
+                id: 4,
+                title: 'DeFi Yield Optimizer',
+                description: 'Automated yield farming protocol that maximizes returns across multiple DeFi platforms with smart risk management.',
+                category: 'FinTech',
+                stage: 'Beta',
+                price: '0.6',
+                creator: 'DeFi Builders',
+                views: 1923,
+                likes: 145,
+                featured: false,
+                icon: 'coins'
+            },
+            {
+                id: 5,
+                title: 'AgriBot Assistant',
+                description: 'AI-powered farming assistant for crop monitoring, yield optimization, and pest detection using IoT sensors.',
+                category: 'AI/ML',
+                stage: 'MVP',
+                price: '0.4',
+                creator: 'FarmTech Solutions',
+                views: 1567,
+                likes: 98,
+                featured: false,
+                icon: 'robot'
+            },
+            {
+                id: 6,
+                title: 'SecureID Blockchain',
+                description: 'Decentralized identity verification system for secure digital transactions and KYC compliance.',
+                category: 'Blockchain',
+                stage: 'Launched',
+                price: '0.7',
+                creator: 'Identity Labs',
+                views: 2134,
+                likes: 178,
+                featured: false,
+                icon: 'shield-alt'
+            }
+        ];
+
+        // Initialize marketplace
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSolutions();
+            setupWalletConnect();
+            startLiveUpdates();
+        });
+
+        // Load solutions into grids
+        function loadSolutions() {
+            const featuredGrid = document.getElementById('featured-grid');
+            const allGrid = document.getElementById('solutions-grid');
+            
+            // Clear existing content
+            featuredGrid.innerHTML = '';
+            allGrid.innerHTML = '';
+            
+            // Load featured solutions
+            const featuredSolutions = solutionsData.filter(solution => solution.featured);
+            featuredSolutions.forEach(solution => {
+                featuredGrid.appendChild(createSolutionCard(solution, true));
+            });
+            
+            // Load all solutions
+            solutionsData.forEach(solution => {
+                allGrid.appendChild(createSolutionCard(solution, false));
+            });
+            
+            updateResultsCount();
+        }
+
+        // Create solution card
+        function createSolutionCard(solution, isFeatured = false) {
+            const card = document.createElement('div');
+            card.className = `solution-card ${isFeatured ? 'featured' : ''}`;
+            card.setAttribute('data-category', solution.category);
+            card.setAttribute('data-stage', solution.stage);
+            card.setAttribute('data-price', parseFloat(solution.price));
+            
+            card.innerHTML = `
+                ${isFeatured ? '<div class="solution-badge">Featured</div>' : ''}
+                <div class="solution-image">
+                    <i class="fas fa-${solution.icon}"></i>
+                </div>
+                <div class="solution-content">
+                    <h3>${solution.title}</h3>
+                    <p>${solution.description}</p>
+                    <div class="solution-creator">
+                        <i class="fas fa-user"></i>
+                        <span>${solution.creator}</span>
+                    </div>
+                    <div class="solution-tags">
+                        <span class="tag">${solution.category}</span>
+                        <span class="tag">${solution.stage}</span>
+                    </div>
+                    <div class="solution-metrics">
+                        <div class="metric">
+                            <i class="fas fa-eye"></i>
+                            <span>${solution.views.toLocaleString()} views</span>
+                        </div>
+                        <div class="metric">
+                            <i class="fas fa-heart"></i>
+                            <span>${solution.likes} likes</span>
+                        </div>
+                    </div>
+                    <div class="solution-funding">
+                        <span class="funding-status">${solution.price} ETH</span>
+                    </div>
+                </div>
+                <div class="solution-actions">
+                    <button class="btn btn-primary" onclick="purchaseNFT(${solution.id}, ${solution.price})">
+                        <i class="fas fa-ethereum"></i> Purchase NFT
+                    </button>
+                    <button class="btn btn-outline" onclick="viewSolutionDetails(${solution.id})">
+                        <i class="fas fa-eye"></i> Preview
+                    </button>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Filter functions
+        function applyPopularFilter(category) {
+            // Update visual state
+            document.querySelectorAll('.filter-chip').forEach(chip => {
+                chip.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Apply filter
+            document.getElementById('category-filter').value = category;
+            filterSolutions();
+        }
+
+        function filterSolutions() {
+            const category = document.getElementById('category-filter').value;
+            const stage = document.getElementById('stage-filter').value;
+            const priceRange = document.getElementById('price-filter').value;
+            
+            const cards = document.querySelectorAll('.solution-card');
+            
+            cards.forEach(card => {
+                const cardCategory = card.dataset.category;
+                const cardStage = card.dataset.stage;
+                const cardPrice = parseFloat(card.dataset.price);
+                
+                const categoryMatch = category === 'all' || cardCategory === category;
+                const stageMatch = stage === 'all' || cardStage === stage;
+                
+                let priceMatch = true;
+                if (priceRange === 'budget') {
+                    priceMatch = cardPrice < 0.5;
+                } else if (priceRange === 'premium') {
+                    priceMatch = cardPrice >= 0.5;
+                }
+                
+                card.style.display = (categoryMatch && stageMatch && priceMatch) ? 'block' : 'none';
+            });
+            
+            updateResultsCount();
+        }
+
+        function searchSolutions() {
+            const query = document.getElementById('solution-search').value.toLowerCase();
+            const cards = document.querySelectorAll('.solution-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                
+                card.style.display = (title.includes(query) || description.includes(query)) ? 'block' : 'none';
+            });
+            
+            updateResultsCount();
+        }
+
+        function updateResultsCount() {
+            const visibleCards = document.querySelectorAll('.solution-card:not([style*="display: none"])').length;
+            const countElement = document.getElementById('results-count');
+            
+            if (countElement) {
+                countElement.textContent = `Showing ${visibleCards} solution${visibleCards !== 1 ? 's' : ''}`;
+            }
+        }
+
+        // Wallet connection
+        function setupWalletConnect() {
+            const connectBtn = document.getElementById('connect-wallet');
+            const walletText = connectBtn.querySelector('.wallet-text');
+            
+            connectBtn.addEventListener('click', async () => {
+                if (typeof window.ethereum !== 'undefined') {
+                    try {
+                        await window.ethereum.request({ method: 'eth_requestAccounts' });
+                        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+                        
+                        if (accounts.length > 0) {
+                            const address = accounts[0];
+                            const shortAddress = address.substring(0, 6) + '...' + address.substring(38);
+                            walletText.textContent = `Connected: ${shortAddress}`;
+                            connectBtn.classList.add('connected');
+                            showToast('🎉 Wallet connected successfully!', 'success');
+                        }
+                    } catch (error) {
+                        showToast('❌ Failed to connect wallet', 'error');
+                    }
+                } else {
+                    showToast('🦊 Please install MetaMask', 'info');
+                    window.open('https://metamask.io/download/', '_blank');
+                }
+            });
+        }
+
+        // Purchase NFT
+        function purchaseNFT(solutionId, price) {
+            const solution = solutionsData.find(s => s.id === solutionId);
+            if (solution) {
+                showToast(`🚀 Purchasing ${solution.title} for ${price} ETH...`, 'info');
+                
+                // Simulate purchase process
+                setTimeout(() => {
+                    showToast('✅ NFT purchased successfully!', 'success');
+                }, 2000);
+            }
+        }
+
+        // View solution details
+        function viewSolutionDetails(solutionId) {
+            const solution = solutionsData.find(s => s.id === solutionId);
+            if (solution) {
+                showToast(`👀 Viewing ${solution.title} details...`, 'info');
+            }
+        }
+
+        // Live updates
+        function startLiveUpdates() {
+            // Update viewer count
+            setInterval(() => {
+                const viewerElement = document.getElementById('live-viewers');
+                if (viewerElement) {
+                    const count = Math.floor(Math.random() * 8) + 8;
+                    viewerElement.textContent = `${count} people viewing now`;
+                }
+            }, 15000);
+            
+            // Update activity feed
+            const activities = [
+                'Dr. Amina just minted MediAI Platform',
+                'EcoTech earned 0.3 ETH from GreenChain',
+                'Student from Lagos purchased EduConnect',
+                'Farmer in Kenya saved $500 with AgriBot'
+            ];
+            
+            setInterval(() => {
+                const activityItems = document.querySelectorAll('.activity-item span');
+                if (activityItems.length > 0) {
+                    const randomActivity = activities[Math.floor(Math.random() * activities.length)];
+                    const randomItem = activityItems[Math.floor(Math.random() * activityItems.length)];
+                    randomItem.textContent = randomActivity;
+                }
+            }, 8000);
+        }
+
+        // Toast notifications
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: rgba(26, 26, 26, 0.95);
+                border: 1px solid #333;
+                border-radius: 8px;
+                padding: 1rem 1.5rem;
+                color: #f5f5f5;
+                z-index: 2000;
+                transform: translateX(400px);
+                transition: transform 0.3s ease;
+                backdrop-filter: blur(10px);
+            `;
+            
+            if (type === 'success') {
+                toast.style.borderColor = '#10b981';
+                toast.style.background = 'rgba(16, 185, 129, 0.1)';
+            } else if (type === 'error') {
+                toast.style.borderColor = '#ef4444';
+                toast.style.background = 'rgba(239, 68, 68, 0.1)';
+            } else if (type === 'info') {
+                toast.style.borderColor = '#FFD700';
+                toast.style.background = 'rgba(255, 215, 0, 0.1)';
+            }
+            
+            toast.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>${message}</span>
+                    <button onclick="this.parentElement.parentElement.remove()" style="background: none; border: none; color: #999; font-size: 1.2rem; cursor: pointer; margin-left: 1rem;">&times;</button>
+                </div>
+            `;
+            
+            document.body.appendChild(toast);
+            setTimeout(() => toast.style.transform = 'translateX(0)', 100);
+            
+            setTimeout(() => {
+                toast.style.transform = 'translateX(400px)';
+                setTimeout(() => toast.remove(), 300);
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

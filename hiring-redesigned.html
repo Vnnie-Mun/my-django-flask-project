@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiring Platform - Innovators of Honour</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="additional-styles.css">
+    <link rel="stylesheet" href="hiring-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html">Innovators of Honour</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="hiring.html" class="active">Hiring</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="investors.html">Investors</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hiring-hero">
+        <div class="hero-background">
+            <div class="hero-particles"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Professional Hiring Platform</span>
+                </div>
+                <h1 class="hero-title">
+                    Connect <span class="gradient-text">Exceptional Talent</span><br>
+                    with <span class="gradient-text">Innovative Opportunities</span>
+                </h1>
+                <p class="hero-subtitle">
+                    AI-powered matching platform that connects top talent with forward-thinking companies. 
+                    Find your dream job or discover the perfect candidate with our intelligent hiring ecosystem.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-large" onclick="scrollToJobs()">
+                        <i class="fas fa-search"></i>
+                        Find Jobs
+                    </button>
+                    <button class="btn btn-secondary btn-large" onclick="scrollToPostJob()">
+                        <i class="fas fa-plus"></i>
+                        Post a Job
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Active Jobs</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Talents</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI-Powered Matching</h3>
+                    <p>Advanced algorithms match candidates with perfect job opportunities based on skills, experience, and cultural fit.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Global Opportunities</h3>
+                    <p>Access remote and international positions from leading companies worldwide, with focus on African innovation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-check"></i>
+                    </div>
+                    <h3>Verified Employers</h3>
+                    <p>All companies are thoroughly vetted for credibility, ethics, and commitment to professional growth.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Career Growth</h3>
+                    <p>Personalized career development paths with mentorship and skill-building opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Search Section -->
+    <section id="jobs" class="job-search-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Discover Your Next Opportunity</h2>
+                <p>Find jobs that align with your skills, values, and career aspirations</p>
+            </div>
+            
+            <!-- Advanced Search Bar -->
+            <div class="search-container">
+                <div class="search-bar">
+                    <div class="search-input-group">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Job title, skills, or company" class="search-input">
+                    </div>
+                    <div class="search-input-group">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" placeholder="Location or Remote" class="search-input">
+                    </div>
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                        Search Jobs
+                    </button>
+                </div>
+                
+                <!-- Smart Filters -->
+                <div class="filters-container">
+                    <div class="filter-group">
+                        <select class="filter-select">
+                            <option value="">All Categories</option>
+                            <option value="software">Software Development</option>
+                            <option value="ai-ml">AI & Machine Learning</option>
+                            <option value="blockchain">Blockchain</option>
+                            <option value="design">UI/UX Design</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="data">Data Science</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select class="filter-select">
+                            <option value="">Experience Level</option>
+                            <option value="entry">Entry Level (0-2 years)</option>
+                            <option value="mid">Mid Level (3-5 years)</option>
+                            <option value="senior">Senior Level (6+ years)</option>
+                            <option value="lead">Lead/Manager</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select class="filter-select">
+                            <option value="">Job Type</option>
+                            <option value="full-time">Full Time</option>
+                            <option value="part-time">Part Time</option>
+                            <option value="contract">Contract</option>
+                            <option value="remote">Remote Only</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select class="filter-select">
+                            <option value="">Salary Range</option>
+                            <option value="0-50k">$0 - $50K</option>
+                            <option value="50k-100k">$50K - $100K</option>
+                            <option value="100k-150k">$100K - $150K</option>
+                            <option value="150k+">$150K+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Jobs -->
+            <div class="jobs-section">
+                <div class="section-tabs">
+                    <button class="tab-btn active" data-tab="featured">Featured Jobs</button>
+                    <button class="tab-btn" data-tab="recent">Recent Posts</button>
+                    <button class="tab-btn" data-tab="remote">Remote Only</button>
+                </div>
+
+                <div class="jobs-grid" id="featuredJobs">
+                    <!-- Featured Job Card 1 -->
+                    <div class="job-card premium">
+                        <div class="job-badge">Featured</div>
+                        <div class="job-header">
+                            <div class="company-avatar">
+                                <img src="https://via.placeholder.com/60x60/FFD700/000000?text=TC" alt="TechCorp">
+                            </div>
+                            <div class="job-info">
+                                <h3 class="job-title">Senior AI Engineer</h3>
+                                <p class="company-name">TechCorp Africa</p>
+                                <div class="job-meta">
+                                    <span class="location"><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</span>
+                                    <span class="type"><i class="fas fa-clock"></i> Full-time</span>
+                                    <span class="remote"><i class="fas fa-home"></i> Remote OK</span>
+                                </div>
+                            </div>
+                            <div class="job-salary">
+                                <span class="salary-amount">$80K - $120K</span>
+                                <span class="salary-period">per year</span>
+                            </div>
+                        </div>
+                        
+                        <div class="job-description">
+                            <p>Lead the development of AI-powered solutions for financial services. Work with cutting-edge ML technologies and mentor junior developers in a fast-growing fintech environment.</p>
+                        </div>
+                        
+                        <div class="job-skills">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Leadership</span>
+                            <span class="skill-tag">FinTech</span>
+                        </div>
+                        
+                        <div class="job-footer">
+                            <div class="job-stats">
+                                <span><i class="fas fa-clock"></i> 2 days ago</span>
+                                <span><i class="fas fa-users"></i> 15 applicants</span>
+                                <span><i class="fas fa-eye"></i> 234 views</span>
+                            </div>
+                            <div class="job-actions">
+                                <button class="btn btn-outline btn-sm save-job">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                                <button class="btn btn-primary apply-btn">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Apply Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Featured Job Card 2 -->
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div class="company-avatar">
+                                <img src="https://via.placeholder.com/60x60/FFD700/000000?text=CS" alt="CryptoStart">
+                            </div>
+                            <div class="job-info">
+                                <h3 class="job-title">Blockchain Developer</h3>
+                                <p class="company-name">CryptoStart</p>
+                                <div class="job-meta">
+                                    <span class="location"><i class="fas fa-globe"></i> Remote Worldwide</span>
+                                    <span class="type"><i class="fas fa-clock"></i> Full-time</span>
+                                </div>
+                            </div>
+                            <div class="job-salary">
+                                <span class="salary-amount">$60K - $90K</span>
+                                <span class="salary-period">per year</span>
+                            </div>
+                        </div>
+                        
+                        <div class="job-description">
+                            <p>Build decentralized applications and smart contracts for our DeFi platform. Join a fast-growing startup revolutionizing finance with blockchain technology.</p>
+                        </div>
+                        
+                        <div class="job-skills">
+                            <span class="skill-tag">Solidity</span>
+                            <span class="skill-tag">Web3</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">DeFi</span>
+                        </div>
+                        
+                        <div class="job-footer">
+                            <div class="job-stats">
+                                <span><i class="fas fa-clock"></i> 1 week ago</span>
+                                <span><i class="fas fa-users"></i> 8 applicants</span>
+                                <span><i class="fas fa-eye"></i> 156 views</span>
+                            </div>
+                            <div class="job-actions">
+                                <button class="btn btn-outline btn-sm save-job">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                                <button class="btn btn-primary apply-btn">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Apply Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Featured Job Card 3 -->
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div class="company-avatar">
+                                <img src="https://via.placeholder.com/60x60/FFD700/000000?text=HS" alt="HealthTech">
+                            </div>
+                            <div class="job-info">
+                                <h3 class="job-title">UX Designer</h3>
+                                <p class="company-name">HealthTech Solutions</p>
+                                <div class="job-meta">
+                                    <span class="location"><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</span>
+                                    <span class="type"><i class="fas fa-clock"></i> Full-time</span>
+                                </div>
+                            </div>
+                            <div class="job-salary">
+                                <span class="salary-amount">$45K - $65K</span>
+                                <span class="salary-period">per year</span>
+                            </div>
+                        </div>
+                        
+                        <div class="job-description">
+                            <p>Design intuitive user experiences for healthcare applications. Help us make medical technology more accessible across Africa with user-centered design.</p>
+                        </div>
+                        
+                        <div class="job-skills">
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">User Research</span>
+                            <span class="skill-tag">Prototyping</span>
+                            <span class="skill-tag">Healthcare</span>
+                        </div>
+                        
+                        <div class="job-footer">
+                            <div class="job-stats">
+                                <span><i class="fas fa-clock"></i> 3 days ago</span>
+                                <span><i class="fas fa-users"></i> 12 applicants</span>
+                                <span><i class="fas fa-eye"></i> 189 views</span>
+                            </div>
+                            <div class="job-actions">
+                                <button class="btn btn-outline btn-sm save-job">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                                <button class="btn btn-primary apply-btn">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Apply Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="load-more-section">
+                    <button class="btn btn-outline load-more-btn">
+                        <i class="fas fa-plus"></i>
+                        Load More Jobs
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Post Job Section -->
+    <section id="post-job" class="post-job-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Post Your Job Opening</h2>
+                <p>Find the perfect candidate from our pool of talented professionals</p>
+            </div>
+            
+            <div class="post-job-container">
+                <div class="job-form-wrapper">
+                    <div class="form-header">
+                        <h3><i class="fas fa-briefcase"></i> Job Details</h3>
+                        <p>Provide comprehensive information about the position</p>
+                    </div>
+                    
+                    <form class="job-posting-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Job Title *</label>
+                                <input type="text" placeholder="e.g. Senior Software Engineer" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Company Name *</label>
+                                <input type="text" placeholder="Your company name" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Location *</label>
+                                <input type="text" placeholder="City, Country or Remote" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Job Type *</label>
+                                <select required>
+                                    <option value="">Select job type</option>
+                                    <option value="full-time">Full Time</option>
+                                    <option value="part-time">Part Time</option>
+                                    <option value="contract">Contract</option>
+                                    <option value="freelance">Freelance</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Category *</label>
+                                <select required>
+                                    <option value="">Select category</option>
+                                    <option value="software">Software Development</option>
+                                    <option value="ai-ml">AI & Machine Learning</option>
+                                    <option value="blockchain">Blockchain</option>
+                                    <option value="design">UI/UX Design</option>
+                                    <option value="marketing">Marketing</option>
+                                    <option value="data">Data Science</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Salary Range *</label>
+                                <input type="text" placeholder="e.g. $50,000 - $70,000" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Job Description *</label>
+                            <textarea rows="6" placeholder="Describe the role, responsibilities, and what makes this opportunity exciting..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Requirements *</label>
+                            <textarea rows="4" placeholder="List required skills, experience, and qualifications..." required></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline">
+                                <i class="fas fa-eye"></i>
+                                Preview
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-rocket"></i>
+                                Post Job
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="posting-benefits">
+                    <h3>Why Post with Us?</h3>
+                    <div class="benefit-list">
+                        <div class="benefit-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <h4>Quality Candidates</h4>
+                                <p>Access pre-screened, skilled professionals with verified profiles</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-robot"></i>
+                            <div>
+                                <h4>AI-Powered Matching</h4>
+                                <p>Smart algorithms connect you with the best candidates</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-chart-line"></i>
+                            <div>
+                                <h4>95% Success Rate</h4>
+                                <p>Most job postings result in successful hires within 30 days</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-headset"></i>
+                            <div>
+                                <h4>Dedicated Support</h4>
+                                <p>Personal assistance throughout the hiring process</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Career?</h2>
+                <p>Join thousands of professionals who have found their dream jobs through our platform</p>
+                <div class="cta-actions">
+                    <button class="btn btn-primary btn-large">
+                        <i class="fas fa-rocket"></i>
+                        Get Started Today
+                    </button>
+                    <button class="btn btn-outline btn-large">
+                        <i class="fas fa-play"></i>
+                        Watch Demo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="metta-automation.js"></script>
+    <script src="smart-logic.js"></script>
+    <script src="hiring-api.js"></script>
+    <script src="hiring-app-enhanced.js"></script>
+    <script>
+        function scrollToJobs() {
+            document.getElementById('jobs').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function scrollToPostJob() {
+            document.getElementById('post-job').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Tab functionality
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+        
+        // Save job functionality
+        document.querySelectorAll('.save-job').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('saved');
+                btn.innerHTML = btn.classList.contains('saved') 
+                    ? '<i class="fas fa-bookmark"></i>' 
+                    : '<i class="far fa-bookmark"></i>';
+            });
+        });
+    </script>
+</body>
+</html>
