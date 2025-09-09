@@ -560,4 +560,7 @@ def create_tables():
 # Initialize database on startup
 create_tables()
 
-# Removed app.run() for production deployment with Gunicorn
+if __name__ == "__main__":
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
