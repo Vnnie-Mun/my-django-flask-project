@@ -4,7 +4,7 @@ from flask_migrate import Migrate
 from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import os
 import uuid
 import json
@@ -524,7 +524,7 @@ def create_tables():
                 title='Monthly Fellowship Gathering',
                 event_type='fellowship',
                 description='Join us for worship, networking, and professional development.',
-                date=datetime.utcnow() + timedelta(days=7),
+                date=datetime.now(timezone.utc) + timedelta(days=7),
                 location='Nairobi Innovation Hub',
                 capacity=100,
                 price=0,
@@ -534,7 +534,7 @@ def create_tables():
                 title='AI in Healthcare Webinar',
                 event_type='webinar',
                 description='Exploring the future of AI applications in healthcare.',
-                date=datetime.utcnow() + timedelta(days=14),
+                date=datetime.now(timezone.utc) + timedelta(days=14),
                 location='Online',
                 capacity=500,
                 price=0,
@@ -544,7 +544,7 @@ def create_tables():
                 title='Startup Pitch Night',
                 event_type='pitch',
                 description='Present your startup to potential investors.',
-                date=datetime.utcnow() + timedelta(days=21),
+                date=datetime.now(timezone.utc) + timedelta(days=21),
                 location='Nairobi Business Center',
                 capacity=50,
                 price=50,
@@ -560,6 +560,4 @@ def create_tables():
 # Initialize database on startup
 create_tables()
 
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=False)
+# Removed app.run() for production deployment with Gunicorn
