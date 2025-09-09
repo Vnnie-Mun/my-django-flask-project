@@ -1,36 +1,191 @@
-<<<<<<< HEAD
-{% extends "base.html" %}
-
-{% block title %}Programs - Innovators of Honour{% endblock %}
-
-{% block content %}
-    <!-- Hero Section -->
-    <section class="hero" style="min-height: 60vh; padding-top: 120px;">
-        <div class="container">
-            <div class="section-header">
-                <h1>Our Programs</h1>
-                <p>Comprehensive learning and development opportunities for innovators</p>
-=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programs - Innovators of Honour</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="static/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .programs-page {
+            background: #1a1a1a;
+            color: #fff;
+            min-height: 100vh;
+        }
+        .search-section {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            padding: 80px 0 60px;
+        }
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .search-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .search-subtitle {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+        }
+        .search-box {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .search-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            font-size: 1.1rem;
+            border: 2px solid #FFD700;
+            border-radius: 50px;
+            background: rgba(255, 215, 0, 0.1);
+            color: #fff;
+            outline: none;
+        }
+        .search-input::placeholder {
+            color: #ccc;
+        }
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #FFD700;
+            color: #000;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        .filter-tab {
+            padding: 10px 20px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid #FFD700;
+            border-radius: 25px;
+            color: #FFD700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .filter-tab.active, .filter-tab:hover {
+            background: #FFD700;
+            color: #000;
+        }
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .course-card {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border: 1px solid #333;
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            border-color: #FFD700;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        }
+        .course-icon {
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+        .course-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        .course-category {
+            color: #FFD700;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .course-description {
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .course-duration, .course-level {
+            font-size: 0.85rem;
+            color: #999;
+        }
+        .course-rating {
+            color: #FFD700;
+        }
+        .course-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .course-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+        .load-more {
+            text-align: center;
+            margin: 3rem 0;
+        }
+        .load-more-btn {
+            padding: 15px 40px;
+            background: transparent;
+            border: 2px solid #FFD700;
+            color: #FFD700;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .load-more-btn:hover {
+            background: #FFD700;
+            color: #000;
+        }
+    </style>
 </head>
-<body>
+<body class="programs-page">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <h2><a href="index.html" style="text-decoration: none; color: inherit;">Innovators of Honour</a></h2>
+                <h2>Innovators of Honour</h2>
             </div>
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="programs.html">Programs</a></li>
+                <li><a href="programs.html" class="active">Programs</a></li>
                 <li><a href="solutions.html">Solutions</a></li>
                 <li><a href="hiring.html">Hiring</a></li>
                 <li><a href="learn.html">Learn</a></li>
@@ -40,375 +195,191 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" style="min-height: 60vh;">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Our Programs</h1>
-                <p class="hero-subtitle">Comprehensive learning and development opportunities designed to empower innovators and entrepreneurs worldwide.</p>
->>>>>>> 2c986de (Initial commit of Django/Flask project)
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="search-container">
+            <h1 class="search-title">Our Programs</h1>
+            <p class="search-subtitle">Comprehensive learning and development opportunities for innovators</p>
+            
+            <div class="search-box">
+                <input type="text" class="search-input" id="courseSearch" placeholder="Search from 1000+ courses in technology...">
+                <button class="search-btn" onclick="searchCourses()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <div class="filter-tabs">
+                <div class="filter-tab active" onclick="filterCourses('all')">All Courses</div>
+                <div class="filter-tab" onclick="filterCourses('ai')">AI & ML</div>
+                <div class="filter-tab" onclick="filterCourses('blockchain')">Blockchain</div>
+                <div class="filter-tab" onclick="filterCourses('web')">Web Development</div>
+                <div class="filter-tab" onclick="filterCourses('mobile')">Mobile Development</div>
+                <div class="filter-tab" onclick="filterCourses('data')">Data Science</div>
+                <div class="filter-tab" onclick="filterCourses('cyber')">Cybersecurity</div>
+                <div class="filter-tab" onclick="filterCourses('cloud')">Cloud Computing</div>
+                <div class="filter-tab" onclick="filterCourses('iot')">IoT</div>
             </div>
         </div>
     </section>
 
-<<<<<<< HEAD
-    <!-- Programs Overview -->
-    <section class="programs">
-        <div class="container">
-            <div class="programs-grid">
-                <div class="program-card">
-                    <div class="program-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Bootcamps</h3>
-                    <p>Intensive 4-8 week programs designed to fast-track your career in cutting-edge technologies</p>
-                    <ul>
-                        <li>AI/ML Engineering Bootcamp</li>
-                        <li>Blockchain Development Intensive</li>
-                        <li>Full-Stack Web Development</li>
-                        <li>Entrepreneurship & Innovation</li>
-                        <li>Cybersecurity Fundamentals</li>
-                    </ul>
-                    <div class="program-price">
-                        <span class="price">$299</span>
-                        <span class="price-note">per bootcamp</span>
-                    </div>
-                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" target="_blank" class="btn btn-primary">Enroll Now</a>
-=======
-    <!-- Bootcamps Section -->
-    <section class="programs" style="padding-top: 4rem;">
-        <div class="container">
-            <div class="section-header">
-                <h2>Bootcamps</h2>
-                <p>Intensive 4-8 week programs designed to fast-track your career in technology</p>
-            </div>
-            <div class="programs-grid">
-                <div class="program-card">
-                    <div class="program-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>AI & Machine Learning Bootcamp</h3>
-                    <p>Master the fundamentals of artificial intelligence and machine learning with hands-on projects and real-world applications.</p>
-                    <div class="program-details">
-                        <div class="detail-item">
-                            <i class="fas fa-calendar"></i>
-                            <span>8 weeks</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>20 hours/week</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-users"></i>
-                            <span>Max 25 students</span>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>Python programming for AI</li>
-                        <li>Deep learning with TensorFlow</li>
-                        <li>Computer vision projects</li>
-                        <li>Natural language processing</li>
-                        <li>Capstone project</li>
-                    </ul>
-                    <div class="program-price">
-                        <span class="price">$299</span>
-                        <span class="price-note">Scholarships available</span>
-                    </div>
-                    <a href="#" class="btn btn-primary">Apply Now</a>
->>>>>>> 2c986de (Initial commit of Django/Flask project)
-                </div>
-
-                <div class="program-card">
-                    <div class="program-icon">
-<<<<<<< HEAD
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3>Webinars</h3>
-                    <p>Monthly expert-led sessions on emerging technologies and industry trends</p>
-                    <ul>
-                        <li>AI Ethics & Responsible Innovation</li>
-                        <li>Quantum Computing Fundamentals</li>
-                        <li>Blockchain Scalability Solutions</li>
-                        <li>Tech Leadership & Management</li>
-                        <li>Global Tech Market Insights</li>
-                    </ul>
-                    <div class="program-price">
-                        <span class="price">Free</span>
-                        <span class="price-note">for members</span>
-                    </div>
-                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" target="_blank" class="btn btn-primary">Join Next Session</a>
-=======
-                        <i class="fas fa-link"></i>
-                    </div>
-                    <h3>Blockchain Development Bootcamp</h3>
-                    <p>Learn to build decentralized applications and smart contracts on various blockchain platforms.</p>
-                    <div class="program-details">
-                        <div class="detail-item">
-                            <i class="fas fa-calendar"></i>
-                            <span>6 weeks</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>15 hours/week</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-users"></i>
-                            <span>Max 20 students</span>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>Solidity programming</li>
-                        <li>Ethereum development</li>
-                        <li>DeFi protocols</li>
-                        <li>NFT marketplace creation</li>
-                        <li>Web3 integration</li>
-                    </ul>
-                    <div class="program-price">
-                        <span class="price">$249</span>
-                        <span class="price-note">Early bird discount</span>
-                    </div>
-                    <a href="#" class="btn btn-primary">Apply Now</a>
->>>>>>> 2c986de (Initial commit of Django/Flask project)
-                </div>
-
-                <div class="program-card">
-                    <div class="program-icon">
-<<<<<<< HEAD
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Workshops</h3>
-                    <p>Bi-monthly hands-on workshops for practical skill building and networking</p>
-                    <ul>
-                        <li>UI/UX Design Masterclass</li>
-                        <li>Smart Contract Development</li>
-                        <li>Data Science & Analytics</li>
-                        <li>IoT & Embedded Systems</li>
-                        <li>Digital Marketing for Tech</li>
-                    </ul>
-                    <div class="program-price">
-                        <span class="price">$49</span>
-                        <span class="price-note">per workshop</span>
-                    </div>
-                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" target="_blank" class="btn btn-primary">Register</a>
-=======
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Entrepreneurship Bootcamp</h3>
-                    <p>Transform your innovative ideas into successful businesses with our comprehensive entrepreneurship program.</p>
-                    <div class="program-details">
-                        <div class="detail-item">
-                            <i class="fas fa-calendar"></i>
-                            <span>4 weeks</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>12 hours/week</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-users"></i>
-                            <span>Max 30 students</span>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>Business model canvas</li>
-                        <li>Market validation</li>
-                        <li>Pitch deck creation</li>
-                        <li>Funding strategies</li>
-                        <li>Investor presentations</li>
-                    </ul>
-                    <div class="program-price">
-                        <span class="price">$199</span>
-                        <span class="price-note">Group discounts available</span>
-                    </div>
-                    <a href="#" class="btn btn-primary">Apply Now</a>
->>>>>>> 2c986de (Initial commit of Django/Flask project)
-                </div>
-            </div>
+    <!-- Courses Grid -->
+    <section class="courses-section">
+        <div class="courses-grid" id="coursesGrid">
+            <!-- Courses will be dynamically loaded here -->
+        </div>
+        
+        <div class="load-more">
+            <button class="load-more-btn" onclick="loadMoreCourses()">Load More Courses</button>
         </div>
     </section>
 
-<<<<<<< HEAD
-    <!-- Upcoming Events -->
-    <section class="section-alt">
-        <div class="container">
-            <div class="section-header">
-                <h2>Upcoming Events</h2>
-                <p>Don't miss these exciting learning opportunities</p>
-            </div>
-
-            <div class="webinar-schedule">
-                {% for event in events %}
-                <div class="webinar-item">
-                    <div class="webinar-date">
-                        <span class="day">{{ event.date.strftime('%d') }}</span>
-                        <span class="month">{{ event.date.strftime('%b') }}</span>
-                    </div>
-                    <div class="webinar-content">
-                        <h3>{{ event.title }}</h3>
-                        <p>{{ event.description }}</p>
-                        <div class="webinar-speaker">
-                            <i class="fas fa-user"></i>
-                            Speaker: {{ event.speaker or 'TBA' }}
-                        </div>
-                        <div class="webinar-time">
-                            <i class="fas fa-clock"></i>
-                            {{ event.date.strftime('%I:%M %p EAT') }}
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" onclick="registerForEvent({{ event.id }})">
-                        Register
-                    </button>
-                </div>
-                {% endfor %}
-=======
-    <!-- Webinars Section -->
-    <section class="webinars section-alt">
-        <div class="container">
-            <div class="section-header">
-                <h2>Upcoming Webinars</h2>
-                <p>Join our monthly webinars featuring industry experts discussing the latest trends and technologies</p>
-            </div>
-            <div class="webinar-schedule">
-                <div class="webinar-item">
-                    <div class="webinar-date">
-                        <span class="day">15</span>
-                        <span class="month">Jan</span>
-                    </div>
-                    <div class="webinar-content">
-                        <h3>The Ethics of AI in Healthcare</h3>
-                        <p>Exploring the moral implications and responsibilities of implementing AI in medical diagnosis and treatment.</p>
-                        <div class="webinar-speaker">
-                            <i class="fas fa-user"></i>
-                            <span>Dr. Sarah Johnson, AI Ethics Researcher at MIT</span>
-                        </div>
-                        <div class="webinar-time">
-                            <i class="fas fa-clock"></i>
-                            <span>6:00 PM EAT | 3:00 PM GMT</span>
-                        </div>
-                    </div>
-                    <a href="#" class="btn btn-outline">Register</a>
-                </div>
-
-                <div class="webinar-item">
-                    <div class="webinar-date">
-                        <span class="day">22</span>
-                        <span class="month">Jan</span>
-                    </div>
-                    <div class="webinar-content">
-                        <h3>Quantum Computing: The Next Frontier</h3>
-                        <p>Understanding quantum computing principles and their potential impact on various industries.</p>
-                        <div class="webinar-speaker">
-                            <i class="fas fa-user"></i>
-                            <span>Prof. Michael Chen, Quantum Computing Lab, Stanford</span>
-                        </div>
-                        <div class="webinar-time">
-                            <i class="fas fa-clock"></i>
-                            <span>7:00 PM EAT | 4:00 PM GMT</span>
-                        </div>
-                    </div>
-                    <a href="#" class="btn btn-outline">Register</a>
-                </div>
->>>>>>> 2c986de (Initial commit of Django/Flask project)
-            </div>
-        </div>
-    </section>
-
-<<<<<<< HEAD
     <script>
-        async function registerForEvent(eventId) {
-            try {
-                const response = await fetch('/api/register-event', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        event_id: eventId,
-                        type: 'standard'
-                    })
-                });
+        const studyLink = "https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post";
 
-                if (response.ok) {
-                    alert('Registration successful! You will receive a confirmation email shortly.');
-                } else {
-                    alert('Registration failed. Please try again.');
-                }
-            } catch (error) {
-                console.error('Registration error:', error);
-                alert('Registration failed. Please try again.');
+        const courses = [
+            // AI & ML Courses
+            {title: "Machine Learning Fundamentals", category: "ai", icon: "fas fa-robot", description: "Master the basics of machine learning algorithms and applications", duration: "8 weeks", level: "Beginner", rating: "4.8"},
+            {title: "Deep Learning with TensorFlow", category: "ai", icon: "fas fa-brain", description: "Build neural networks and deep learning models", duration: "10 weeks", level: "Intermediate", rating: "4.9"},
+            {title: "Computer Vision Mastery", category: "ai", icon: "fas fa-eye", description: "Image processing and computer vision techniques", duration: "6 weeks", level: "Advanced", rating: "4.7"},
+            {title: "Natural Language Processing", category: "ai", icon: "fas fa-comments", description: "Text analysis and language understanding", duration: "8 weeks", level: "Intermediate", rating: "4.6"},
+            {title: "AI Ethics and Governance", category: "ai", icon: "fas fa-balance-scale", description: "Responsible AI development and deployment", duration: "4 weeks", level: "Beginner", rating: "4.5"},
+            
+            // Blockchain Courses
+            {title: "Blockchain Fundamentals", category: "blockchain", icon: "fas fa-link", description: "Understanding blockchain technology and cryptocurrencies", duration: "6 weeks", level: "Beginner", rating: "4.7"},
+            {title: "Smart Contract Development", category: "blockchain", icon: "fas fa-file-contract", description: "Build and deploy smart contracts on Ethereum", duration: "8 weeks", level: "Intermediate", rating: "4.8"},
+            {title: "DeFi Protocol Development", category: "blockchain", icon: "fas fa-coins", description: "Create decentralized finance applications", duration: "10 weeks", level: "Advanced", rating: "4.9"},
+            {title: "NFT Marketplace Creation", category: "blockchain", icon: "fas fa-palette", description: "Build your own NFT trading platform", duration: "6 weeks", level: "Intermediate", rating: "4.6"},
+            {title: "Cryptocurrency Trading", category: "blockchain", icon: "fas fa-chart-line", description: "Learn crypto trading strategies and analysis", duration: "4 weeks", level: "Beginner", rating: "4.4"},
+            
+            // Web Development Courses
+            {title: "Full-Stack JavaScript", category: "web", icon: "fab fa-js-square", description: "Complete web development with Node.js and React", duration: "12 weeks", level: "Intermediate", rating: "4.8"},
+            {title: "React.js Mastery", category: "web", icon: "fab fa-react", description: "Build modern web applications with React", duration: "8 weeks", level: "Intermediate", rating: "4.7"},
+            {title: "Vue.js Complete Guide", category: "web", icon: "fab fa-vuejs", description: "Progressive web apps with Vue.js framework", duration: "6 weeks", level: "Beginner", rating: "4.6"},
+            {title: "Angular Development", category: "web", icon: "fab fa-angular", description: "Enterprise web applications with Angular", duration: "10 weeks", level: "Advanced", rating: "4.5"},
+            {title: "Node.js Backend Development", category: "web", icon: "fab fa-node-js", description: "Server-side JavaScript development", duration: "8 weeks", level: "Intermediate", rating: "4.7"},
+            
+            // Mobile Development Courses
+            {title: "Flutter App Development", category: "mobile", icon: "fas fa-mobile-alt", description: "Cross-platform mobile apps with Flutter", duration: "10 weeks", level: "Intermediate", rating: "4.8"},
+            {title: "React Native Mastery", category: "mobile", icon: "fab fa-react", description: "Native mobile apps with React Native", duration: "8 weeks", level: "Intermediate", rating: "4.7"},
+            {title: "iOS Development with Swift", category: "mobile", icon: "fab fa-apple", description: "Native iOS app development", duration: "12 weeks", level: "Advanced", rating: "4.9"},
+            {title: "Android Development with Kotlin", category: "mobile", icon: "fab fa-android", description: "Native Android app development", duration: "10 weeks", level: "Intermediate", rating: "4.6"},
+            {title: "Mobile UI/UX Design", category: "mobile", icon: "fas fa-paint-brush", description: "Design principles for mobile applications", duration: "6 weeks", level: "Beginner", rating: "4.5"},
+            
+            // Data Science Courses
+            {title: "Python for Data Science", category: "data", icon: "fab fa-python", description: "Data analysis and visualization with Python", duration: "8 weeks", level: "Beginner", rating: "4.7"},
+            {title: "Advanced Statistics", category: "data", icon: "fas fa-chart-bar", description: "Statistical analysis for data scientists", duration: "6 weeks", level: "Advanced", rating: "4.6"},
+            {title: "Big Data Analytics", category: "data", icon: "fas fa-database", description: "Processing large datasets with Spark", duration: "10 weeks", level: "Advanced", rating: "4.8"},
+            {title: "Data Visualization", category: "data", icon: "fas fa-chart-pie", description: "Create compelling data visualizations", duration: "4 weeks", level: "Beginner", rating: "4.5"},
+            {title: "Business Intelligence", category: "data", icon: "fas fa-business-time", description: "BI tools and dashboard creation", duration: "6 weeks", level: "Intermediate", rating: "4.4"},
+            
+            // Cybersecurity Courses
+            {title: "Ethical Hacking Fundamentals", category: "cyber", icon: "fas fa-user-secret", description: "Learn penetration testing and security", duration: "8 weeks", level: "Intermediate", rating: "4.8"},
+            {title: "Network Security", category: "cyber", icon: "fas fa-network-wired", description: "Secure network infrastructure design", duration: "6 weeks", level: "Advanced", rating: "4.7"},
+            {title: "Cryptography Essentials", category: "cyber", icon: "fas fa-key", description: "Encryption and cryptographic protocols", duration: "4 weeks", level: "Intermediate", rating: "4.6"},
+            {title: "Incident Response", category: "cyber", icon: "fas fa-shield-alt", description: "Security incident handling and forensics", duration: "6 weeks", level: "Advanced", rating: "4.5"},
+            {title: "Security Compliance", category: "cyber", icon: "fas fa-clipboard-check", description: "Regulatory compliance and frameworks", duration: "4 weeks", level: "Beginner", rating: "4.3"},
+            
+            // Cloud Computing Courses
+            {title: "AWS Cloud Practitioner", category: "cloud", icon: "fab fa-aws", description: "Amazon Web Services fundamentals", duration: "6 weeks", level: "Beginner", rating: "4.7"},
+            {title: "Azure Solutions Architect", category: "cloud", icon: "fas fa-cloud", description: "Microsoft Azure cloud architecture", duration: "8 weeks", level: "Advanced", rating: "4.8"},
+            {title: "Google Cloud Platform", category: "cloud", icon: "fab fa-google", description: "GCP services and deployment", duration: "6 weeks", level: "Intermediate", rating: "4.6"},
+            {title: "DevOps with Docker", category: "cloud", icon: "fab fa-docker", description: "Containerization and orchestration", duration: "8 weeks", level: "Intermediate", rating: "4.7"},
+            {title: "Kubernetes Administration", category: "cloud", icon: "fas fa-server", description: "Container orchestration with K8s", duration: "10 weeks", level: "Advanced", rating: "4.9"},
+            
+            // IoT Courses
+            {title: "IoT Fundamentals", category: "iot", icon: "fas fa-wifi", description: "Internet of Things concepts and protocols", duration: "6 weeks", level: "Beginner", rating: "4.5"},
+            {title: "Arduino Programming", category: "iot", icon: "fas fa-microchip", description: "Embedded systems with Arduino", duration: "4 weeks", level: "Beginner", rating: "4.6"},
+            {title: "Raspberry Pi Projects", category: "iot", icon: "fab fa-raspberry-pi", description: "Advanced IoT projects with RPi", duration: "6 weeks", level: "Intermediate", rating: "4.7"},
+            {title: "Industrial IoT", category: "iot", icon: "fas fa-industry", description: "IoT applications in manufacturing", duration: "8 weeks", level: "Advanced", rating: "4.4"},
+            {title: "Smart Home Automation", category: "iot", icon: "fas fa-home", description: "Build intelligent home systems", duration: "4 weeks", level: "Beginner", rating: "4.5"}
+        ];
+
+        let displayedCourses = 0;
+        let currentFilter = 'all';
+        let filteredCourses = courses;
+
+        function renderCourses(coursesToRender, append = false) {
+            const grid = document.getElementById('coursesGrid');
+            if (!append) {
+                grid.innerHTML = '';
+                displayedCourses = 0;
             }
+
+            const coursesToShow = coursesToRender.slice(displayedCourses, displayedCourses + 12);
+            
+            coursesToShow.forEach(course => {
+                const courseCard = document.createElement('div');
+                courseCard.className = 'course-card';
+                courseCard.innerHTML = `
+                    <div class="course-icon">
+                        <i class="${course.icon}"></i>
+                    </div>
+                    <h3 class="course-title">${course.title}</h3>
+                    <div class="course-category">${course.category.toUpperCase()}</div>
+                    <p class="course-description">${course.description}</p>
+                    <div class="course-meta">
+                        <span class="course-duration">${course.duration}</span>
+                        <span class="course-level">${course.level}</span>
+                        <span class="course-rating">★ ${course.rating}</span>
+                    </div>
+                    <button class="course-btn" onclick="window.open('${studyLink}', '_blank')">
+                        Start Learning
+                    </button>
+                `;
+                grid.appendChild(courseCard);
+            });
+
+            displayedCourses += coursesToShow.length;
         }
+
+        function filterCourses(category) {
+            currentFilter = category;
+            
+            // Update active tab
+            document.querySelectorAll('.filter-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter courses
+            if (category === 'all') {
+                filteredCourses = courses;
+            } else {
+                filteredCourses = courses.filter(course => course.category === category);
+            }
+            
+            displayedCourses = 0;
+            renderCourses(filteredCourses);
+        }
+
+        function searchCourses() {
+            const searchTerm = document.getElementById('courseSearch').value.toLowerCase();
+            
+            if (searchTerm === '') {
+                filteredCourses = currentFilter === 'all' ? courses : courses.filter(course => course.category === currentFilter);
+            } else {
+                const baseFilter = currentFilter === 'all' ? courses : courses.filter(course => course.category === currentFilter);
+                filteredCourses = baseFilter.filter(course => 
+                    course.title.toLowerCase().includes(searchTerm) || 
+                    course.description.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            displayedCourses = 0;
+            renderCourses(filteredCourses);
+        }
+
+        function loadMoreCourses() {
+            renderCourses(filteredCourses, true);
+        }
+
+        // Search on Enter key
+        document.getElementById('courseSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchCourses();
+            }
+        });
+
+        // Initial render
+        renderCourses(courses);
     </script>
-{% endblock %}
-=======
-    <!-- Workshops Section -->
-    <section class="workshops" style="padding: 6rem 0;">
-        <div class="container">
-            <div class="section-header">
-                <h2>Hands-on Workshops</h2>
-                <p>Bi-monthly practical workshops to build specific skills in various technology niches</p>
-            </div>
-            <div class="workshop-grid">
-                <div class="workshop-card">
-                    <h3>UI/UX Design Workshop</h3>
-                    <p>Learn design thinking principles and create user-centered digital experiences.</p>
-                    <div class="workshop-info">
-                        <span><i class="fas fa-calendar"></i> Next: Feb 5, 2025</span>
-                        <span><i class="fas fa-clock"></i> 4 hours</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Virtual + Nairobi</span>
-                    </div>
-                    <a href="#" class="btn btn-primary">Join Workshop</a>
-                </div>
-
-                <div class="workshop-card">
-                    <h3>Smart Contract Security</h3>
-                    <p>Identify and prevent common vulnerabilities in blockchain smart contracts.</p>
-                    <div class="workshop-info">
-                        <span><i class="fas fa-calendar"></i> Next: Feb 12, 2025</span>
-                        <span><i class="fas fa-clock"></i> 6 hours</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Virtual</span>
-                    </div>
-                    <a href="#" class="btn btn-primary">Join Workshop</a>
-                </div>
-
-                <div class="workshop-card">
-                    <h3>IoT Device Programming</h3>
-                    <p>Build and program Internet of Things devices using Arduino and Raspberry Pi.</p>
-                    <div class="workshop-info">
-                        <span><i class="fas fa-calendar"></i> Next: Feb 19, 2025</span>
-                        <span><i class="fas fa-clock"></i> 8 hours</span>
-                        <span><i class="fas fa-map-marker-alt"></i> Nairobi Hub</span>
-                    </div>
-                    <a href="#" class="btn btn-primary">Join Workshop</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Innovators of Honour</h3>
-                    <p>Innovate with Honour, Impact the World</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Programs</h4>
-                    <ul>
-                        <li><a href="#">Bootcamps</a></li>
-                        <li><a href="#">Webinars</a></li>
-                        <li><a href="#">Workshops</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Innovators of Honour. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
->>>>>>> 2c986de (Initial commit of Django/Flask project)
