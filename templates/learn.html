@@ -1,0 +1,330 @@
+{% extends "base.html" %}
+
+{% block title %}Learning Platform - Innovators of Honour{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh; padding-top: 120px;">
+        <div class="container">
+            <div class="section-header">
+                <h1>Educational Platform</h1>
+                <p>Empower yourself with cutting-edge technology skills</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Categories -->
+    <section class="learning">
+        <div class="container">
+            <div class="section-header">
+                <h2>Course Categories</h2>
+                <p>Choose your learning path and advance your career</p>
+            </div>
+            
+            <div class="learning-grid">
+                <div class="course-category">
+                    <div class="category-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI & Machine Learning</h3>
+                    <div class="course-count">12 Courses Available</div>
+                    <p class="category-description">Master artificial intelligence and machine learning technologies that are reshaping industries worldwide.</p>
+                    <div class="category-stats">
+                        <span><i class="fas fa-users"></i> 2,500+ students</span>
+                        <span><i class="fas fa-star"></i> 4.8 rating</span>
+                    </div>
+                    <ul>
+                        <li>Introduction to AI & ML</li>
+                        <li>Deep Learning with TensorFlow</li>
+                        <li>Natural Language Processing</li>
+                        <li>Computer Vision Applications</li>
+                        <li>AI Ethics & Responsible AI</li>
+                    </ul>
+                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" target="_blank" class="btn btn-primary">Explore Courses</a>
+                </div>
+
+                <div class="course-category">
+                    <div class="category-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>Blockchain & Web3</h3>
+                    <div class="course-count">8 Courses Available</div>
+                    <p class="category-description">Learn blockchain technology, cryptocurrency, and decentralized applications development.</p>
+                    <div class="category-stats">
+                        <span><i class="fas fa-users"></i> 1,800+ students</span>
+                        <span><i class="fas fa-star"></i> 4.9 rating</span>
+                    </div>
+                    <ul>
+                        <li>Blockchain Fundamentals</li>
+                        <li>Smart Contract Development</li>
+                        <li>DeFi Protocol Design</li>
+                        <li>NFT Development & Marketplace</li>
+                        <li>Cryptocurrency Trading</li>
+                    </ul>
+                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" target="_blank" class="btn btn-primary">Start Learning</a>
+                </div>
+
+                <div class="course-category">
+                    <div class="category-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Web & Mobile Development</h3>
+                    <div class="course-count">15 Courses Available</div>
+                    <p class="category-description">Build modern web applications and mobile apps using the latest frameworks and technologies.</p>
+                    <div class="category-stats">
+                        <span><i class="fas fa-users"></i> 3,200+ students</span>
+                        <span><i class="fas fa-star"></i> 4.7 rating</span>
+                    </div>
+                    <ul>
+                        <li>React & Next.js Development</li>
+                        <li>Flutter Mobile Development</li>
+                        <li>Node.js Backend Development</li>
+                        <li>Progressive Web Apps</li>
+                        <li>DevOps & Cloud Deployment</li>
+                    </ul>
+                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" target="_blank" class="btn btn-primary">View Courses</a>
+                </div>
+
+                <div class="course-category">
+                    <div class="category-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Cybersecurity</h3>
+                    <div class="course-count">10 Courses Available</div>
+                    <p class="category-description">Protect digital assets and learn ethical hacking, security analysis, and risk management.</p>
+                    <div class="category-stats">
+                        <span><i class="fas fa-users"></i> 1,500+ students</span>
+                        <span><i class="fas fa-star"></i> 4.8 rating</span>
+                    </div>
+                    <ul>
+                        <li>Ethical Hacking Fundamentals</li>
+                        <li>Network Security Analysis</li>
+                        <li>Penetration Testing</li>
+                        <li>Digital Forensics</li>
+                        <li>Security Risk Management</li>
+                    </ul>
+                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" target="_blank" class="btn btn-primary">Secure Your Future</a>
+                </div>
+
+                <div class="course-category">
+                    <div class="category-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Data Science</h3>
+                    <div class="course-count">9 Courses Available</div>
+                    <p class="category-description">Extract insights from data using statistical analysis, visualization, and machine learning techniques.</p>
+                    <div class="category-stats">
+                        <span><i class="fas fa-users"></i> 2,100+ students</span>
+                        <span><i class="fas fa-star"></i> 4.6 rating</span>
+                    </div>
+                    <ul>
+                        <li>Python for Data Science</li>
+                        <li>Statistical Analysis & R</li>
+                        <li>Data Visualization</li>
+                        <li>Big Data Analytics</li>
+                        <li>Business Intelligence</li>
+                    </ul>
+                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" target="_blank" class="btn btn-primary">Analyze Data</a>
+                </div>
+
+                <div class="course-category">
+                    <div class="category-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <div class="course-count">7 Courses Available</div>
+                    <p class="category-description">Create beautiful, user-centered designs for web and mobile applications.</p>
+                    <div class="category-stats">
+                        <span><i class="fas fa-users"></i> 1,900+ students</span>
+                        <span><i class="fas fa-star"></i> 4.9 rating</span>
+                    </div>
+                    <ul>
+                        <li>Design Thinking Fundamentals</li>
+                        <li>User Experience Research</li>
+                        <li>Figma & Prototyping</li>
+                        <li>Mobile App Design</li>
+                        <li>Design Systems</li>
+                    </ul>
+                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" target="_blank" class="btn btn-primary">Design Better</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Resources -->
+    <section class="section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Free Learning Resources</h2>
+                <p>Start your learning journey with these complimentary resources</p>
+            </div>
+
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Study Guides</h3>
+                    <p>Comprehensive guides covering fundamental concepts in technology and innovation</p>
+                    <ul>
+                        <li>AI/ML Basics Guide</li>
+                        <li>Blockchain Primer</li>
+                        <li>Web Development Roadmap</li>
+                        <li>Startup Fundamentals</li>
+                    </ul>
+                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" target="_blank" class="btn btn-outline">Access Guides</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Code Samples</h3>
+                    <p>Ready-to-use code examples and templates for various programming languages and frameworks</p>
+                    <ul>
+                        <li>Python Scripts</li>
+                        <li>JavaScript Libraries</li>
+                        <li>React Components</li>
+                        <li>Smart Contracts</li>
+                    </ul>
+                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" target="_blank" class="btn btn-outline">Browse Code</a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Forum</h3>
+                    <p>Connect with fellow learners, ask questions, and share knowledge in our active community</p>
+                    <ul>
+                        <li>Q&A Discussions</li>
+                        <li>Project Showcases</li>
+                        <li>Study Groups</li>
+                        <li>Mentorship Network</li>
+                    </ul>
+                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" target="_blank" class="btn btn-outline">Join Forum</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Paths -->
+    <section class="learning">
+        <div class="container">
+            <div class="section-header">
+                <h2>Structured Learning Paths</h2>
+                <p>Follow curated paths designed for career advancement</p>
+            </div>
+
+            <div class="paths-grid">
+                <div class="path-card">
+                    <h3>Full-Stack Developer Path</h3>
+                    <div class="path-duration">6-8 months • Beginner to Advanced</div>
+                    <div class="path-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>HTML, CSS & JavaScript</h4>
+                                <p>Master the fundamentals of web development</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>React & Frontend Frameworks</h4>
+                                <p>Build dynamic user interfaces</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Node.js & Backend Development</h4>
+                                <p>Create robust server-side applications</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Database & Deployment</h4>
+                                <p>Complete the full-stack journey</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" target="_blank" class="btn btn-primary">Start Path</a>
+                </div>
+
+                <div class="path-card">
+                    <h3>AI/ML Engineer Path</h3>
+                    <div class="path-duration">8-10 months • Intermediate to Expert</div>
+                    <div class="path-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Python & Data Science</h4>
+                                <p>Build foundation in programming and statistics</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Machine Learning Algorithms</h4>
+                                <p>Understand core ML concepts and techniques</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Deep Learning & Neural Networks</h4>
+                                <p>Master advanced AI architectures</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>MLOps & Production Deployment</h4>
+                                <p>Deploy AI solutions at scale</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" target="_blank" class="btn btn-primary">Start Path</a>
+                </div>
+
+                <div class="path-card">
+                    <h3>Blockchain Developer Path</h3>
+                    <div class="path-duration">4-6 months • Beginner to Professional</div>
+                    <div class="path-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Blockchain Fundamentals</h4>
+                                <p>Understand distributed ledger technology</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Solidity Programming</h4>
+                                <p>Learn smart contract development</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>DApp Development</h4>
+                                <p>Build decentralized applications</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>DeFi & Advanced Protocols</h4>
+                                <p>Master complex blockchain systems</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://login.gale.com/oauth2/ausjkkn80o3gOb4aj696/v1/authorize?scope=openid+email+profile&response_type=id_token&redirect_uri=https%3A%2F%2Flink.gale.com%2Fapps%2Foauth2%2Fokta&state=aHR0cHM6Ly9saW5rLmdhbGUuY29tL2FwcHMvdWRlbXkvaWRwVXNlcj9wPVVERU1ZJnRhcmdldFBhdGg9JnU9dHhzaHJwdWIxMDAxMDAmZGV0ZWN0ZWRVc2VyPW1VbE5YQUZlcXZLTmR1dFlUV1ZKSlElM0QlM0QmdHo9QW1lcmljYS9DaGljYWdvJnBpdT1odHRwcyUzQSUyRiUyRmxpbmsuZ2FsZS5jb20&nonce=1726947127122&client_id=0oajgjpamQThTX8Ea696&response_mode=form_post" target="_blank" class="btn btn-primary">Start Path</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

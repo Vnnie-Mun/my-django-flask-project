@@ -1,0 +1,381 @@
+{% extends "base.html" %}
+
+{% block title %}Hiring Platform - Innovators of Honour{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh; padding-top: 120px;">
+        <div class="container">
+            <div class="section-header">
+                <h1>Hiring Platform</h1>
+                <p>Connect talent with opportunities across the globe</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Search Bar -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="job-search-bar">
+                <form class="job-search-form" onsubmit="searchJobs(event)">
+                    <div class="search-container">
+                        <input type="text" class="job-search-input" placeholder="Job title, keywords, or company" id="job-query">
+                        <input type="text" class="location-input" placeholder="Location" id="job-location">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i> Search Jobs
+                        </button>
+                    </div>
+                    <div class="job-filters">
+                        <select class="filter-select" id="job-type-filter" onchange="filterJobs()">
+                            <option value="all">All Types</option>
+                            <option value="Full-time">Full-time</option>
+                            <option value="Part-time">Part-time</option>
+                            <option value="Contract">Contract</option>
+                            <option value="Internship">Internship</option>
+                        </select>
+                        <select class="filter-select" id="remote-filter" onchange="filterJobs()">
+                            <option value="all">All Locations</option>
+                            <option value="remote">Remote Only</option>
+                            <option value="onsite">On-site Only</option>
+                        </select>
+                        <select class="filter-select" id="salary-filter" onchange="filterJobs()">
+                            <option value="all">All Salaries</option>
+                            <option value="0-50k">$0 - $50k</option>
+                            <option value="50k-100k">$50k - $100k</option>
+                            <option value="100k+">$100k+</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="hiring">
+        <div class="container">
+            <div class="hiring-content">
+                <div class="hiring-stats">
+                    <div class="hiring-stat">
+                        <h3>{{ jobs|length }}+</h3>
+                        <p>Active Job Postings</p>
+                    </div>
+                    <div class="hiring-stat">
+                        <h3>1000+</h3>
+                        <p>Registered Talents</p>
+                    </div>
+                    <div class="hiring-stat">
+                        <h3>95%</h3>
+                        <p>Placement Success Rate</p>
+                    </div>
+                </div>
+                <div class="hiring-features">
+                    <div class="feature">
+                        <i class="fas fa-search"></i>
+                        <h4>Smart Matching</h4>
+                        <p>AI-powered job matching based on skills and preferences</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-globe"></i>
+                        <h4>Global Opportunities</h4>
+                        <p>Access to remote and international job opportunities</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Verified Employers</h4>
+                        <p>All employers are vetted for credibility and ethics</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jobs Grid -->
+    <section class="section-alt" id="jobs">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest Job Opportunities</h2>
+                <p>Find your next career opportunity</p>
+            </div>
+            
+            <div class="job-grid" id="jobs-grid">
+                {% for job in jobs %}
+                <div class="job-card {% if job.featured %}featured{% endif %}" 
+                     data-type="{{ job.job_type }}" 
+                     data-remote="{{ job.remote|lower }}" 
+                     data-salary="{{ job.salary_range }}">
+                    {% if job.featured %}
+                    <div class="job-badge">Featured</div>
+                    {% endif %}
+                    
+                    <div class="job-header">
+                        <div class="company-logo">
+                            {{ job.company[0].upper() }}
+                        </div>
+                        <div class="job-info">
+                            <h4>{{ job.title }}</h4>
+                            <div class="company">{{ job.company }}</div>
+                            <div class="location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                {{ job.location }}
+                                {% if job.remote %}
+                                <span class="tag">Remote</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="job-salary">
+                            {{ job.salary_range or 'Competitive' }}
+                        </div>
+                    </div>
+                    
+                    <div class="job-description">
+                        {{ job.description[:150] }}...
+                    </div>
+                    
+                    <div class="job-tags">
+                        <span class="tag">{{ job.job_type }}</span>
+                        {% if job.remote %}
+                        <span class="tag">Remote</span>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="job-meta">
+                        <span><i class="fas fa-clock"></i> Posted {{ job.created_at.strftime('%d %b %Y') }}</span>
+                        <span><i class="fas fa-users"></i> {{ job.applications }} applications</span>
+                    </div>
+                    
+                    <div class="job-actions">
+                        <button class="btn btn-primary" onclick="applyToJob({{ job.id }})">
+                            <i class="fas fa-paper-plane"></i> Apply Now
+                        </button>
+                        <button class="btn btn-outline" onclick="saveJob({{ job.id }})">
+                            <i class="fas fa-bookmark"></i> Save
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Post Job Section -->
+    <section class="hiring" id="post-job">
+        <div class="container">
+            <div class="section-header">
+                <h2>Post a Job</h2>
+                <p>Find the perfect candidate for your team</p>
+            </div>
+            
+            <div class="post-job-content">
+                <div class="post-job-benefits">
+                    <h3>Why Post with Us?</h3>
+                    
+                    <div class="benefit-item">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <h4>Quality Candidates</h4>
+                            <p>Access to pre-screened, skilled professionals in tech and innovation</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <h4>Global Reach</h4>
+                            <p>Connect with talent from around the world, including Africa's top innovators</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <i class="fas fa-chart-line"></i>
+                        <div>
+                            <h4>High Success Rate</h4>
+                            <p>95% of our job postings result in successful hires within 30 days</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <i class="fas fa-handshake"></i>
+                        <div>
+                            <h4>Ethical Hiring</h4>
+                            <p>All candidates are committed to ethical practices and integrity</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="job-form-container">
+                    <form class="job-form" onsubmit="submitJob(event)">
+                        <div class="form-section">
+                            <h3>Job Details</h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="job-title">Job Title *</label>
+                                    <input type="text" id="job-title" name="title" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="company-name">Company Name *</label>
+                                    <input type="text" id="company-name" name="company" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="job-location">Location *</label>
+                                    <input type="text" id="job-location" name="location" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="job-type">Job Type *</label>
+                                    <select id="job-type" name="job_type" required>
+                                        <option value="">Select Type</option>
+                                        <option value="Full-time">Full-time</option>
+                                        <option value="Part-time">Part-time</option>
+                                        <option value="Contract">Contract</option>
+                                        <option value="Internship">Internship</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="salary-range">Salary Range</label>
+                                <input type="text" id="salary-range" name="salary_range" placeholder="e.g., $50,000 - $80,000">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" name="remote" value="true"> Remote work available
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Job Description</h3>
+                            
+                            <div class="form-group">
+                                <label for="job-description">Description *</label>
+                                <textarea id="job-description" name="description" rows="6" required 
+                                         placeholder="Describe the role, responsibilities, and what makes this opportunity exciting..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="job-requirements">Requirements</label>
+                                <textarea id="job-requirements" name="requirements" rows="4" 
+                                         placeholder="List the required skills, experience, and qualifications..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="job-benefits">Benefits</label>
+                                <textarea id="job-benefits" name="benefits" rows="3" 
+                                         placeholder="Health insurance, flexible hours, professional development..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Post Job
+                            </button>
+                            <div class="pricing-note">
+                                Job postings are free for the first 30 days. Premium features available for enhanced visibility.
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function searchJobs(event) {
+            event.preventDefault();
+            
+            const query = document.getElementById('job-query').value;
+            const location = document.getElementById('job-location').value;
+            
+            const params = new URLSearchParams();
+            if (query) params.set('q', query);
+            if (location) params.set('location', location);
+            
+            window.location.href = `/hiring?${params}`;
+        }
+        
+        function filterJobs() {
+            const typeFilter = document.getElementById('job-type-filter').value;
+            const remoteFilter = document.getElementById('remote-filter').value;
+            const salaryFilter = document.getElementById('salary-filter').value;
+            
+            const cards = document.querySelectorAll('.job-card');
+            
+            cards.forEach(card => {
+                const cardType = card.dataset.type;
+                const cardRemote = card.dataset.remote === 'true';
+                const cardSalary = card.dataset.salary;
+                
+                let show = true;
+                
+                if (typeFilter !== 'all' && cardType !== typeFilter) {
+                    show = false;
+                }
+                
+                if (remoteFilter === 'remote' && !cardRemote) {
+                    show = false;
+                } else if (remoteFilter === 'onsite' && cardRemote) {
+                    show = false;
+                }
+                
+                if (salaryFilter !== 'all' && cardSalary) {
+                    // Simple salary filtering logic
+                    const salary = cardSalary.toLowerCase();
+                    if (salaryFilter === '0-50k' && !salary.includes('50') && !salary.includes('40') && !salary.includes('30')) {
+                        show = false;
+                    } else if (salaryFilter === '50k-100k' && !salary.includes('50') && !salary.includes('60') && !salary.includes('70') && !salary.includes('80') && !salary.includes('90')) {
+                        show = false;
+                    } else if (salaryFilter === '100k+' && !salary.includes('100') && !salary.includes('120') && !salary.includes('150')) {
+                        show = false;
+                    }
+                }
+                
+                card.style.display = show ? 'block' : 'none';
+            });
+        }
+        
+        async function applyToJob(jobId) {
+            // In a real implementation, this would open an application form or redirect to application page
+            alert('Application form would open here. This would integrate with the job application system.');
+        }
+        
+        async function saveJob(jobId) {
+            // Save job to user's saved jobs list
+            alert('Job saved to your favorites!');
+        }
+        
+        async function submitJob(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const jobData = Object.fromEntries(formData.entries());
+            
+            // Convert checkbox to boolean
+            jobData.remote = formData.has('remote');
+            
+            try {
+                const response = await fetch('/api/jobs', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(jobData)
+                });
+                
+                if (response.ok) {
+                    alert('Job posted successfully!');
+                    event.target.reset();
+                    window.location.href = '/hiring';
+                } else {
+                    alert('Failed to post job. Please try again.');
+                }
+            } catch (error) {
+                console.error('Job submission error:', error);
+                alert('Failed to post job. Please try again.');
+            }
+        }
+    </script>
+{% endblock %}

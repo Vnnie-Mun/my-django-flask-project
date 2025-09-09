@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "base.html" %}
 
 {% block title %}Investor Platform - Innovators of Honour{% endblock %}
@@ -9,10 +10,52 @@
             <div class="section-header">
                 <h1>Investor Platform</h1>
                 <p>Discover and fund the next generation of innovative solutions</p>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Platform - Innovators of Honour</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html" style="text-decoration: none; color: inherit;">Innovators of Honour</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="hiring.html">Hiring</a></li>
+                <li><a href="learn.html">Learn</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="investors.html">Investors</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Investor Platform</h1>
+                <p class="hero-subtitle">Discover and fund the next generation of innovative solutions from ethical entrepreneurs committed to making a positive global impact.</p>
+                <div class="hero-buttons">
+                    <a href="#pitch-events" class="btn btn-primary">View Pitch Events</a>
+                    <a href="#join-investors" class="btn btn-secondary">Become an Investor</a>
+                </div>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
             </div>
         </div>
     </section>
 
+<<<<<<< HEAD
     <!-- Pitch Events -->
     <section class="investors" id="pitch-events">
         <div class="container">
@@ -53,10 +96,120 @@
                     </div>
                 </div>
                 {% endfor %}
+=======
+    <!-- Investment Stats -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">$5.2M+</div>
+                    <div class="stat-label">Total Funding Raised</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">25</div>
+                    <div class="stat-label">Funded Startups</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">80+</div>
+                    <div class="stat-label">Active Investors</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">92%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Upcoming Pitch Events -->
+    <section id="pitch-events" class="pitch-events" style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Upcoming Pitch Events</h2>
+                <p>Join our quarterly pitch events to discover promising startups and innovative solutions</p>
+            </div>
+            <div class="events-grid">
+                <div class="pitch-event-card featured">
+                    <div class="event-badge">Next Event</div>
+                    <div class="event-header">
+                        <div class="event-date-card">
+                            <span class="day">25</span>
+                            <span class="month">Jan</span>
+                            <span class="year">2025</span>
+                        </div>
+                        <div class="event-info">
+                            <h3>Q1 Innovation Showcase 2025</h3>
+                            <p class="event-time">
+                                <i class="fas fa-clock"></i>
+                                2:00 PM - 6:00 PM EAT | 11:00 AM - 3:00 PM GMT
+                            </p>
+                            <p class="event-location">
+                                <i class="fas fa-video"></i>
+                                Virtual Event + Live Stream
+                            </p>
+                        </div>
+                    </div>
+                    <div class="event-description">
+                        <p>20 carefully selected startups will pitch their innovative solutions to a panel of leading VCs, angel investors, and industry experts. Focus areas include AI/ML, FinTech, HealthTech, and Sustainability.</p>
+                    </div>
+                    <div class="event-highlights">
+                        <h4>Event Highlights:</h4>
+                        <ul>
+                            <li>20 startup pitches (5 minutes each)</li>
+                            <li>Live Q&A with founders</li>
+                            <li>Investor networking session</li>
+                            <li>Awards for best pitches</li>
+                        </ul>
+                    </div>
+                    <div class="event-categories">
+                        <span class="category-tag">AI/ML</span>
+                        <span class="category-tag">FinTech</span>
+                        <span class="category-tag">HealthTech</span>
+                        <span class="category-tag">Sustainability</span>
+                    </div>
+                    <div class="event-actions">
+                        <a href="#" class="btn btn-primary">Register as Investor</a>
+                        <a href="pitch-application.html" class="btn btn-outline">Submit Pitch</a>
+                    </div>
+                </div>
+
+                <div class="pitch-event-card">
+                    <div class="event-header">
+                        <div class="event-date-card">
+                            <span class="day">15</span>
+                            <span class="month">Apr</span>
+                            <span class="year">2025</span>
+                        </div>
+                        <div class="event-info">
+                            <h3>Q2 African Innovation Summit</h3>
+                            <p class="event-time">
+                                <i class="fas fa-clock"></i>
+                                1:00 PM - 5:00 PM EAT
+                            </p>
+                            <p class="event-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Nairobi + Virtual
+                            </p>
+                        </div>
+                    </div>
+                    <div class="event-description">
+                        <p>Special focus on African-led innovations addressing continental challenges. Featuring solutions in agriculture, education, financial inclusion, and infrastructure.</p>
+                    </div>
+                    <div class="event-categories">
+                        <span class="category-tag">AgriTech</span>
+                        <span class="category-tag">EdTech</span>
+                        <span class="category-tag">Financial Inclusion</span>
+                    </div>
+                    <div class="event-actions">
+                        <a href="#" class="btn btn-outline">Early Registration</a>
+                    </div>
+                </div>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
+            </div>
+        </div>
+    </section>
+
+<<<<<<< HEAD
     <!-- Investment Opportunities -->
     <section class="section-alt">
         <div class="container">
@@ -65,21 +218,39 @@
                 <p>Explore startups seeking funding</p>
             </div>
 
+=======
+    <!-- Featured Startups -->
+    <section class="featured-startups section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Investment Opportunities</h2>
+                <p>Promising startups currently seeking funding</p>
+            </div>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
             <div class="startups-grid">
                 <div class="startup-card">
                     <div class="startup-header">
                         <div class="startup-logo">
+<<<<<<< HEAD
                             <i class="fas fa-brain"></i>
                         </div>
                         <div class="startup-info">
                             <h3>NeuroTech AI</h3>
                             <div class="startup-tagline">AI-powered brain-computer interfaces for medical applications</div>
+=======
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="startup-info">
+                            <h3>MediAI Diagnostics</h3>
+                            <p class="startup-tagline">AI-powered medical diagnosis for remote areas</p>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
                             <div class="startup-location">
                                 <i class="fas fa-map-marker-alt"></i>
                                 Nairobi, Kenya
                             </div>
                         </div>
                         <div class="funding-status">
+<<<<<<< HEAD
                             <div class="status-badge seeking">Seeking $2M</div>
                         </div>
                     </div>
@@ -120,6 +291,44 @@
                         <button class="btn btn-outline" onclick="scheduleCall('neurotech')">
                             Schedule Call
                         </button>
+=======
+                            <span class="status-badge seeking">Seeking Funding</span>
+                        </div>
+                    </div>
+                    <div class="startup-description">
+                        <p>Revolutionary AI platform that analyzes medical images with 95% accuracy, enabling early disease detection in underserved communities across Africa.</p>
+                    </div>
+                    <div class="startup-metrics">
+                        <div class="metric">
+                            <span class="metric-value">$500K</span>
+                            <span class="metric-label">Seeking</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">15%</span>
+                            <span class="metric-label">Equity</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">$2M</span>
+                            <span class="metric-label">Valuation</span>
+                        </div>
+                    </div>
+                    <div class="startup-tags">
+                        <span class="tag">AI/ML</span>
+                        <span class="tag">Healthcare</span>
+                        <span class="tag">B2B</span>
+                    </div>
+                    <div class="startup-traction">
+                        <h5>Key Traction:</h5>
+                        <ul>
+                            <li>5 pilot hospitals deployed</li>
+                            <li>1,000+ diagnoses completed</li>
+                            <li>Partnership with Ministry of Health</li>
+                        </ul>
+                    </div>
+                    <div class="startup-actions">
+                        <a href="#" class="btn btn-primary">View Full Pitch</a>
+                        <a href="#" class="btn btn-outline">Contact Founders</a>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
                     </div>
                 </div>
 
@@ -129,6 +338,7 @@
                             <i class="fas fa-leaf"></i>
                         </div>
                         <div class="startup-info">
+<<<<<<< HEAD
                             <h3>GreenChain</h3>
                             <div class="startup-tagline">Blockchain-based carbon credit marketplace</div>
                             <div class="startup-location">
@@ -177,6 +387,52 @@
                         <button class="btn btn-outline" onclick="scheduleCall('greenchain')">
                             Schedule Call
                         </button>
+=======
+                            <h3>GreenChain Solutions</h3>
+                            <p class="startup-tagline">Blockchain carbon credit marketplace</p>
+                            <div class="startup-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Cape Town, South Africa
+                            </div>
+                        </div>
+                        <div class="funding-status">
+                            <span class="status-badge seeking">Series A</span>
+                        </div>
+                    </div>
+                    <div class="startup-description">
+                        <p>Transparent blockchain platform enabling businesses to trade verified carbon credits, supporting Africa's transition to sustainable energy.</p>
+                    </div>
+                    <div class="startup-metrics">
+                        <div class="metric">
+                            <span class="metric-value">$1.2M</span>
+                            <span class="metric-label">Seeking</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">20%</span>
+                            <span class="metric-label">Equity</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">$6M</span>
+                            <span class="metric-label">Valuation</span>
+                        </div>
+                    </div>
+                    <div class="startup-tags">
+                        <span class="tag">Blockchain</span>
+                        <span class="tag">Sustainability</span>
+                        <span class="tag">B2B</span>
+                    </div>
+                    <div class="startup-traction">
+                        <h5>Key Traction:</h5>
+                        <ul>
+                            <li>$500K ARR achieved</li>
+                            <li>50+ corporate clients</li>
+                            <li>2M tons CO2 credits traded</li>
+                        </ul>
+                    </div>
+                    <div class="startup-actions">
+                        <a href="#" class="btn btn-primary">View Full Pitch</a>
+                        <a href="#" class="btn btn-outline">Contact Founders</a>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
                     </div>
                 </div>
 
@@ -186,6 +442,7 @@
                             <i class="fas fa-graduation-cap"></i>
                         </div>
                         <div class="startup-info">
+<<<<<<< HEAD
                             <h3>EduConnect</h3>
                             <div class="startup-tagline">AI-powered personalized learning for African students</div>
                             <div class="startup-location">
@@ -234,6 +491,52 @@
                         <button class="btn btn-outline" onclick="scheduleCall('educonnect')">
                             Schedule Call
                         </button>
+=======
+                            <h3>EduConnect Africa</h3>
+                            <p class="startup-tagline">Offline-first educational platform</p>
+                            <div class="startup-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Lagos, Nigeria
+                            </div>
+                        </div>
+                        <div class="funding-status">
+                            <span class="status-badge seeking">Seed Round</span>
+                        </div>
+                    </div>
+                    <div class="startup-description">
+                        <p>Mobile-first educational platform providing offline-capable learning resources for students across Africa with limited internet access.</p>
+                    </div>
+                    <div class="startup-metrics">
+                        <div class="metric">
+                            <span class="metric-value">$250K</span>
+                            <span class="metric-label">Seeking</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">12%</span>
+                            <span class="metric-label">Equity</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">$2.1M</span>
+                            <span class="metric-label">Valuation</span>
+                        </div>
+                    </div>
+                    <div class="startup-tags">
+                        <span class="tag">EdTech</span>
+                        <span class="tag">Mobile</span>
+                        <span class="tag">B2C</span>
+                    </div>
+                    <div class="startup-traction">
+                        <h5>Key Traction:</h5>
+                        <ul>
+                            <li>10,000+ active students</li>
+                            <li>Partnership with 20 schools</li>
+                            <li>85% course completion rate</li>
+                        </ul>
+                    </div>
+                    <div class="startup-actions">
+                        <a href="#" class="btn btn-primary">View Full Pitch</a>
+                        <a href="#" class="btn btn-outline">Contact Founders</a>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
                     </div>
                 </div>
             </div>
@@ -241,6 +544,7 @@
     </section>
 
     <!-- Success Stories -->
+<<<<<<< HEAD
     <section class="investors">
         <div class="container">
             <div class="section-header">
@@ -248,6 +552,14 @@
                 <p>Companies that have successfully raised funding through our platform</p>
             </div>
 
+=======
+    <section class="success-stories" style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Investment Success Stories</h2>
+                <p>Celebrating our portfolio companies that have achieved significant milestones</p>
+            </div>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
             <div class="success-grid">
                 <div class="success-card">
                     <div class="success-header">
@@ -255,6 +567,7 @@
                             <i class="fas fa-mobile-alt"></i>
                         </div>
                         <div class="company-info">
+<<<<<<< HEAD
                             <h3>PayFlow</h3>
                             <p>Mobile payment solutions</p>
                         </div>
@@ -309,6 +622,30 @@
                         <div class="metric">
                             <span class="value">25K+</span>
                             <span class="label">Patients</span>
+=======
+                            <h3>PayFlow Kenya</h3>
+                            <p>Mobile payment solutions</p>
+                        </div>
+                        <div class="success-badge">
+                            <span>Acquired</span>
+                        </div>
+                    </div>
+                    <div class="success-story">
+                        <p>Started with $150K seed funding in 2022, PayFlow Kenya revolutionized mobile payments for small businesses. Acquired by major telecom for $15M in 2024.</p>
+                    </div>
+                    <div class="success-metrics">
+                        <div class="metric">
+                            <span class="value">100x</span>
+                            <span class="label">ROI</span>
+                        </div>
+                        <div class="metric">
+                            <span class="value">2 years</span>
+                            <span class="label">Timeline</span>
+                        </div>
+                        <div class="metric">
+                            <span class="value">50K+</span>
+                            <span class="label">Merchants</span>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
                         </div>
                     </div>
                 </div>
@@ -319,6 +656,7 @@
                             <i class="fas fa-seedling"></i>
                         </div>
                         <div class="company-info">
+<<<<<<< HEAD
                             <h3>AgriSmart</h3>
                             <p>IoT agriculture solutions</p>
                         </div>
@@ -341,6 +679,62 @@
                         <div class="metric">
                             <span class="value">1000+</span>
                             <span class="label">Farmers</span>
+=======
+                            <h3>AgriSmart Solutions</h3>
+                            <p>IoT farming technology</p>
+                        </div>
+                        <div class="success-badge">
+                            <span>Series B</span>
+                        </div>
+                    </div>
+                    <div class="success-story">
+                        <p>From $300K Series A to $5M Series B in 18 months. Now serving 10,000+ farmers across East Africa with smart irrigation systems.</p>
+                    </div>
+                    <div class="success-metrics">
+                        <div class="metric">
+                            <span class="value">17x</span>
+                            <span class="label">Growth</span>
+                        </div>
+                        <div class="metric">
+                            <span class="value">18 months</span>
+                            <span class="label">Timeline</span>
+                        </div>
+                        <div class="metric">
+                            <span class="value">10K+</span>
+                            <span class="label">Farmers</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-card">
+                    <div class="success-header">
+                        <div class="company-logo">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="company-info">
+                            <h3>CyberGuard Africa</h3>
+                            <p>Cybersecurity platform</p>
+                        </div>
+                        <div class="success-badge">
+                            <span>Profitable</span>
+                        </div>
+                    </div>
+                    <div class="success-story">
+                        <p>Bootstrapped to profitability with initial $200K investment. Now protecting 500+ African businesses from cyber threats with 40% YoY growth.</p>
+                    </div>
+                    <div class="success-metrics">
+                        <div class="metric">
+                            <span class="value">40%</span>
+                            <span class="label">YoY Growth</span>
+                        </div>
+                        <div class="metric">
+                            <span class="value">3 years</span>
+                            <span class="label">Timeline</span>
+                        </div>
+                        <div class="metric">
+                            <span class="value">500+</span>
+                            <span class="label">Clients</span>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
                         </div>
                     </div>
                 </div>
@@ -348,6 +742,7 @@
         </div>
     </section>
 
+<<<<<<< HEAD
     <!-- Join as Investor -->
     <section class="section-alt" id="join-investors">
         <div class="container">
@@ -355,11 +750,24 @@
                 <div class="investor-benefits">
                     <h3>Why Invest with Us?</h3>
                     
+=======
+    <!-- Join Investors -->
+    <section id="join-investors" class="join-investors section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Become an Investor</h2>
+                <p>Join our network of impact-driven investors supporting ethical innovation</p>
+            </div>
+            <div class="investor-content">
+                <div class="investor-benefits">
+                    <h3>Why Invest with Us?</h3>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
                     <div class="benefits-grid">
                         <div class="benefit-item">
                             <i class="fas fa-search"></i>
                             <div>
                                 <h4>Curated Deal Flow</h4>
+<<<<<<< HEAD
                                 <p>Access to pre-screened, high-potential startups with ethical foundations and strong market traction.</p>
                             </div>
                         </div>
@@ -385,10 +793,35 @@
                             <div>
                                 <h4>Portfolio Support</h4>
                                 <p>Ongoing support for portfolio companies including mentorship, networking, and strategic guidance.</p>
+=======
+                                <p>Access to pre-screened, high-potential startups with strong ethical foundations</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <h4>Expert Network</h4>
+                                <p>Connect with experienced investors and industry experts for co-investment opportunities</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-chart-line"></i>
+                            <div>
+                                <h4>Impact & Returns</h4>
+                                <p>Generate financial returns while supporting solutions that create positive social impact</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-handshake"></i>
+                            <div>
+                                <h4>Due Diligence Support</h4>
+                                <p>Comprehensive startup evaluation and ongoing portfolio company support</p>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
                             </div>
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
                 
                 <div class="investment-form">
                     <h3>Investor Application</h3>
@@ -462,12 +895,79 @@
                         <div class="form-note">
                             Applications are reviewed within 5 business days. Qualified investors will be invited to our next pitch event.
                         </div>
+=======
+                <div class="investor-form">
+                    <h3>Investor Application</h3>
+                    <form class="investment-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Investment Experience</label>
+                                <select required>
+                                    <option value="">Select experience level</option>
+                                    <option value="first-time">First-time investor</option>
+                                    <option value="some">Some experience (1-5 investments)</option>
+                                    <option value="experienced">Experienced (5+ investments)</option>
+                                    <option value="professional">Professional investor/VC</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Investment Range</label>
+                                <select required>
+                                    <option value="">Select investment range</option>
+                                    <option value="5k-25k">$5K - $25K</option>
+                                    <option value="25k-100k">$25K - $100K</option>
+                                    <option value="100k-500k">$100K - $500K</option>
+                                    <option value="500k+">$500K+</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Investment Focus Areas (select all that apply)</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="ai-ml"> AI & Machine Learning
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="fintech"> FinTech
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="healthtech"> HealthTech
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="edtech"> EdTech
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="sustainability"> Sustainability
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="blockchain"> Blockchain
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Brief Background & Investment Thesis</label>
+                            <textarea rows="4" placeholder="Tell us about your background and what drives your investment decisions"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Application</button>
+                        <p class="form-note">Applications are reviewed within 5 business days. Qualified investors will be invited to our next pitch event.</p>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
+<<<<<<< HEAD
     <script>
         async function registerForPitchEvent(eventId) {
             try {
@@ -525,3 +1025,41 @@
         }
     </script>
 {% endblock %}
+=======
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Innovators of Honour</h3>
+                    <p>Innovate with Honour, Impact the World</p>
+                </div>
+                <div class="footer-section">
+                    <h4>For Investors</h4>
+                    <ul>
+                        <li><a href="#">Pitch Events</a></li>
+                        <li><a href="#">Investment Opportunities</a></li>
+                        <li><a href="#">Portfolio Companies</a></li>
+                        <li><a href="#">Become an Investor</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>For Startups</h4>
+                    <ul>
+                        <li><a href="#">Submit Pitch</a></li>
+                        <li><a href="#">Funding Guidelines</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Mentorship</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Innovators of Honour. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)

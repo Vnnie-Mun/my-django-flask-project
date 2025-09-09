@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "base.html" %}
 
 {% block title %}Mint Solution NFT - Innovators of Honour{% endblock %}
@@ -25,18 +26,65 @@
                     <i class="fas fa-shield-alt"></i>
                     <h4>Blockchain Protection</h4>
                     <p>Your solution is minted as an NFT on Ethereum, providing immutable proof of ownership and authenticity</p>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mint Solution NFT - Innovators of Honour</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html" style="text-decoration: none; color: inherit;">Innovators of Honour</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="hiring.html">Hiring</a></li>
+                <li><a href="learn.html">Learn</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="investors.html">Investors</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 50vh;">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Mint Your Solution NFT</h1>
+                <p class="hero-subtitle">Transform your innovative solution into a blockchain-secured NFT and monetize your intellectual property.</p>
+                <div class="hero-buttons">
+                    <button id="connect-wallet" class="btn btn-primary">
+                        <i class="fas fa-wallet"></i> Connect Wallet
+                    </button>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
                 </div>
             </div>
         </div>
     </section>
 
+<<<<<<< HEAD
     <!-- Minting Process -->
+=======
+    <!-- Application Process -->
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
     <section class="application-process">
         <div class="container">
             <div class="section-header">
                 <h2>NFT Minting Process</h2>
                 <p>Follow these steps to mint your solution as an NFT</p>
             </div>
+<<<<<<< HEAD
             
             <div class="process-steps">
                 <div class="step">
@@ -68,12 +116,42 @@
                     <div class="step-content">
                         <h3>Mint NFT</h3>
                         <p>Complete the blockchain transaction to mint your solution as an NFT</p>
+=======
+            <div class="process-steps">
+                <div class="step" id="step-1">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Connect Wallet</h3>
+                        <p>Connect your MetaMask wallet to the blockchain</p>
+                    </div>
+                </div>
+                <div class="step" id="step-2">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Upload Files</h3>
+                        <p>Upload solution files and cover image</p>
+                    </div>
+                </div>
+                <div class="step" id="step-3">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Set Details</h3>
+                        <p>Add title, description, and pricing information</p>
+                    </div>
+                </div>
+                <div class="step" id="step-4">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Mint NFT</h3>
+                        <p>Create your solution NFT on the blockchain</p>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+<<<<<<< HEAD
     <!-- Minting Form -->
     <section class="pitch-application">
         <div class="container">
@@ -291,11 +369,134 @@
                         </div>
                         <div id="status-details">Preparing transaction...</div>
                     </div>
+=======
+    <!-- NFT Minting Interface -->
+    <section class="pitch-application section-alt">
+        <div class="container">
+            <div class="application-content">
+                <div class="application-info">
+                    <h2>Mint Solution NFT</h2>
+                    <p>Transform your innovative solution into a blockchain-secured NFT and monetize your intellectual property.</p>
+                    
+                    <div class="requirements">
+                        <h3>Why Mint as NFT?</h3>
+                        <ul>
+                            <li>Blockchain-secured ownership</li>
+                            <li>Monetize your innovation</li>
+                            <li>Global marketplace access</li>
+                            <li>Royalties on resales</li>
+                        </ul>
+                    </div>
+
+                    <div class="next-events">
+                        <h3>Smart Contract Info</h3>
+                        <div class="event-item">
+                            <strong>Blockchain Network</strong>
+                            <p>Ethereum Mainnet</p>
+                        </div>
+                        <div class="event-item">
+                            <strong>Estimated Gas Fee</strong>
+                            <p>~0.005 ETH</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="application-form">
+                    <form id="nft-mint-form" class="pitch-form">
+                        <div class="form-section">
+                            <h3>Upload Files</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Cover Image *</label>
+                                    <input type="file" id="cover-file" accept="image/*" required>
+                                    <small>Upload a cover image for your solution (PNG, JPG, GIF up to 10MB)</small>
+                                </div>
+                                <div class="form-group">
+                                    <label>Solution Files *</label>
+                                    <input type="file" id="solution-file" accept=".zip,.pdf,.doc,.docx" required>
+                                    <small>Upload your solution files (ZIP, PDF, DOC up to 50MB)</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Solution Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Solution Title *</label>
+                                    <input type="text" id="solution-title" placeholder="Enter solution name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Category *</label>
+                                    <select id="solution-category" required>
+                                        <option value="">Select category</option>
+                                        <option value="AI/ML">AI & Machine Learning</option>
+                                        <option value="Blockchain">Blockchain</option>
+                                        <option value="Healthcare">Healthcare</option>
+                                        <option value="FinTech">FinTech</option>
+                                        <option value="Education">Education</option>
+                                        <option value="Sustainability">Sustainability</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Description *</label>
+                                <textarea id="solution-description" rows="4" placeholder="Describe your solution, its features, and impact" required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Pricing & Royalties</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Price (ETH) *</label>
+                                    <input type="number" id="solution-price" step="0.01" min="0.01" placeholder="0.5" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Royalty (%) *</label>
+                                    <input type="number" id="solution-royalty" min="0" max="10" value="5" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Minting Cost</h3>
+                            <div class="form-group">
+                                <label>Estimated Costs</label>
+                                <div style="background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 8px; border: 1px solid #333;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                        <span>Gas Fee (estimated)</span>
+                                        <span id="gas-fee">~0.005 ETH</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                        <span>Platform Fee</span>
+                                        <span>0.001 ETH</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; border-top: 1px solid #333; padding-top: 0.5rem; font-weight: 600; color: #FFD700;">
+                                        <span>Total Cost</span>
+                                        <span id="total-cost">~0.006 ETH</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" id="preview-nft" class="btn btn-secondary">
+                                <i class="fas fa-eye"></i> Preview NFT
+                            </button>
+                            <button type="submit" id="mint-button" class="btn btn-primary" disabled>
+                                <i class="fas fa-hammer"></i> Mint NFT
+                            </button>
+                            <p class="form-note">By minting this NFT, you agree to our terms and conditions. The NFT will be created on the Ethereum blockchain.</p>
+                        </div>
+                    </form>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
                 </div>
             </div>
         </div>
     </section>
 
+<<<<<<< HEAD
     <script>
         let web3;
         let userAccount;
@@ -503,3 +704,414 @@
         });
     </script>
 {% endblock %}
+=======
+    <!-- NFT Preview Modal -->
+    <div id="nft-preview-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>NFT Preview</h2>
+            <div class="nft-preview">
+                <div class="nft-image">
+                    <img id="preview-image" src="" alt="NFT Preview">
+                </div>
+                <div class="nft-details">
+                    <h3 id="preview-title">Solution Title</h3>
+                    <p id="preview-description">Solution description...</p>
+                    <div class="nft-metadata">
+                        <div class="metadata-item">
+                            <strong>Category:</strong> <span id="preview-category">-</span>
+                        </div>
+                        <div class="metadata-item">
+                            <strong>Price:</strong> <span id="preview-price">- ETH</span>
+                        </div>
+                        <div class="metadata-item">
+                            <strong>Creator:</strong> <span id="preview-creator">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Innovators of Honour</h3>
+                    <p>Innovate with Honour, Impact the World</p>
+                </div>
+                <div class="footer-section">
+                    <h4>NFT Marketplace</h4>
+                    <ul>
+                        <li><a href="solutions.html">Browse NFTs</a></li>
+                        <li><a href="mint-nft.html">Mint NFT</a></li>
+                        <li><a href="#">My Collection</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Innovators of Honour. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="blockchain.js"></script>
+    <script src="script.js"></script>
+    <script>
+        let walletConnected = false;
+        let selectedFiles = {};
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeMintingInterface();
+            // Auto-connect wallet if available
+            if (typeof window.ethereum !== 'undefined') {
+                connectWallet();
+            }
+        });
+
+        async function initializeMintingInterface() {
+            const connectBtn = document.getElementById('connect-wallet');
+            const mintBtn = document.getElementById('mint-button');
+            
+            connectBtn.addEventListener('click', connectWallet);
+            
+            // File upload handlers
+            document.getElementById('cover-file').addEventListener('change', handleFileUpload);
+            document.getElementById('solution-file').addEventListener('change', handleFileUpload);
+            
+            // Form handlers
+            document.getElementById('nft-mint-form').addEventListener('submit', mintNFT);
+            document.getElementById('preview-nft').addEventListener('click', previewNFT);
+            
+            // Form validation
+            const inputs = document.querySelectorAll('#nft-mint-form input, #nft-mint-form select, #nft-mint-form textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', validateForm);
+            });
+            
+            // Modal handlers
+            setupModal();
+        }
+
+        async function connectWallet() {
+            const connectBtn = document.getElementById('connect-wallet');
+            connectBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Connecting...';
+            
+            try {
+                const connected = await blockchainManager.init();
+                if (connected) {
+                    walletConnected = true;
+                    connectBtn.innerHTML = '<i class="fas fa-check"></i> Wallet Connected';
+                    connectBtn.classList.add('connected');
+                    updateStep(1, true);
+                    updateStep(2, false);
+                    document.getElementById('mint-button').disabled = false;
+                    
+                    // Show smart contract info
+                    showSmartContractInfo();
+                } else {
+                    connectBtn.innerHTML = '<i class="fas fa-wallet"></i> Connect Wallet';
+                    showWalletInstallPrompt();
+                }
+            } catch (error) {
+                connectBtn.innerHTML = '<i class="fas fa-wallet"></i> Connect Wallet';
+                alert('Failed to connect wallet: ' + error.message);
+            }
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            const fileType = event.target.id;
+            
+            if (file) {
+                selectedFiles[fileType] = file;
+                const uploadBox = event.target.closest('.upload-box');
+                uploadBox.classList.add('uploaded');
+                uploadBox.querySelector('p').textContent = file.name;
+                
+                updateStep(2, true);
+                updateStep(3, false);
+            }
+        }
+
+        function updateStep(stepNumber, completed) {
+            const step = document.getElementById(`step-${stepNumber}`);
+            if (completed) {
+                step.classList.add('completed');
+            } else {
+                step.classList.add('active');
+            }
+        }
+
+        function previewNFT() {
+            const title = document.getElementById('solution-title').value;
+            const description = document.getElementById('solution-description').value;
+            const category = document.getElementById('solution-category').value;
+            const price = document.getElementById('solution-price').value;
+            
+            if (!title || !description || !category || !price) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Update preview
+            document.getElementById('preview-title').textContent = title;
+            document.getElementById('preview-description').textContent = description;
+            document.getElementById('preview-category').textContent = category;
+            document.getElementById('preview-price').textContent = price + ' ETH';
+            document.getElementById('preview-creator').textContent = blockchainManager.account || 'Not connected';
+            
+            // Show cover image if uploaded
+            if (selectedFiles['cover-file']) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    document.getElementById('preview-image').src = e.target.result;
+                };
+                reader.readAsDataURL(selectedFiles['cover-file']);
+            }
+            
+            document.getElementById('nft-preview-modal').style.display = 'block';
+        }
+
+        async function mintNFT(event) {
+            event.preventDefault();
+            
+            if (!walletConnected) {
+                alert('Please connect your wallet first');
+                await connectWallet();
+                return;
+            }
+            
+            if (!selectedFiles['cover-file'] || !selectedFiles['solution-file']) {
+                alert('Please upload both cover image and solution files');
+                return;
+            }
+            
+            const mintBtn = document.getElementById('mint-button');
+            mintBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Minting NFT...';
+            mintBtn.disabled = true;
+            
+            // Show minting progress
+            showMintingProgress();
+            
+            try {
+                const solutionData = {
+                    title: document.getElementById('solution-title').value,
+                    description: document.getElementById('solution-description').value,
+                    category: document.getElementById('solution-category').value,
+                    price: document.getElementById('solution-price').value
+                };
+                
+                const files = {
+                    coverImage: selectedFiles['cover-file'],
+                    solutionFile: selectedFiles['solution-file']
+                };
+                
+                updateStep(4, false);
+                
+                await paymentProcessor.submitSolution(solutionData, files,
+                    (result) => {
+                        updateStep(4, true);
+                        mintBtn.innerHTML = '<i class="fas fa-check"></i> NFT Minted Successfully!';
+                        mintBtn.classList.add('success');
+                        
+                        showSuccessMessage(result);
+                        
+                        setTimeout(() => {
+                            window.location.href = 'solutions.html';
+                        }, 3000);
+                    },
+                    (error) => {
+                        mintBtn.innerHTML = '<i class="fas fa-hammer"></i> Mint NFT';
+                        mintBtn.disabled = false;
+                        showErrorMessage(error.message);
+                    }
+                );
+            } catch (error) {
+                mintBtn.innerHTML = '<i class="fas fa-hammer"></i> Mint NFT';
+                mintBtn.disabled = false;
+                showErrorMessage(error.message);
+            }
+        }
+        
+        function validateForm() {
+            const title = document.getElementById('solution-title').value;
+            const description = document.getElementById('solution-description').value;
+            const category = document.getElementById('solution-category').value;
+            const price = document.getElementById('solution-price').value;
+            
+            const isValid = title && description && category && price && 
+                           selectedFiles['cover-file'] && selectedFiles['solution-file'] && walletConnected;
+            
+            document.getElementById('mint-button').disabled = !isValid;
+            
+            if (isValid) {
+                updateStep(3, true);
+            }
+        }
+        
+        function showMintingProgress() {
+            const progress = document.createElement('div');
+            progress.id = 'minting-progress';
+            progress.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.95);
+                color: #FFD700;
+                padding: 2rem;
+                border-radius: 12px;
+                border: 1px solid #FFD700;
+                text-align: center;
+                z-index: 2000;
+            `;
+            progress.innerHTML = `
+                <div style="margin-bottom: 1rem;">
+                    <i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i>
+                </div>
+                <h3>Minting Your NFT</h3>
+                <p>Please confirm the transaction in MetaMask...</p>
+                <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                    This may take a few minutes
+                </div>
+            `;
+            document.body.appendChild(progress);
+        }
+        
+        function showSuccessMessage(result) {
+            const existing = document.getElementById('minting-progress');
+            if (existing) existing.remove();
+            
+            const success = document.createElement('div');
+            success.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.95);
+                color: #10b981;
+                padding: 2rem;
+                border-radius: 12px;
+                border: 1px solid #10b981;
+                text-align: center;
+                z-index: 2000;
+            `;
+            success.innerHTML = `
+                <div style="margin-bottom: 1rem;">
+                    <i class="fas fa-check-circle" style="font-size: 2rem;"></i>
+                </div>
+                <h3>NFT Minted Successfully!</h3>
+                <p>Your solution is now available on the blockchain</p>
+                <div style="margin-top: 1rem; font-size: 0.9rem;">
+                    Redirecting to marketplace...
+                </div>
+            `;
+            document.body.appendChild(success);
+        }
+        
+        function showErrorMessage(message) {
+            const existing = document.getElementById('minting-progress');
+            if (existing) existing.remove();
+            
+            const error = document.createElement('div');
+            error.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.95);
+                color: #ef4444;
+                padding: 2rem;
+                border-radius: 12px;
+                border: 1px solid #ef4444;
+                text-align: center;
+                z-index: 2000;
+            `;
+            error.innerHTML = `
+                <div style="margin-bottom: 1rem;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 2rem;"></i>
+                </div>
+                <h3>Minting Failed</h3>
+                <p>${message}</p>
+                <button onclick="this.parentElement.remove()" class="btn btn-outline" style="margin-top: 1rem;">Close</button>
+            `;
+            document.body.appendChild(error);
+        }
+
+        function setupModal() {
+            const modal = document.getElementById('nft-preview-modal');
+            const closeBtn = modal.querySelector('.close');
+            
+            closeBtn.onclick = () => modal.style.display = 'none';
+            window.onclick = (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            };
+        }
+        
+        function showSmartContractInfo() {
+            const contractInfo = document.createElement('div');
+            contractInfo.id = 'contract-info';
+            contractInfo.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: rgba(0, 0, 0, 0.9);
+                color: #FFD700;
+                padding: 1rem;
+                border-radius: 8px;
+                border: 1px solid #FFD700;
+                font-size: 0.8rem;
+                z-index: 1000;
+                max-width: 300px;
+            `;
+            contractInfo.innerHTML = `
+                <div style="margin-bottom: 0.5rem;"><strong>Smart Contract Active</strong></div>
+                <div>Contract: ${blockchainManager.contractAddress.substring(0, 10)}...</div>
+                <div>Network: Ethereum</div>
+                <div style="margin-top: 0.5rem; font-size: 0.7rem; opacity: 0.8;">NFTs will be minted on blockchain</div>
+            `;
+            document.body.appendChild(contractInfo);
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                if (document.getElementById('contract-info')) {
+                    document.getElementById('contract-info').remove();
+                }
+            }, 5000);
+        }
+        
+        function showWalletInstallPrompt() {
+            const prompt = document.createElement('div');
+            prompt.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: #1a1a1a;
+                color: #f5f5f5;
+                padding: 2rem;
+                border-radius: 12px;
+                border: 1px solid #FFD700;
+                text-align: center;
+                z-index: 2000;
+                max-width: 400px;
+            `;
+            prompt.innerHTML = `
+                <h3 style="color: #FFD700; margin-bottom: 1rem;">MetaMask Required</h3>
+                <p style="margin-bottom: 1.5rem;">To mint NFTs, you need MetaMask wallet installed.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center;">
+                    <a href="https://metamask.io/download/" target="_blank" class="btn btn-primary">Install MetaMask</a>
+                    <button onclick="this.parentElement.parentElement.remove()" class="btn btn-outline">Close</button>
+                </div>
+            `;
+            document.body.appendChild(prompt);
+        }
+    </script>
+</body>
+</html>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)

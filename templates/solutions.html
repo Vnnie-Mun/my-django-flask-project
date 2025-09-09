@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block title %}Solutions Marketplace - Innovators of Honour{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh; padding-top: 120px;">
+        <div class="container">
+            <div class="section-header">
+                <h1>Solutions Marketplace</h1>
+                <p>Discover and showcase innovative solutions from our community</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blockchain Info -->
+    <section class="section-alt">
+        <div class="container">
+            <div class="blockchain-info">
+                <div class="info-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Blockchain Secured</h4>
+                    <p>All solutions are minted as NFTs on the Ethereum blockchain for authenticity and ownership protection</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label for="category-filter">Category:</label>
+                    <select id="category-filter" class="filter-select" onchange="filterSolutions()">
+                        <option value="all">All Categories</option>
+                        <option value="AI/ML">AI/ML</option>
+                        <option value="Blockchain">Blockchain</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Education">Education</option>
+                        <option value="FinTech">FinTech</option>
+                        <option value="Agriculture">Agriculture</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="stage-filter">Stage:</label>
+                    <select id="stage-filter" class="filter-select" onchange="filterSolutions()">
+                        <option value="all">All Stages</option>
+                        <option value="Concept">Concept</option>
+                        <option value="Prototype">Prototype</option>
+                        <option value="MVP">MVP</option>
+                        <option value="Launched">Launched</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="funding-filter">Funding:</label>
+                    <select id="funding-filter" class="filter-select" onchange="filterSolutions()">
+                        <option value="all">All</option>
+                        <option value="Seeking">Seeking Funding</option>
+                        <option value="Funded">Funded</option>
+                    </select>
+                </div>
+                <div class="search-group">
+                    <input type="search" class="search-input" placeholder="Search solutions..." id="solution-search">
+                    <button class="search-btn" onclick="searchSolutions()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Grid -->
+    <section class="solutions">
+        <div class="container">
+            <div class="solutions-grid" id="solutions-grid">
+                {% for solution in solutions %}
+                <div class="solution-card" data-category="{{ solution.category }}" data-stage="{{ solution.stage }}" data-funding="{{ solution.funding_status }}">
+                    <div class="solution-image">
+                        {% if solution.category == 'AI/ML' %}
+                            <i class="fas fa-brain"></i>
+                        {% elif solution.category == 'Blockchain' %}
+                            <i class="fas fa-link"></i>
+                        {% elif solution.category == 'Healthcare' %}
+                            <i class="fas fa-heartbeat"></i>
+                        {% elif solution.category == 'Education' %}
+                            <i class="fas fa-graduation-cap"></i>
+                        {% elif solution.category == 'Agriculture' %}
+                            <i class="fas fa-leaf"></i>
+                        {% else %}
+                            <i class="fas fa-lightbulb"></i>
+                        {% endif %}
+                    </div>
+                    <div class="solution-content">
+                        <h3>{{ solution.title }}</h3>
+                        <p>{{ solution.description }}</p>
+                        <div class="solution-tags">
+                            <span class="tag">{{ solution.category }}</span>
+                            <span class="tag">{{ solution.stage }}</span>
+                        </div>
+                        <div class="solution-stats">
+                            <span><i class="fas fa-eye"></i> {{ solution.views }} views</span>
+                            <span><i class="fas fa-shopping-cart"></i> {{ solution.purchases }} purchases</span>
+                        </div>
+                        <div class="solution-actions">
+                            <button class="btn btn-primary" onclick="purchaseSolution({{ solution.id }}, {{ solution.price_eth }})">
+                                <i class="fas fa-ethereum"></i> {{ solution.price_eth }} ETH
+                            </button>
+                            <button class="btn btn-outline" onclick="viewSolution({{ solution.id }})">
+                                <i class="fas fa-eye"></i> View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="{{ url_for('mint_nft') }}" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Submit Your Solution
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function filterSolutions() {
+            const category = document.getElementById('category-filter').value;
+            const stage = document.getElementById('stage-filter').value;
+            const funding = document.getElementById('funding-filter').value;
+            
+            const cards = document.querySelectorAll('.solution-card');
+            
+            cards.forEach(card => {
+                const cardCategory = card.dataset.category;
+                const cardStage = card.dataset.stage;
+                const cardFunding = card.dataset.funding;
+                
+                const categoryMatch = category === 'all' || cardCategory === category;
+                const stageMatch = stage === 'all' || cardStage === stage;
+                const fundingMatch = funding === 'all' || cardFunding === funding;
+                
+                if (categoryMatch && stageMatch && fundingMatch) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        function searchSolutions() {
+            const query = document.getElementById('solution-search').value.toLowerCase();
+            const cards = document.querySelectorAll('.solution-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(query) || description.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        async function purchaseSolution(solutionId, price) {
+            try {
+                // Check if MetaMask is available
+                if (typeof window.ethereum === 'undefined') {
+                    alert('Please install MetaMask to purchase solutions');
+                    return;
+                }
+                
+                // Request account access
+                await window.ethereum.request({ method: 'eth_requestAccounts' });
+                
+                // Simulate purchase (in real implementation, this would interact with smart contract)
+                const response = await fetch(`/api/solution/${solutionId}/purchase`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ price_eth: price })
+                });
+                
+                if (response.ok) {
+                    alert('Purchase successful! You now own this solution NFT.');
+                    location.reload();
+                } else {
+                    alert('Purchase failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Purchase error:', error);
+                alert('Purchase failed. Please try again.');
+            }
+        }
+        
+        async function viewSolution(solutionId) {
+            try {
+                await fetch(`/api/solution/${solutionId}/view`, {
+                    method: 'POST'
+                });
+                
+                // Show solution details modal or redirect
+                alert('Solution details would be displayed here');
+            } catch (error) {
+                console.error('View error:', error);
+            }
+        }
+    </script>
+{% endblock %}

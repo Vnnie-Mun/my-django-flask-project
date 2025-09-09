@@ -216,4 +216,8 @@ For technical support or feature requests related to this website, please contac
 
 **Motto**: "Innovate with Honour, Impact the World"
 
+<<<<<<< HEAD
 **Mission**: Unite brilliant minds across technology and business, providing a collaborative platform where ideas are nurtured, skills are sharpened, and innovations are brought to life through mentorship, knowledge sharing, ethical leadership, and Godly values.# my-django-flask-project
+=======
+**Mission**: Unite brilliant minds across technology and business, providing a collaborative platform where ideas are nurtured, skills are sharpened, and innovations are brought to life through mentorship, knowledge sharing, ethical leadership, and Godly values.
+>>>>>>> 2c986de (Initial commit of Django/Flask project)

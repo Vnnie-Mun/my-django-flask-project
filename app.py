@@ -419,7 +419,7 @@ def create_tables():
         
         # Add sample data if tables are empty
         if User.query.count() == 0:
-        sample_user = User(
+            sample_user = User(
             name='Vincent Kimuri',
             email='vincent@innovatorsofhonour.com',
             role='admin'
@@ -555,10 +555,11 @@ def create_tables():
         for event in events:
             db.session.add(event)
         
-            db.session.commit()
+        db.session.commit()
 
 # Initialize database on startup
 create_tables()
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)

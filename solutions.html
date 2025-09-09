@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "base.html" %}
 
 {% block title %}Solutions Marketplace - Innovators of Honour{% endblock %}
@@ -21,11 +22,53 @@
                     <i class="fas fa-shield-alt"></i>
                     <h4>Blockchain Secured</h4>
                     <p>All solutions are minted as NFTs on the Ethereum blockchain for authenticity and ownership protection</p>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions Marketplace - Innovators of Honour</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html" style="text-decoration: none; color: inherit;">Innovators of Honour</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="hiring.html">Hiring</a></li>
+                <li><a href="learn.html">Learn</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="investors.html">Investors</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Solutions Marketplace</h1>
+                <p class="hero-subtitle">Discover innovative solutions from our community and showcase your own groundbreaking projects to the world.</p>
+                <div class="hero-buttons">
+                    <a href="mint-nft.html" class="btn btn-primary">Submit Solution</a>
+                    <a href="#browse" class="btn btn-secondary">Browse Solutions</a>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
                 </div>
             </div>
         </div>
     </section>
 
+<<<<<<< HEAD
     <!-- Filter Bar -->
     <section class="stats-section">
         <div class="container">
@@ -65,11 +108,52 @@
                     <button class="search-btn" onclick="searchSolutions()">
                         <i class="fas fa-search"></i>
                     </button>
+=======
+    <!-- Filter Section -->
+    <section class="filters section-alt">
+        <div class="container">
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label>Category:</label>
+                    <select class="filter-select">
+                        <option value="">All Categories</option>
+                        <option value="ai-ml">AI & Machine Learning</option>
+                        <option value="blockchain">Blockchain</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="fintech">FinTech</option>
+                        <option value="education">Education</option>
+                        <option value="sustainability">Sustainability</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Stage:</label>
+                    <select class="filter-select">
+                        <option value="">All Stages</option>
+                        <option value="concept">Concept</option>
+                        <option value="prototype">Prototype</option>
+                        <option value="mvp">MVP</option>
+                        <option value="launched">Launched</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Funding Status:</label>
+                    <select class="filter-select">
+                        <option value="">All</option>
+                        <option value="seeking">Seeking Funding</option>
+                        <option value="funded">Funded</option>
+                        <option value="bootstrapped">Bootstrapped</option>
+                    </select>
+                </div>
+                <div class="search-group">
+                    <input type="search" placeholder="Search solutions..." class="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
                 </div>
             </div>
         </div>
     </section>
 
+<<<<<<< HEAD
     <!-- Solutions Grid -->
     <section class="solutions">
         <div class="container">
@@ -119,10 +203,141 @@
                 <a href="{{ url_for('mint_nft') }}" class="btn btn-primary">
                     <i class="fas fa-plus"></i> Submit Your Solution
                 </a>
+=======
+    <!-- Featured Solutions -->
+    <section id="browse" class="featured-solutions" style="padding: 4rem 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Solutions</h2>
+                <p>Highlighted innovations making significant impact</p>
+            </div>
+            <div class="solutions-grid">
+                <div class="solution-card featured">
+                    <div class="solution-badge">Featured</div>
+                    <div class="solution-image">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="solution-content">
+                        <h3>MediAI Diagnostic Platform</h3>
+                        <p>Revolutionary AI-powered diagnostic tool that analyzes medical images with 95% accuracy, enabling early disease detection in remote areas.</p>
+                        <div class="solution-creator">
+                            <i class="fas fa-user"></i>
+                            <span>Dr. Amina Hassan & Team</span>
+                        </div>
+                        <div class="solution-tags">
+                            <span class="tag">AI/ML</span>
+                            <span class="tag">Healthcare</span>
+                            <span class="tag">MVP</span>
+                        </div>
+                        <div class="solution-metrics">
+                            <div class="metric">
+                                <i class="fas fa-eye"></i>
+                                <span>2.5k views</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fas fa-heart"></i>
+                                <span>189 likes</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fas fa-share"></i>
+                                <span>45 shares</span>
+                            </div>
+                        </div>
+                        <div class="solution-funding">
+                            <span class="funding-status seeking">0.5 ETH</span>
+                        </div>
+                    </div>
+                    <div class="solution-actions">
+                        <button class="btn btn-primary" onclick="purchaseNFT(1, 0.5)">Purchase NFT</button>
+                        <a href="#" class="btn btn-outline">Preview</a>
+                    </div>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-image">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="solution-content">
+                        <h3>GreenChain Carbon Credits</h3>
+                        <p>Blockchain-based platform for transparent trading of carbon credits, enabling businesses to offset their carbon footprint effectively.</p>
+                        <div class="solution-creator">
+                            <i class="fas fa-user"></i>
+                            <span>EcoTech Innovations</span>
+                        </div>
+                        <div class="solution-tags">
+                            <span class="tag">Blockchain</span>
+                            <span class="tag">Sustainability</span>
+                            <span class="tag">Launched</span>
+                        </div>
+                        <div class="solution-metrics">
+                            <div class="metric">
+                                <i class="fas fa-eye"></i>
+                                <span>1.8k views</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fas fa-heart"></i>
+                                <span>134 likes</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fas fa-share"></i>
+                                <span>28 shares</span>
+                            </div>
+                        </div>
+                        <div class="solution-funding">
+                            <span class="funding-status funded">0.3 ETH</span>
+                        </div>
+                    </div>
+                    <div class="solution-actions">
+                        <button class="btn btn-primary" onclick="purchaseNFT(2, 0.3)">Purchase NFT</button>
+                        <a href="#" class="btn btn-outline">Preview</a>
+                    </div>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-image">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="solution-content">
+                        <h3>EduConnect Africa</h3>
+                        <p>Mobile-first educational platform providing offline-capable learning resources for students across Africa with limited internet access.</p>
+                        <div class="solution-creator">
+                            <i class="fas fa-user"></i>
+                            <span>Learning Bridge Collective</span>
+                        </div>
+                        <div class="solution-tags">
+                            <span class="tag">Education</span>
+                            <span class="tag">Mobile</span>
+                            <span class="tag">Prototype</span>
+                        </div>
+                        <div class="solution-metrics">
+                            <div class="metric">
+                                <i class="fas fa-eye"></i>
+                                <span>3.2k views</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fas fa-heart"></i>
+                                <span>267 likes</span>
+                            </div>
+                            <div class="metric">
+                                <i class="fas fa-share"></i>
+                                <span>89 shares</span>
+                            </div>
+                        </div>
+                        <div class="solution-funding">
+                            <span class="funding-status seeking">0.8 ETH</span>
+                        </div>
+                    </div>
+                    <div class="solution-actions">
+                        <button class="btn btn-primary" onclick="purchaseNFT(3, 0.8)">Purchase NFT</button>
+                        <a href="#" class="btn btn-outline">Preview</a>
+                    </div>
+                </div>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
             </div>
         </div>
     </section>
 
+<<<<<<< HEAD
     <script>
         function filterSolutions() {
             const category = document.getElementById('category-filter').value;
@@ -190,12 +405,217 @@
                 } else {
                     alert('Purchase failed. Please try again.');
                 }
+=======
+    <!-- All Solutions -->
+    <section class="all-solutions section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>All Solutions</h2>
+                <p>Browse our complete collection of innovative solutions</p>
+            </div>
+            <div class="solutions-list">
+                <div class="solution-item">
+                    <div class="solution-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="solution-info">
+                        <h4>CryptoSafe Wallet</h4>
+                        <p>Multi-signature cryptocurrency wallet with enhanced security features</p>
+                        <div class="solution-meta">
+                            <span class="tag">FinTech</span>
+                            <span class="views">1.2k views</span>
+                        </div>
+                    </div>
+                    <div class="solution-status">
+                        <span class="status mvp">MVP</span>
+                    </div>
+                </div>
+
+                <div class="solution-item">
+                    <div class="solution-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="solution-info">
+                        <h4>AgriBot Assistant</h4>
+                        <p>AI-powered farming assistant for crop monitoring and yield optimization</p>
+                        <div class="solution-meta">
+                            <span class="tag">AI/ML</span>
+                            <span class="views">890 views</span>
+                        </div>
+                    </div>
+                    <div class="solution-status">
+                        <span class="status prototype">Prototype</span>
+                    </div>
+                </div>
+
+                <div class="solution-item">
+                    <div class="solution-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="solution-info">
+                        <h4>SecureID Blockchain</h4>
+                        <p>Decentralized identity verification system for secure digital transactions</p>
+                        <div class="solution-meta">
+                            <span class="tag">Blockchain</span>
+                            <span class="views">1.5k views</span>
+                        </div>
+                    </div>
+                    <div class="solution-status">
+                        <span class="status launched">Launched</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 2rem;">
+                <a href="#" class="btn btn-outline">Load More Solutions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Submit Solution -->
+    <section id="submit" class="submit-solution" style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Submit Your Solution</h2>
+                <p>Share your innovative project with our global community</p>
+            </div>
+            <div class="submit-form-container">
+                <form class="submit-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Solution Name</label>
+                            <input type="text" name="title" placeholder="Enter your solution name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select name="category" required>
+                                <option value="">Select category</option>
+                                <option value="ai-ml">AI & Machine Learning</option>
+                                <option value="blockchain">Blockchain</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="fintech">FinTech</option>
+                                <option value="education">Education</option>
+                                <option value="sustainability">Sustainability</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Short Description</label>
+                        <textarea name="shortDescription" placeholder="Brief description of your solution (max 200 characters)" maxlength="200" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Detailed Description</label>
+                        <textarea name="description" placeholder="Detailed description of your solution, its features, and impact" rows="6" required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Development Stage</label>
+                            <select name="stage" required>
+                                <option value="">Select stage</option>
+                                <option value="concept">Concept</option>
+                                <option value="prototype">Prototype</option>
+                                <option value="mvp">MVP</option>
+                                <option value="launched">Launched</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Funding Status</label>
+                            <select name="fundingStatus" required>
+                                <option value="">Select status</option>
+                                <option value="seeking">Seeking Funding</option>
+                                <option value="funded">Funded</option>
+                                <option value="bootstrapped">Bootstrapped</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Demo/Website URL (Optional)</label>
+                        <input type="url" name="demoUrl" placeholder="https://your-demo-site.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Contact Email</label>
+                        <input type="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Price (ETH)</label>
+                        <input type="number" name="price" step="0.01" min="0.01" placeholder="0.5" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Cover Image</label>
+                        <input type="file" name="coverImage" accept="image/*" required>
+                        <small>Upload a cover image for your solution</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Solution Files</label>
+                        <input type="file" name="solutionFile" accept=".zip,.pdf,.doc" required>
+                        <small>Upload your solution files (ZIP, PDF, DOC)</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary" onclick="mintSolutionNFT(event)">
+                        <i class="fas fa-coins"></i> Mint Solution NFT
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Innovators of Honour</h3>
+                    <p>Innovate with Honour, Impact the World</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#">Browse Solutions</a></li>
+                        <li><a href="#">Submit Solution</a></li>
+                        <li><a href="#">Featured Projects</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Innovators of Honour. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="blockchain.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // NFT Marketplace Functions
+        async function purchaseNFT(tokenId, price) {
+            try {
+                const connected = await blockchainManager.init();
+                if (!connected) {
+                    alert('Please connect your wallet to purchase NFTs');
+                    return;
+                }
+                
+                const loadingBtn = event.target;
+                loadingBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                loadingBtn.disabled = true;
+                
+                await paymentProcessor.processPayment(tokenId, price, 
+                    (result) => {
+                        alert('NFT purchased successfully! Transaction: ' + result.transactionHash);
+                        loadingBtn.innerHTML = 'Purchased';
+                        loadingBtn.classList.add('purchased');
+                    },
+                    (error) => {
+                        alert('Purchase failed: ' + error.message);
+                        loadingBtn.innerHTML = 'Purchase NFT';
+                        loadingBtn.disabled = false;
+                    }
+                );
+>>>>>>> 2c986de (Initial commit of Django/Flask project)
             } catch (error) {
                 console.error('Purchase error:', error);
                 alert('Purchase failed. Please try again.');
             }
         }
         
+<<<<<<< HEAD
         async function viewSolution(solutionId) {
             try {
                 await fetch(`/api/solution/${solutionId}/view`, {
@@ -210,3 +630,149 @@
         }
     </script>
 {% endblock %}
+=======
+        async function mintSolutionNFT(event) {
+            event.preventDefault();
+            
+            try {
+                const connected = await blockchainManager.init();
+                if (!connected) {
+                    alert('Please connect your wallet to mint NFTs');
+                    return;
+                }
+                
+                const form = event.target.closest('form');
+                const formData = new FormData(form);
+                const files = {
+                    coverImage: formData.get('coverImage'),
+                    solutionFile: formData.get('solutionFile')
+                };
+                
+                const solutionData = {
+                    title: form.querySelector('input[placeholder*="solution name"]').value,
+                    description: form.querySelector('textarea[rows="6"]').value,
+                    category: form.querySelector('select').value,
+                    price: form.querySelector('input[name="price"]').value || 0.1
+                };
+                
+                const mintBtn = event.target;
+                mintBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Minting NFT...';
+                mintBtn.disabled = true;
+                
+                await paymentProcessor.submitSolution(solutionData, files,
+                    (result) => {
+                        alert('Solution NFT minted successfully! Token ID: ' + result.events.SolutionMinted.returnValues.tokenId);
+                        form.reset();
+                        mintBtn.innerHTML = '<i class="fas fa-coins"></i> Mint Solution NFT';
+                        mintBtn.disabled = false;
+                        loadSolutions();
+                    },
+                    (error) => {
+                        alert('Minting failed: ' + error.message);
+                        mintBtn.innerHTML = '<i class="fas fa-coins"></i> Mint Solution NFT';
+                        mintBtn.disabled = false;
+                    }
+                );
+            } catch (error) {
+                console.error('Minting error:', error);
+                alert('Minting failed. Please try again.');
+            }
+        }
+        
+        async function loadSolutions() {
+            try {
+                const solutions = await blockchainManager.getSolutionsForSale();
+                displaySolutions(solutions);
+            } catch (error) {
+                console.error('Error loading solutions:', error);
+            }
+        }
+        
+        function displaySolutions(solutions) {
+            const container = document.querySelector('.solutions-grid');
+            if (!solutions.length) return;
+            
+            solutions.forEach(solution => {
+                const solutionCard = createSolutionCard(solution);
+                container.appendChild(solutionCard);
+            });
+        }
+        
+        function createSolutionCard(solution) {
+            const card = document.createElement('div');
+            card.className = 'solution-card';
+            card.innerHTML = `
+                <div class="solution-image">
+                    <img src="https://ipfs.io/ipfs/${solution.coverImageHash}" alt="${solution.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <i class="fas fa-cube" style="display:none;"></i>
+                </div>
+                <div class="solution-content">
+                    <h3>${solution.title}</h3>
+                    <p>${solution.description}</p>
+                    <div class="solution-creator">
+                        <i class="fas fa-user"></i>
+                        <span>${solution.creator.substring(0,6)}...${solution.creator.substring(38)}</span>
+                    </div>
+                    <div class="solution-tags">
+                        <span class="tag">${solution.category}</span>
+                    </div>
+                    <div class="solution-funding">
+                        <span class="funding-status seeking">${solution.price} ETH</span>
+                    </div>
+                </div>
+                <div class="solution-actions">
+                    <button class="btn btn-primary" onclick="purchaseNFT(${solution.tokenId}, ${solution.price})">Purchase NFT</button>
+                    <a href="#" class="btn btn-outline">Preview</a>
+                </div>
+            `;
+            return card;
+        }
+        
+        // Initialize blockchain and load solutions on page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Show loading state
+            const grid = document.querySelector('.solutions-grid');
+            if (grid) {
+                grid.innerHTML = '<div style="text-align: center; padding: 2rem; color: #FFD700;"><i class="fas fa-spinner fa-spin" style="font-size: 2rem;"></i><br><br>Loading solutions...</div>';
+            }
+            
+            // Initialize blockchain
+            try {
+                await blockchainManager.init();
+            } catch (error) {
+                console.log('Blockchain initialization failed, using demo mode');
+            }
+            
+            // Load solutions
+            await loadSolutions();
+        });
+        
+        // Auto-connect wallet button
+        function addWalletConnectButton() {
+            const heroButtons = document.querySelector('.hero-buttons');
+            if (heroButtons && !document.getElementById('connect-wallet-btn')) {
+                const connectBtn = document.createElement('a');
+                connectBtn.id = 'connect-wallet-btn';
+                connectBtn.className = 'btn btn-outline';
+                connectBtn.innerHTML = '<i class="fas fa-wallet"></i> Connect Wallet';
+                connectBtn.onclick = async () => {
+                    const connected = await blockchainManager.init();
+                    if (connected) {
+                        connectBtn.innerHTML = '<i class="fas fa-check"></i> Wallet Connected';
+                        connectBtn.style.background = '#10b981';
+                        connectBtn.style.borderColor = '#10b981';
+                        connectBtn.style.color = 'white';
+                    }
+                };
+                heroButtons.appendChild(connectBtn);
+            }
+        }
+        
+        // Add wallet connect button
+        document.addEventListener('DOMContentLoaded', () => {
+            addWalletConnectButton();
+        });
+    </script>
+</body>
+</html>
+>>>>>>> 2c986de (Initial commit of Django/Flask project)

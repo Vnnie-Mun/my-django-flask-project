@@ -1,0 +1,505 @@
+{% extends "base.html" %}
+
+{% block title %}Mint Solution NFT - Innovators of Honour{% endblock %}
+
+{% block extra_head %}
+<script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
+{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 60vh; padding-top: 120px;">
+        <div class="container">
+            <div class="section-header">
+                <h1>Mint Your Solution as NFT</h1>
+                <p>Protect your intellectual property and monetize your innovation on the blockchain</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blockchain Info -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="blockchain-info">
+                <div class="info-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Blockchain Protection</h4>
+                    <p>Your solution is minted as an NFT on Ethereum, providing immutable proof of ownership and authenticity</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Minting Process -->
+    <section class="application-process">
+        <div class="container">
+            <div class="section-header">
+                <h2>NFT Minting Process</h2>
+                <p>Follow these steps to mint your solution as an NFT</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Connect Wallet</h3>
+                        <p>Connect your MetaMask wallet to interact with the Ethereum blockchain</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Upload Solution</h3>
+                        <p>Provide details about your solution and upload supporting files</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Set Price</h3>
+                        <p>Determine the price in ETH for others to purchase your solution</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Mint NFT</h3>
+                        <p>Complete the blockchain transaction to mint your solution as an NFT</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Minting Form -->
+    <section class="pitch-application">
+        <div class="container">
+            <div class="application-content">
+                <div class="application-info">
+                    <h2>Why Mint as NFT?</h2>
+                    
+                    <div class="requirements">
+                        <h3>Benefits</h3>
+                        <ul>
+                            <li>Immutable proof of ownership</li>
+                            <li>Monetize your intellectual property</li>
+                            <li>Global marketplace exposure</li>
+                            <li>Blockchain-verified authenticity</li>
+                            <li>Automatic royalty payments</li>
+                            <li>Decentralized storage protection</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="next-events">
+                        <h3>Minting Requirements</h3>
+                        
+                        <div class="event-item">
+                            <strong>MetaMask Wallet</strong>
+                            <p>Required for blockchain transactions</p>
+                        </div>
+                        
+                        <div class="event-item">
+                            <strong>ETH for Gas Fees</strong>
+                            <p>Approximately 0.01-0.05 ETH for minting</p>
+                        </div>
+                        
+                        <div class="event-item">
+                            <strong>Solution Documentation</strong>
+                            <p>Detailed description and supporting files</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Wallet Connection -->
+                    <div class="wallet-connection" style="margin-top: 2rem;">
+                        <h3>Wallet Status</h3>
+                        <div id="wallet-status" style="padding: 1rem; background: #1a1a1a; border-radius: 8px; border: 1px solid #333;">
+                            <p id="wallet-address">Not Connected</p>
+                            <button id="connect-wallet" class="btn btn-primary" onclick="connectWallet()">
+                                <i class="fas fa-wallet"></i> Connect MetaMask
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="application-form">
+                    <form class="pitch-form" onsubmit="mintSolutionNFT(event)">
+                        <div class="form-section">
+                            <h3>Solution Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="solution-title">Solution Title *</label>
+                                <input type="text" id="solution-title" name="title" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="solution-category">Category *</label>
+                                <select id="solution-category" name="category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="AI/ML">AI/Machine Learning</option>
+                                    <option value="Blockchain">Blockchain/Web3</option>
+                                    <option value="FinTech">FinTech</option>
+                                    <option value="HealthTech">HealthTech</option>
+                                    <option value="EdTech">EdTech</option>
+                                    <option value="AgTech">AgTech</option>
+                                    <option value="CleanTech">CleanTech</option>
+                                    <option value="IoT">IoT/Hardware</option>
+                                    <option value="SaaS">SaaS/Software</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="solution-stage">Development Stage *</label>
+                                <select id="solution-stage" name="stage" required>
+                                    <option value="">Select Stage</option>
+                                    <option value="Concept">Concept/Idea</option>
+                                    <option value="Prototype">Prototype</option>
+                                    <option value="MVP">MVP (Minimum Viable Product)</option>
+                                    <option value="Beta">Beta Version</option>
+                                    <option value="Launched">Launched/Production</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="solution-description">Detailed Description *</label>
+                                <textarea id="solution-description" name="description" rows="6" required 
+                                         placeholder="Provide a comprehensive description of your solution, the problem it solves, and its unique value proposition..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="technical-details">Technical Implementation</label>
+                                <textarea id="technical-details" name="technical_details" rows="4" 
+                                         placeholder="Describe the technical architecture, technologies used, and implementation details..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Pricing & Licensing</h3>
+                            
+                            <div class="form-group">
+                                <label for="nft-price">NFT Price (ETH) *</label>
+                                <input type="number" id="nft-price" name="price_eth" step="0.001" min="0.001" required value="0.1">
+                                <small>Minimum price: 0.001 ETH</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="license-type">License Type *</label>
+                                <select id="license-type" name="license_type" required>
+                                    <option value="">Select License</option>
+                                    <option value="Commercial">Commercial License - Full commercial rights</option>
+                                    <option value="Educational">Educational License - Academic use only</option>
+                                    <option value="Open Source">Open Source - MIT/Apache License</option>
+                                    <option value="Restricted">Restricted License - Limited use rights</option>
+                                    <option value="Custom">Custom License - Negotiable terms</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="royalty-percentage">Royalty Percentage</label>
+                                <input type="number" id="royalty-percentage" name="royalty" min="0" max="20" value="5">
+                                <small>Percentage of future sales you'll receive (0-20%)</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="funding-status">Funding Status</label>
+                                <select id="funding-status" name="funding_status">
+                                    <option value="Seeking">Seeking Funding</option>
+                                    <option value="Funded">Already Funded</option>
+                                    <option value="Self-funded">Self-funded</option>
+                                    <option value="Not Applicable">Not Applicable</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Supporting Files</h3>
+                            
+                            <div class="form-group">
+                                <label for="solution-image">Solution Image/Logo *</label>
+                                <input type="file" id="solution-image" name="image" accept="image/*" required>
+                                <small>Upload an image representing your solution (max 5MB, JPG/PNG)</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="documentation">Documentation (PDF)</label>
+                                <input type="file" id="documentation" name="documentation" accept=".pdf">
+                                <small>Technical documentation, whitepaper, or detailed specs (max 10MB)</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="source-code">Source Code (ZIP)</label>
+                                <input type="file" id="source-code" name="source_code" accept=".zip,.rar">
+                                <small>Optional: Source code archive (max 50MB) - will be encrypted until purchase</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="demo-url">Demo/Video URL</label>
+                                <input type="url" id="demo-url" name="demo_url" placeholder="https://youtube.com/watch?v=...">
+                                <small>Link to live demo, video demonstration, or prototype</small>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Additional Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="target-market">Target Market</label>
+                                <textarea id="target-market" name="target_market" rows="3" 
+                                         placeholder="Describe your target market, potential customers, and market size..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="competitive-advantage">Competitive Advantage</label>
+                                <textarea id="competitive-advantage" name="competitive_advantage" rows="3" 
+                                         placeholder="What makes your solution unique? How does it compare to existing alternatives?"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="implementation-guide">Implementation Guide</label>
+                                <textarea id="implementation-guide" name="implementation_guide" rows="4" 
+                                         placeholder="Provide guidance on how buyers can implement or use your solution..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-info">Contact Information</label>
+                                <textarea id="contact-info" name="contact_info" rows="2" 
+                                         placeholder="How can buyers contact you for support or customization? (Email, LinkedIn, etc.)"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="mint-button" disabled>
+                                <i class="fas fa-coins"></i> Mint Solution NFT
+                            </button>
+                            
+                            <div class="form-note">
+                                By minting this NFT, you confirm that you own the intellectual property rights to this solution.
+                                The minting process requires a blockchain transaction and gas fees.
+                                Your solution will be available in our marketplace once minted.
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <!-- Minting Status -->
+                    <div id="minting-status" class="submission-status" style="display: none;">
+                        <div class="status-message">Minting in progress...</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <div id="status-details">Preparing transaction...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let web3;
+        let userAccount;
+        let contract;
+        
+        // Contract ABI and address (simplified for demo)
+        const contractABI = [
+            {
+                "inputs": [{"name": "to", "type": "address"}, {"name": "tokenURI", "type": "string"}],
+                "name": "mintNFT",
+                "outputs": [{"name": "", "type": "uint256"}],
+                "type": "function"
+            }
+        ];
+        const contractAddress = "0x1234567890123456789012345678901234567890"; // Replace with actual contract
+        
+        async function connectWallet() {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    web3 = new Web3(window.ethereum);
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    userAccount = accounts[0];
+                    
+                    document.getElementById('wallet-address').textContent = `Connected: ${userAccount.substring(0, 6)}...${userAccount.substring(38)}`;
+                    document.getElementById('connect-wallet').textContent = 'Wallet Connected';
+                    document.getElementById('connect-wallet').disabled = true;
+                    document.getElementById('mint-button').disabled = false;
+                    
+                    // Initialize contract
+                    contract = new web3.eth.Contract(contractABI, contractAddress);
+                    
+                } catch (error) {
+                    console.error('Error connecting wallet:', error);
+                    alert('Failed to connect wallet. Please try again.');
+                }
+            } else {
+                alert('MetaMask is not installed. Please install MetaMask to continue.');
+                window.open('https://metamask.io/download/', '_blank');
+            }
+        }
+        
+        async function mintSolutionNFT(event) {
+            event.preventDefault();
+            
+            if (!userAccount) {
+                alert('Please connect your wallet first.');
+                return;
+            }
+            
+            const formData = new FormData(event.target);
+            const solutionData = Object.fromEntries(formData.entries());
+            
+            // Show minting status
+            document.getElementById('minting-status').style.display = 'block';
+            const statusDetails = document.getElementById('status-details');
+            
+            try {
+                // Step 1: Upload metadata to IPFS (simulated)
+                statusDetails.textContent = 'Uploading metadata to IPFS...';
+                
+                // In a real implementation, you would upload to IPFS here
+                const metadata = {
+                    name: solutionData.title,
+                    description: solutionData.description,
+                    image: "ipfs://QmYourImageHash", // Replace with actual IPFS hash
+                    attributes: [
+                        { trait_type: "Category", value: solutionData.category },
+                        { trait_type: "Stage", value: solutionData.stage },
+                        { trait_type: "License", value: solutionData.license_type },
+                        { trait_type: "Price", value: solutionData.price_eth + " ETH" }
+                    ]
+                };
+                
+                const tokenURI = "ipfs://QmYourMetadataHash"; // Replace with actual IPFS hash
+                
+                // Step 2: Mint NFT on blockchain
+                statusDetails.textContent = 'Minting NFT on blockchain...';
+                
+                // Simulate blockchain transaction (replace with actual contract call)
+                const gasEstimate = await contract.methods.mintNFT(userAccount, tokenURI).estimateGas({from: userAccount});
+                
+                const transaction = await contract.methods.mintNFT(userAccount, tokenURI).send({
+                    from: userAccount,
+                    gas: gasEstimate
+                });
+                
+                statusDetails.textContent = 'Transaction confirmed! Saving to database...';
+                
+                // Step 3: Save to database
+                const response = await fetch('/api/solutions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        ...solutionData,
+                        nft_token_id: transaction.events.Transfer.returnValues.tokenId,
+                        creator_address: userAccount,
+                        transaction_hash: transaction.transactionHash
+                    })
+                });
+                
+                if (response.ok) {
+                    // Success
+                    statusDetails.textContent = 'NFT minted successfully!';
+                    
+                    setTimeout(() => {
+                        const successMessage = document.createElement('div');
+                        successMessage.style.cssText = `
+                            background: rgba(16, 185, 129, 0.1);
+                            border: 1px solid #10b981;
+                            color: #10b981;
+                            padding: 2rem;
+                            border-radius: 12px;
+                            margin-top: 2rem;
+                            text-align: center;
+                        `;
+                        successMessage.innerHTML = `
+                            <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
+                            <h3 style="margin-bottom: 1rem;">NFT Minted Successfully!</h3>
+                            <p>Your solution has been minted as an NFT and is now available in our marketplace.</p>
+                            <p style="margin-top: 1rem;">
+                                <strong>Token ID:</strong> ${transaction.events.Transfer.returnValues.tokenId}<br>
+                                <strong>Transaction:</strong> <a href="https://etherscan.io/tx/${transaction.transactionHash}" target="_blank" style="color: #10b981;">${transaction.transactionHash.substring(0, 10)}...</a>
+                            </p>
+                            <div style="margin-top: 2rem;">
+                                <a href="/solutions" class="btn btn-primary">View in Marketplace</a>
+                            </div>
+                        `;
+                        
+                        document.querySelector('.application-form').appendChild(successMessage);
+                        document.getElementById('minting-status').style.display = 'none';
+                        event.target.style.display = 'none';
+                    }, 2000);
+                } else {
+                    throw new Error('Failed to save to database');
+                }
+                
+            } catch (error) {
+                console.error('Minting error:', error);
+                statusDetails.textContent = 'Minting failed. Please try again.';
+                
+                setTimeout(() => {
+                    document.getElementById('minting-status').style.display = 'none';
+                }, 3000);
+                
+                alert('Failed to mint NFT. Please check your wallet and try again.');
+            }
+        }
+        
+        // Check if wallet is already connected
+        window.addEventListener('load', async () => {
+            if (typeof window.ethereum !== 'undefined') {
+                web3 = new Web3(window.ethereum);
+                const accounts = await web3.eth.getAccounts();
+                if (accounts.length > 0) {
+                    userAccount = accounts[0];
+                    document.getElementById('wallet-address').textContent = `Connected: ${userAccount.substring(0, 6)}...${userAccount.substring(38)}`;
+                    document.getElementById('connect-wallet').textContent = 'Wallet Connected';
+                    document.getElementById('connect-wallet').disabled = true;
+                    document.getElementById('mint-button').disabled = false;
+                }
+            }
+        });
+        
+        // File validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const fileInputs = document.querySelectorAll('input[type="file"]');
+            fileInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    const file = this.files[0];
+                    if (file) {
+                        let maxSize;
+                        if (this.name === 'image') {
+                            maxSize = 5 * 1024 * 1024; // 5MB
+                        } else if (this.name === 'documentation') {
+                            maxSize = 10 * 1024 * 1024; // 10MB
+                        } else if (this.name === 'source_code') {
+                            maxSize = 50 * 1024 * 1024; // 50MB
+                        }
+                        
+                        if (file.size > maxSize) {
+                            alert(`File size must be less than ${maxSize / (1024 * 1024)}MB`);
+                            this.value = '';
+                            return;
+                        }
+                        
+                        // Show file name
+                        const fileName = document.createElement('small');
+                        fileName.textContent = `Selected: ${file.name}`;
+                        fileName.style.color = '#FFD700';
+                        fileName.style.display = 'block';
+                        fileName.style.marginTop = '0.5rem';
+                        
+                        // Remove existing file name display
+                        const existing = this.parentNode.querySelector('small:last-child');
+                        if (existing && existing.textContent.startsWith('Selected:')) {
+                            existing.remove();
+                        }
+                        
+                        this.parentNode.appendChild(fileName);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
