@@ -1,424 +1,189 @@
-# Comprehensive README for Innovators of Honour Platform
+# Innovators of Honour Website - Comprehensive README
 
-## Overview
+## Project Overview
 
-The Innovators of Honour platform is a full-stack web application that combines blockchain technology, AI-powered features, and real-time communication to create a comprehensive ecosystem for ethical innovation. Built with Django 5.2.6, Ethereum blockchain integration, and modern frontend technologies, the platform enables users to mint and trade solution NFTs, connect for job opportunities, pitch to investors, and engage with an AI-powered community.
+Welcome to the **Innovators of Honour** website project! This is a full-stack, dynamic web application designed for the Innovators of Honour community, a faith-based tech community focused on ethical leadership, innovation, and global impact. The platform embodies the motto **"Innovate with Honour, Impact the World"** and serves as a hub for ethical innovation, featuring an NFT-based Solutions Marketplace, advanced Hiring Platform, Investor Pitching System, Learning Resources, Community Engagement, and Programs for Bootcamps/Webinars.
 
-## Architecture
+The original site was a static HTML/CSS/JS platform inspired by [buildadao.io](https://buildadao.io), with a premium black and gold theme (no blues or whites), responsive design using Font Awesome 6, Inter fonts, and CSS media queries. We've transformed it into a production-ready Django 5.2.6 application with blockchain integration (Ethereum/Polygon NFTs), AI-powered features (OpenAI GPT-4o), real-time communication (Django Channels), and seamless deployment on AWS ECS + Vercel.
+
+### Key Features
+- **Solutions Marketplace**: Submit, mint, and sell innovative solutions as ERC-721 NFTs with direct ETH payments via MetaMask. Listings appear on the landing page and disappear upon purchase.
+- **Hiring Platform**: Post jobs, apply with resumes/cover letters, AI-structured email notifications, real-time chat (WebSockets), and AI matching superior to LinkedIn/Indeed.
+- **Investor Platform**: Submit pitches, AI matches startups to investors based on interests, Gmail-threaded conversations for connections.
+- **Learning & Programs**: Dynamic course catalogs, bootcamp/webinar schedules from DB.
+- **Community**: Event registration, WhatsApp/Instagram integration, prominent "Join Community" button (floating, navigation, hero CTA).
+- **Authentication**: Seamless Google OAuth with Flask-Login/Django auth, profile dashboards.
+- **AI Chatbot**: Site-wide contextual assistant for guidance (e.g., "How to mint an NFT?").
+- **Blockchain**: Secure NFT minting/purchasing on Sepolia testnet (Ethereum), with IPFS metadata.
+- **Theme & UX**: Black (#1a1a1a/#000) and gold (#FFD700) aesthetic preserved, responsive, animations via CSS/Intersection Observer.
+- **Ethical Focus**: Consent modals for blockchain/AI risks, privacy disclaimers, transparent fees.
 
 ### Tech Stack
+| Component | Technologies |
+|-----------|--------------|
+| **Backend** | Django 5.2.6, SQLAlchemy/PostgreSQL, Web3.py (blockchain), Celery (async tasks with Redis), Django Channels (WebSockets), OpenAI SDK (GPT-4o), Google API Client (Gmail OAuth) |
+| **Frontend** | HTML5/Jinja2, SASS/CSS3 (compiled), Bootstrap 5, JavaScript ES6+ (Web3.js for MetaMask), HTMX/AJAX (no-reloads), Font Awesome 6, Google Fonts (Inter) |
+| **Blockchain** | Solidity 0.8.30 (ERC-721 NFTs), OpenZeppelin 5.0.2 (security), Ethereum Sepolia testnet (Infura/Alchemy) |
+| **Deployment** | AWS ECS (backend with Docker/Gunicorn/Daphne), Vercel (frontend/static), RDS (PostgreSQL), ElastiCache (Redis) |
+| **Security** | CSRF, input validation, HTTPS, ReentrancyGuard (contracts), django-fernet-fields (encrypted creds), JWT/session auth |
+| **Testing** | Django TestCase (unit/integration), Hardhat (contract), Playwright (E2E) |
+| **Other** | Flask-Migrate (migrations), Celery Flower (task monitoring), Sentry (error logging) |
 
-**Backend:**
-- Django 5.2.6 with PostgreSQL database
-- Web3.py for blockchain integration
-- Django Channels for WebSocket real-time communication
-- Celery with Redis for asynchronous task processing
-- OpenAI API for AI-powered features
-
-**Frontend:**
-- HTML5, CSS3 (SASS-compiled), Bootstrap 5
-- JavaScript ES6+ with Web3.js for MetaMask integration
-- HTMX for dynamic content updates
-- Font Awesome 6, Google Fonts (Inter)
-
-**Blockchain:**
-- Ethereum/Polygon blockchain with Sepolia testnet
-- Solidity 0.8.30 smart contracts
-- MetaMask wallet integration
-- IPFS for decentralized file storage
-
-### Project Structure
+## Project Structure
 
 ```
 my-django-flask-project/
-├── manage.py
-├── myproject/
-│   ├── settings/ (base.py, dev.py, prod.py)
-│   ├── urls.py
-│   ├── asgi.py
-│   └── wsgi.py
-├── core/ (authentication, base templates, utilities)
-├── solutions/ (NFT marketplace functionality)
-├── hiring/ (job platform with real-time chat)
-├── investors/ (pitch and investment platform)
-├── scripts/ (deployment and contract management)
-├── requirements.txt
-├── Dockerfile
-├── docker-compose.yml
-└── README.md
+├── manage.py                          # Django entry point
+├── myproject/                         # Django project settings
+│   ├── __init__.py
+│   ├── settings/                      # Split settings
+│   │   ├── __init__.py
+│   │   ├── base.py                    # Base config (DB, apps, middleware)
+│   │   ├── dev.py                     # Development overrides
+│   │   └── prod.py                    # Production (security, logging)
+│   ├── urls.py                        # Main URL routing
+│   ├── asgi.py                        # ASGI for Channels/WebSockets
+│   ├── wsgi.py                        # WSGI for Gunicorn
+│   └── celery.py                      # Celery config
+├── core/                              # Core app (auth, utils, shared templates)
+│   ├── migrations/
+│   ├── models.py                      # UserProfile, base models
+│   ├── views.py                       # Auth views, chatbot API
+│   ├── forms.py                       # Auth/forms
+│   ├── utils.py                       # Gmail helpers, blockchain utils
+│   ├── admin.py
+│   ├── tests/                         # test_auth.py, test_utils.py
+│   ├── templates/core/
+│   │   ├── base.html                  # Base template (nav, footer, chatbot widget)
+│   │   ├── index.html                 # Landing (hero, stats, featured NFTs)
+│   │   ├── login.html                 # Google OAuth login
+│   │   ├── programs.html              # Bootcamps/webinars (DB-driven)
+│   │   ├── learn.html                 # Courses/learning paths
+│   │   └── community.html             # Events, WhatsApp join
+│   └── static/core/
+│       ├── css/
+│       │   ├── styles.scss            # SASS source (black/gold theme)
+│       │   └── styles.css             # Compiled CSS (responsive, animations)
+│       └── js/
+│           ├── script.js              # General JS (nav, forms, external links)
+│           └── chatbot.js             # AI chatbot widget
+├── solutions/                         # NFT Marketplace app
+│   ├── migrations/
+│   ├── models.py                      # Solution model (title, token_id, is_sold)
+│   ├── views.py                       # Submit mint, purchase, API endpoints
+│   ├── forms.py                       # SolutionForm
+│   ├── admin.py
+│   ├── tests/                         # test_blockchain.py (mock Web3)
+│   ├── templates/solutions/
+│   │   ├── solutions.html             # Marketplace listings (HTMX fetch)
+│   │   └── submit_solution.html       # Mint form (integrated with mint-nft.html)
+│   ├── static/solutions/
+│   │   └── js/
+│   │       ├── blockchain.js          # Web3.js (wallet connect, buy)
+│   │       ├── nft-payment.js         # Payment manager (gas est, tx tracking)
+│   │       └── marketplace.js         # Dynamic listings
+│   └── contracts/
+│       └── SolutionNFT.sol            # Solidity ERC-721 contract
+├── hiring/                            # Hiring Platform app
+│   ├── migrations/
+│   ├── models.py                      # Job, Application, SavedJob, ChatMessage, JobMatch
+│   ├── views.py                       # Post job, apply, dashboard
+│   ├── forms.py                       # JobForm, ApplicationForm
+│   ├── consumers.py                   # WebSocket chat consumer
+│   ├── routing.py                     # WS routing
+│   ├── tasks.py                       # Celery AI matching/email
+│   ├── admin.py
+│   ├── tests/                         # test_hiring.py (apply, chat)
+│   ├── templates/hiring/
+│   │   ├── hiring.html                # Job listings (real-time via HTMX)
+│   │   ├── post_job.html              # Recruiter form
+│   │   └── chat.html                  # Chat interface (WebSocket)
+│   └── static/hiring/
+│       └── js/chat.js                 # Real-time chat client
+├── investors/                         # Investor Platform app
+│   ├── migrations/
+│   ├── models.py                      # Pitch, InvestorProfile, Match
+│   ├── views.py                       # Submit pitch, matches
+│   ├── forms.py                       # PitchForm
+│   ├── tasks.py                       # Celery AI matching
+│   ├── admin.py
+│   ├── tests/                         # test_investors.py (matching, email)
+│   ├── templates/investors/
+│   │   ├── investors.html             # Pitch listings/matches
+│   │   └── submit_pitch.html          # Startup form
+│   └── static/investors/
+│       └── js/match.js                # Dynamic matches (AJAX)
+├── scripts/                           # Deployment/testing scripts
+│   ├── deploy_contract.py             # Web3.py contract deploy
+│   └── test_contract.js               # Hardhat test wrapper
+├── requirements.txt                   # Python deps
+├── Dockerfile                         # Backend container (ECS)
+├── docker-compose.yml                 # Local dev (Postgres/Redis/Celery)
+├── nginx.conf                         # Reverse proxy config (optional)
+├── .env.example                       # Env vars template
+├── README.md                          # This file!
+└── .gitignore                         # Standard ignores
 ```
-
-## Key Features
-
-### 1. Solutions Marketplace (NFT-Based)
-
-**Smart Contract (SolutionNFT.sol):**
-- ERC721-compliant NFT contract with minting and purchasing functionality
-- Direct ETH transfers from buyer to seller with no intermediaries
-- Reentrancy protection and secure transaction handling
-- Event logging for transparent transaction history
-
-**Minting Process:**
-1. User submits solution details through web form
-2. Backend validates data and prepares metadata
-3. Smart contract mints NFT with unique token ID
-4. Metadata stored on IPFS for decentralization
-5. NFT listed on marketplace with real-time updates
-
-**Purchase Flow:**
-1. Buyer connects MetaMask wallet
-2. Selects NFT and confirms purchase
-3. ETH transferred directly to seller's wallet
-4. NFT ownership transferred to buyer
-5. Listing automatically removed from marketplace
-
-### 2. Authentication System
-
-- Google OAuth integration for seamless login
-- Role-based access control (users, recruiters, investors)
-- Session management with Django's built-in auth
-- Secure password handling and credential storage
-
-### 3. Hiring Platform
-
-**Job Posting & Applications:**
-- Recruiters can post jobs with detailed requirements
-- Applicants can submit applications with resume upload
-- AI-powered application processing and email structuring
-- Real-time chat between recruiters and applicants
-
-**AI Matching:**
-- OpenAI integration to match applicants with job requirements
-- Similarity scoring and automated connection suggestions
-- Email notifications for high-match applications
-
-### 4. Investor Platform
-
-**Pitch Management:**
-- Startups can create and submit pitch proposals
-- Investors can browse and filter pitches by interest
-- AI-powered matching between pitches and investor preferences
-
-**Connection System:**
-- Automated email introductions for matched parties
-- Gmail API integration for threaded conversations
-- Real-time communication channels
-
-### 5. AI Chatbot
-
-- Site-wide contextual assistance
-- Page-aware responses based on user location
-- OpenAI GPT-4 integration for intelligent responses
-- Floating widget design for easy access
-
-## Blockchain Integration
-
-### Smart Contract Details
-
-The SolutionNFT contract includes:
-
-```solidity
-// Key features
-- Minting with price validation
-- Secure purchase function with reentrancy protection
-- Event emission for transaction transparency
-- Ownership tracking with direct ETH transfers
-- Metadata URI storage for NFT information
-```
-
-### Wallet Integration
-
-The platform uses MetaMask for:
-- Secure wallet connection
-- Transaction signing and confirmation
-- Network detection and switching
-- Balance checking and gas estimation
-
-### Transaction Flow
-
-1. Frontend initiates transaction through Web3.js
-2. MetaMask prompts user for confirmation
-3. Transaction broadcast to Ethereum network
-4. Backend listens for confirmation events
-5. Database updated upon transaction completion
-6. UI refreshed with new state
-
-## Deployment Strategy
-
-### AWS ECS + Vercel Architecture
-
-**Backend (AWS ECS):**
-- Docker containerization for consistent deployment
-- Auto-scaling based on traffic demands
-- RDS PostgreSQL for database management
-- Elasticache Redis for Celery and Channels
-- Load balancing with HTTPS termination
-
-**Frontend (Vercel):**
-- Global CDN for fast asset delivery
-- Automatic SSL certification
-- Serverless function proxying to backend APIs
-- Instant cache invalidation on updates
-
-**Blockchain Infrastructure:**
-- Infura for Ethereum node access
-- Secure key management with AWS Secrets Manager
-- Contract deployment via scripts/remix
-
-### Environment Configuration
-
-The project uses environment-specific settings:
-- `base.py`: Shared configuration across environments
-- `dev.py`: Development settings with debugging enabled
-- `prod.py`: Production settings with security optimizations
-
-Key environment variables:
-- `SECRET_KEY`: Django secret key
-- `DATABASE_URL`: PostgreSQL connection string
-- `INFURA_URL`: Ethereum node endpoint
-- `CONTRACT_ADDRESS`: Deployed smart contract address
-- `OPENAI_API_KEY`: OpenAI integration key
 
 ## Setup Instructions
 
+### Prerequisites
+- Python 3.11+
+- Node.js 18+ (for Hardhat testing)
+- Docker & Docker Compose
+- AWS CLI (for ECS deployment)
+- MetaMask wallet with Sepolia ETH (testnet faucet: sepoliafaucet.com)
+- Google Cloud Console: Enable Gmail API, create OAuth client (redirect: /oauth/callback)
+- Infura/Alchemy account (free tier for Sepolia)
+- OpenAI API key
+
 ### Local Development
+1. Clone repo: `git clone <repo> && cd my-django-flask-project`
+2. Create virtualenv: `python -m venv venv && source venv/bin/activate` (Linux/Mac) or `venv\Scripts\activate` (Windows)
+3. Install deps: `pip install -r requirements.txt`
+4. Copy env: `cp .env.example .env` → Edit with keys (SECRET_KEY, OPENAI_API_KEY, INFURA_URL, etc.)
+5. Start services: `docker-compose up -d` (Postgres/Redis)
+6. Migrate: `python manage.py makemigrations && python manage.py migrate`
+7. Create superuser: `python manage.py createsuperuser`
+8. Deploy contract: `python scripts/deploy_contract.py` → Note address/ABI in .env
+9. Run server: `python manage.py runserver`
+10. Celery: `celery -A myproject worker -l info`
+11. Admin: /admin/ → Add test users/profiles.
+12. Test: `python manage.py test` (Django) → `npx hardhat test scripts/test_contract.js` (contract)
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd my-django-flask-project
-   ```
+## Deployment Guide
 
-2. **Set up Python environment**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # Linux/Mac
-   # or
-   venv\Scripts\activate  # Windows
-   ```
+### AWS ECS Backend + Vercel Frontend
+1. **AWS Setup**:
+   - Create ECR repo: `aws ecr create-repository --repository-name innovators-backend`
+   - Build/push: `docker build -t innovators-backend . && docker tag ... <ecr-uri>:latest && docker push <ecr-uri>`
+   - RDS: Launch PostgreSQL instance → Update DATABASE_URL in secrets.
+   - ElastiCache: Redis cluster → Update CELERY_BROKER_URL.
+   - ECS: Create cluster → Task definition (Docker image, ports 8000/8001, env from secrets) → Service (Fargate, ALB, auto-scale 1-5).
+   - ALB: HTTPS listener → Security group (HTTP/HTTPS inbound).
+   - Migrate on deploy: Add init container or ECS run task: `python manage.py migrate`.
 
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+2. **Vercel Frontend**:
+   - Create repo with static/ and templates/ (build: compile SASS to CSS via script).
+   - Vercel CLI: `vercel --prod` → Set API proxy: vercel.json `{ "rewrites": [{ "source": "/api/(.*)", "destination": "https://<alb-dns>/api/$1" }] }`
+   - Custom domain: Add to Vercel → SSL auto.
 
-4. **Configure environment variables**
-   ```bash
-   cp .env.example .env
-   # Edit .env with your configuration
-   ```
+### Cost Estimate
+- AWS: ECS Fargate (~$30/mo), RDS t3.micro (~$15/mo), ElastiCache (~$20/mo) = ~$65/mo.
+- Vercel: Free tier for hobby, $20/mo pro.
+- Infura/OpenAI: Free tiers sufficient for low traffic.
 
-5. **Set up database**
-   ```bash
-   python manage.py migrate
-   python manage.py createsuperuser
-   ```
+## Contributing & Ethical Guidelines
+- Fork/PR for features.
+- Ethical: All AI/blockchain uses require user consent; no data sold.
+- Community: Join WhatsApp for discussions; align with faith-based values.
 
-6. **Run development server**
-   ```bash
-   python manage.py runserver
-   ```
-
-### Docker Development
-
-1. **Build and start containers**
-   ```bash
-   docker-compose up -d
-   ```
-
-2. **Run migrations**
-   ```bash
-   docker-compose exec web python manage.py migrate
-   ```
-
-3. **Create superuser**
-   ```bash
-   docker-compose exec web python manage.py createsuperuser
-   ```
-
-### Smart Contract Deployment
-
-1. **Compile contract**
-   ```bash
-   cd solutions/contracts
-   solc SolutionNFT.sol --abi --bin --overwrite -o build/
-   ```
-
-2. **Deploy to network**
-   ```bash
-   python scripts/deploy_contract.py
-   ```
-
-3. **Update configuration**
-   ```bash
-   # Update CONTRACT_ADDRESS in .env
-   ```
-
-### Production Deployment
-
-1. **Build Docker image**
-   ```bash
-   docker build -t innovators-of-honour .
-   ```
-
-2. **Push to container registry**
-   ```bash
-   docker tag innovators-of-honour:latest <ecr-repository-url>
-   docker push <ecr-repository-url>
-   ```
-
-3. **Deploy to ECS**
-   ```bash
-   # Configure ECS service and task definition
-   # Update load balancer settings
-   ```
-
-4. **Deploy frontend to Vercel**
-   ```bash
-   # Connect repository to Vercel
-   # Configure build settings and environment variables
-   ```
-
-## Testing
-
-### Test Suite
-
-The platform includes comprehensive testing:
-
-**Smart Contract Tests:**
-```bash
-cd solutions/contracts
-npx hardhat test
-```
-
-**Backend Tests:**
-```bash
-python manage.py test
-```
-
-**Frontend Tests:**
-```bash
-npx playwright test
-```
-
-**E2E Tests:**
-```bash
-python manage.py test --tag=e2e
-```
-
-### Test Categories
-
-1. **Unit Tests**: Isolated component testing
-2. **Integration Tests**: Cross-component functionality
-3. **Blockchain Tests**: Smart contract and Web3 integration
-4. **UI Tests**: Frontend functionality and user flows
-5. **Performance Tests**: Load and stress testing
-
-## Security Considerations
-
-### Blockchain Security
-
-- Reentrancy protection in smart contracts
-- Input validation for all transaction parameters
-- Secure private key management
-- Gas limit validation to prevent out-of-gas errors
-
-### Web Security
-
-- CSRF protection enabled
-- XSS prevention through template auto-escaping
-- HTTPS enforcement in production
-- Secure cookie settings
-- Content Security Policy headers
-
-### Data Protection
-
-- Environment variable encryption
-- Secure database credential rotation
-- GDPR-compliant data handling practices
-- User consent mechanisms for data processing
-
-## Monitoring and Maintenance
-
-### Logging
-
-- Structured logging with request context
-- Error tracking with Sentry integration
-- Performance monitoring with AWS CloudWatch
-- Blockchain transaction logging
-
-### Maintenance Tasks
-
-- Regular dependency updates
-- Database backup and optimization
-- Contract upgrade planning
-- Security vulnerability scanning
-
-## Ethical Considerations
-
-The platform incorporates several ethical features:
-
-- Transparent fee structures and pricing
-- User consent for data processing and AI usage
-- Blockchain risk disclosures before transactions
-- Privacy-focused design with minimal data collection
-- Accessibility compliance with WCAG guidelines
-
-## Troubleshooting
-
-### Common Issues
-
-1. **MetaMask Connection Issues**
-   - Check network configuration (Sepolia testnet)
-   - Ensure MetaMask is unlocked
-   - Verify contract address is correct
-
-2. **Transaction Failures**
-   - Check gas prices and limits
-   - Verify account has sufficient ETH balance
-   - Confirm contract has been deployed
-
-3. **Database Connection Issues**
-   - Verify database server is running
-   - Check connection string in environment variables
-   - Confirm database user permissions
-
-### Getting Help
-
-- Check logs in `logs/` directory for detailed error information
-- Review API documentation at `/api/docs/`
-- Consult blockchain transaction history on Etherscan
-
-## Contributing
-
-### Development Process
-
-1. Fork the repository
-2. Create a feature branch
-3. Make changes with tests
-4. Submit a pull request
-5. Code review and CI testing
-6. Merge to main branch
-
-### Code Standards
-
-- Follow PEP 8 for Python code
-- Use ESLint for JavaScript validation
-- Write comprehensive test coverage
-- Document new features and APIs
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Ethereum Foundation for blockchain infrastructure
-- Django Software Foundation for web framework
-- OpenAI for AI integration capabilities
-- BuildADAO for design inspiration
+For support, contact Vincent Kimuri (founder@lhora.ai). Let's innovate with honour!
 
 ---
+
+**Last Updated: September 09, 2025**  
+**Version: 2.0 (Production-Ready with AWS/Vercel Deployment)**
 
 **Motto**: "Innovate with Honour, Impact the World"
 
