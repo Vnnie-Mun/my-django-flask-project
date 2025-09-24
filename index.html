@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="additional-styles.css">
     <link rel="stylesheet" href="video-section.css">
+    <link rel="stylesheet" href="events-section.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
@@ -370,6 +371,52 @@
         </div>
     </section>
 
+    <!-- Upcoming Events Section -->
+    <section class="upcoming-events">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Upcoming Events</div>
+                <h2>Don't Miss Out</h2>
+                <p>Join our community events and stay ahead of the innovation curve</p>
+            </div>
+            <div class="events-container">
+                <div class="event-card featured-event">
+                    <div class="event-background">
+                        <div class="tech-pattern"></div>
+                        <div class="gradient-overlay"></div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-header">
+                            <div class="event-badge">Featured Event</div>
+                            <div class="event-date">
+                                <div class="date-text">This Thursday</div>
+                                <div class="time-text">9:00 PM</div>
+                            </div>
+                        </div>
+                        <h3 class="event-title">The World is Shifting from Web2 to Web3</h3>
+                        <p class="event-description">How do we make the leap when the public isn't ready? This Thursday at 9PM, the Innovators of Honour Community hosts leading experts to answer this very question. Be part of the conversation that defines tomorrow.</p>
+                        <div class="event-meta">
+                            <div class="host-info">
+                                <i class="fas fa-users"></i>
+                                <span>Hosted by Innovators of Honour Community</span>
+                            </div>
+                        </div>
+                        <div class="event-actions">
+                            <a href="https://meet.google.com/cxx-ctxs-rqe" class="btn btn-primary event-join-btn" target="_blank">
+                                <i class="fas fa-video"></i>
+                                <span>Join Event</span>
+                            </a>
+                            <button class="btn btn-outline event-remind-btn" onclick="setReminder()">
+                                <i class="fas fa-bell"></i>
+                                <span>Set Reminder</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Video Section -->
     <section class="video-section">
         <div class="container">
@@ -477,6 +524,7 @@
     <link rel="stylesheet" href="hiring-styles.css">
     <script src="metta-automation.js"></script>
     <script src="smart-logic.js"></script>
+    <script src="events-functionality.js"></script>
     <script src="video-player.js"></script>
     <script src="script.js"></script>
 </body>
