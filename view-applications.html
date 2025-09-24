@@ -196,17 +196,46 @@
         </div>
     </div>
 
+    <script src="auth.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            loadApplications();
+            initializePage();
         });
         
-        function loadApplications() {
-            // Load sample applications (in real app, this would come from backend)
-            const applications = getSampleApplications();
+        function initializePage() {
+            if (!authManager.requireAuth()) return;
             
-            updateStats(applications);
-            renderApplicationsTable(applications);
+            const user = authManager.getCurrentUser();
+            updatePageForRole(user);
+            loadApplications(user);
+        }
+        
+        function updatePageForRole(user) {
+            const pageTitle = document.querySelector('.page-title');
+            const pageSubtitle = document.querySelector('.page-subtitle');
+            
+            if (user.role === 'hr') {
+                pageTitle.textContent = 'All Applications Dashboard';
+                pageSubtitle.textContent = 'Review and manage all job applications';
+            } else {
+                pageTitle.textContent = 'My Application';
+                pageSubtitle.textContent = 'View your job application status';
+            }
+            
+            const header = document.querySelector('.page-header');
+            const userInfo = document.createElement('div');
+            userInfo.style.cssText = 'display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;';
+            userInfo.innerHTML = `
+                <div style="color: #ccc;">Welcome, ${user.name} (${user.role.toUpperCase()})</div>
+                <button onclick="logout()" style="background: transparent; color: #FFD700; border: 1px solid #FFD700; padding: 8px 16px; border-radius: 6px; cursor: pointer;">Logout</button>
+            `;
+            header.insertBefore(userInfo, header.firstChild);
+        }
+        
+        function loadApplications(user) {
+            const applications = applicationManager.getApplicationsForUser(user.id, user.role);
+            updateStats(applications, user.role);
+            renderApplicationsTable(applications, user.role);
         }
         
         function getSampleApplications() {
@@ -244,7 +273,11 @@
             ];
         }
         
-        function updateStats(applications) {
+        function updateStats(applications, role) {
+            if (role === 'applicant') {
+                document.getElementById('statsRow').style.display = 'none';
+                return;
+            }
             document.getElementById('totalApplications').textContent = applications.length;
             document.getElementById('thisWeek').textContent = applications.filter(app => 
                 new Date(app.applicationDate) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
@@ -252,7 +285,7 @@
             document.getElementById('pendingReview').textContent = applications.length;
         }
         
-        function renderApplicationsTable(applications) {
+        function renderApplicationsTable(applications, role) {
             const container = document.getElementById('applicationsContent');
             
             if (applications.length === 0) {
@@ -274,12 +307,13 @@
                             <th>Email</th>
                             <th>Resume</th>
                             <th>Application Date</th>
+                            ${role === 'hr' ? '<th>Job Title</th><th>Status</th>' : ''}
                         </tr>
                     </thead>
                     <tbody>
                         ${applications.map(app => `
                             <tr>
-                                <td>${app.name}</td>
+                                <td>${app.applicantName}</td>
                                 <td>${app.email}</td>
                                 <td>
                                     <a href="${app.resumeLink}" class="resume-link" target="_blank">
@@ -288,6 +322,7 @@
                                     </a>
                                 </td>
                                 <td>${formatDate(app.applicationDate)}</td>
+                                ${role === 'hr' ? `<td>${app.jobTitle}</td><td><span style="color: #FFD700;">${app.status}</span></td>` : ''}
                             </tr>
                         `).join('')}
                     </tbody>
