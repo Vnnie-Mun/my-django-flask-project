@@ -37,13 +37,24 @@
     background: #000;
 }
 
-.video-wrapper iframe {
+.video-wrapper video {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     border: none;
+    object-fit: cover;
+}
+
+.video-wrapper video::-webkit-media-controls-panel {
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));
+}
+
+.video-wrapper video::-webkit-media-controls-play-button,
+.video-wrapper video::-webkit-media-controls-volume-slider,
+.video-wrapper video::-webkit-media-controls-timeline {
+    filter: sepia(1) hue-rotate(35deg) saturate(2);
 }
 
 .video-overlay {
