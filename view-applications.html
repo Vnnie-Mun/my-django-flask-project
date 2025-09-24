@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Applications - Innovators of Honour</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="additional-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .applications-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            padding: 120px 0 60px;
+        }
+        
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        .page-subtitle {
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #FFD700;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+        
+        .back-link:hover {
+            color: #FFA500;
+        }
+        
+        .applications-table {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(20px);
+            overflow-x: auto;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .table th {
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .table td {
+            padding: 1rem;
+            color: #fff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .table tr:hover {
+            background: rgba(255, 215, 0, 0.05);
+        }
+        
+        .resume-link {
+            color: #FFD700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+        
+        .resume-link:hover {
+            color: #FFA500;
+        }
+        
+        .no-applications {
+            text-align: center;
+            padding: 3rem;
+            color: #ccc;
+        }
+        
+        .no-applications i {
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+        
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .content-container {
+                padding: 0 1rem;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .applications-table {
+                padding: 1rem;
+            }
+            
+            .table th, .table td {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="applications-container">
+        <div class="content-container">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+            
+            <div class="page-header">
+                <h1 class="page-title">Job Applications</h1>
+                <p class="page-subtitle">Review and manage submitted applications</p>
+            </div>
+            
+            <div class="stats-row" id="statsRow">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalApplications">0</div>
+                    <div class="stat-label">Total Applications</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="thisWeek">0</div>
+                    <div class="stat-label">This Week</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="pendingReview">0</div>
+                    <div class="stat-label">Pending Review</div>
+                </div>
+            </div>
+            
+            <div class="applications-table">
+                <div id="applicationsContent">
+                    <!-- Applications will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadApplications();
+        });
+        
+        function loadApplications() {
+            // Load sample applications (in real app, this would come from backend)
+            const applications = getSampleApplications();
+            
+            updateStats(applications);
+            renderApplicationsTable(applications);
+        }
+        
+        function getSampleApplications() {
+            return [
+                {
+                    name: 'John Doe',
+                    email: 'john.doe@email.com',
+                    resumeLink: 'https://example.com/resume1.pdf',
+                    applicationDate: '2025-01-15'
+                },
+                {
+                    name: 'Jane Smith',
+                    email: 'jane.smith@email.com',
+                    resumeLink: 'https://example.com/resume2.pdf',
+                    applicationDate: '2025-01-14'
+                },
+                {
+                    name: 'Michael Johnson',
+                    email: 'michael.j@email.com',
+                    resumeLink: 'https://example.com/resume3.pdf',
+                    applicationDate: '2025-01-13'
+                },
+                {
+                    name: 'Sarah Wilson',
+                    email: 'sarah.wilson@email.com',
+                    resumeLink: 'https://example.com/resume4.pdf',
+                    applicationDate: '2025-01-12'
+                },
+                {
+                    name: 'David Brown',
+                    email: 'david.brown@email.com',
+                    resumeLink: 'https://example.com/resume5.pdf',
+                    applicationDate: '2025-01-11'
+                }
+            ];
+        }
+        
+        function updateStats(applications) {
+            document.getElementById('totalApplications').textContent = applications.length;
+            document.getElementById('thisWeek').textContent = applications.filter(app => 
+                new Date(app.applicationDate) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+            ).length;
+            document.getElementById('pendingReview').textContent = applications.length;
+        }
+        
+        function renderApplicationsTable(applications) {
+            const container = document.getElementById('applicationsContent');
+            
+            if (applications.length === 0) {
+                container.innerHTML = `
+                    <div class="no-applications">
+                        <i class="fas fa-inbox"></i>
+                        <h3>No Applications Yet</h3>
+                        <p>Applications will appear here once candidates start applying to your job postings.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const tableHTML = `
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Applicant Name</th>
+                            <th>Email</th>
+                            <th>Resume</th>
+                            <th>Application Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${applications.map(app => `
+                            <tr>
+                                <td>${app.name}</td>
+                                <td>${app.email}</td>
+                                <td>
+                                    <a href="${app.resumeLink}" class="resume-link" target="_blank">
+                                        <i class="fas fa-file-pdf"></i>
+                                        View Resume
+                                    </a>
+                                </td>
+                                <td>${formatDate(app.applicationDate)}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            container.innerHTML = tableHTML;
+        }
+        
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+    </script>
+</body>
+</html>
